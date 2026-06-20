@@ -1,0 +1,9 @@
+.form-note-success {
+  color: #1f7a4d;
+  font-weight: 850;
+}
+
+.form-note-error {
+  color: #9f2638;
+  font-weight: 850;
+}

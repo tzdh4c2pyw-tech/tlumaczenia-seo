@@ -1,92 +1,125 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
+import FloatingCta from "./components/FloatingCta";
 
-const siteUrl = "https://tlumaczenia-seo-vadym-rekel.vercel.app";
+const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Tłumaczenia ukraiński, rosyjski, angielski | Tłumacz przysięgły Kraków",
-    template: "%s | Tłumaczenia ukraiński, rosyjski, angielski"
+      "Tłumaczenia ukraiński, rosyjski, angielski | Prawo, sądy, cyber",
+    template: "%s | Tłumaczenia specjalistyczne"
   },
   description:
-    "Specjalistyczne tłumaczenia poświadczone i prawnicze: język ukraiński, rosyjski i angielski. Kraków, dokumenty zdalnie, sprawy sądowe, karne, cywilne, IT, cyber, forensic.",
+    "Specjalistyczne tłumaczenia z języka ukraińskiego, rosyjskiego i angielskiego. Dokumenty prawnicze, sądowe, urzędowe, sprawy karne, cywilne, Policja, prokuratura, materiał cyfrowy, BLIK, krypto i forensic.",
   keywords: [
     "tłumacz przysięgły ukraiński",
-    "tłumacz przysięgły rosyjski",
-    "tłumacz przysięgły angielski",
     "tłumacz ukraiński Kraków",
-    "tłumacz rosyjski Kraków",
-    "tłumacz angielski Kraków",
+    "tłumacz przysięgły rosyjski",
+    "tłumaczenia angielski",
     "tłumaczenia prawnicze",
-    "tłumaczenia sądowe",
+    "tłumaczenia dla sądu",
     "tłumaczenia dla Policji",
     "tłumaczenia dla prokuratury",
-    "tłumaczenia w sprawach karnych",
-    "tłumaczenia dokumentów z Ukrainy",
-    "tłumaczenia dokumentów z Rosji",
-    "tłumaczenia materiału cyfrowego",
-    "tłumaczenia forensic",
-    "tłumaczenia oszustwa internetowe",
-    "tłumaczenia BLIK",
-    "tłumaczenia kryptowaluty"
+    "tłumaczenie dokumentów z Ukrainy",
+    "tłumaczenie materiału cyfrowego",
+    "BLIK",
+    "kryptowaluty",
+    "forensic"
   ],
   authors: [
     {
-      name: "Vadym Rekel",
-      url: siteUrl
+      name: "Vadym Rekel"
     }
   ],
   creator: "Vadym Rekel",
   publisher: "Vadym Rekel",
   alternates: {
-    canonical: "/"
+    canonical: siteUrl
   },
   openGraph: {
     type: "website",
     locale: "pl_PL",
     url: siteUrl,
-    siteName: "Tłumaczenia ukraiński, rosyjski, angielski",
     title:
-      "Tłumaczenia ukraiński, rosyjski, angielski | Tłumacz przysięgły Kraków",
+      "Tłumaczenia ukraiński, rosyjski, angielski | Prawo, sądy, cyber",
     description:
-      "Specjalistyczne tłumaczenia poświadczone i prawnicze dla sądów, Policji, prokuratur, kancelarii prawnych, instytucji i klientów prywatnych.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Tłumaczenia ukraiński, rosyjski, angielski"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Tłumaczenia ukraiński, rosyjski, angielski | Tłumacz przysięgły Kraków",
-    description:
-      "Tłumaczenia poświadczone, prawnicze, sądowe, karne, cywilne, IT, cyber i forensic."
+      "Centrum wiedzy i formularz wstępnej wyceny tłumaczeń specjalistycznych: ukraiński, rosyjski, angielski, prawo, sądy, Policja, prokuratura, cyber, BLIK, krypto i forensic.",
+    siteName: "Tłumaczenia specjalistyczne Vadym Rekel"
   },
   robots: {
     index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1
-    }
-  },
-  category: "legal translation services"
+    follow: true
+  }
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: "#123c31"
+const professionalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Tłumaczenia specjalistyczne Vadym Rekel",
+  url: siteUrl,
+  areaServed: {
+    "@type": "Country",
+    name: "Polska"
+  },
+  availableLanguage: [
+    {
+      "@type": "Language",
+      name: "Polish"
+    },
+    {
+      "@type": "Language",
+      name: "Ukrainian"
+    },
+    {
+      "@type": "Language",
+      name: "Russian"
+    },
+    {
+      "@type": "Language",
+      name: "English"
+    }
+  ],
+  serviceType: [
+    "tłumaczenia poświadczone",
+    "tłumaczenia prawnicze",
+    "tłumaczenia sądowe",
+    "tłumaczenia dla Policji",
+    "tłumaczenia dla prokuratury",
+    "tłumaczenia dokumentów z Ukrainy",
+    "tłumaczenia materiału cyfrowego",
+    "tłumaczenia w sprawach cyber",
+    "tłumaczenia w sprawach BLIK",
+    "tłumaczenia w sprawach kryptowalut",
+    "tłumaczenia forensic"
+  ],
+  audience: [
+    {
+      "@type": "Audience",
+      audienceType: "sądy"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "Policja"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "prokuratury"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "kancelarie prawne"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "firmy"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "osoby prywatne"
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -94,76 +127,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const professionalServiceSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${siteUrl}/#organization`,
-    name: "Tłumaczenia ukraiński, rosyjski, angielski — Vadym Rekel",
-    url: siteUrl,
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Kraków"
-      },
-      {
-        "@type": "Country",
-        name: "Polska"
-      }
-    ],
-    knowsLanguage: ["pl", "uk", "ru", "en"],
-    serviceType: [
-      "tłumaczenia poświadczone języka ukraińskiego",
-      "tłumaczenia poświadczone języka rosyjskiego",
-      "tłumaczenia poświadczone języka angielskiego",
-      "tłumaczenia prawnicze",
-      "tłumaczenia sądowe",
-      "tłumaczenia dla Policji",
-      "tłumaczenia dla prokuratury",
-      "tłumaczenia w sprawach karnych",
-      "tłumaczenia w sprawach cywilnych",
-      "tłumaczenia materiału cyfrowego",
-      "tłumaczenia forensic",
-      "tłumaczenia oszustw internetowych",
-      "tłumaczenia BLIK",
-      "tłumaczenia kryptowalut"
-    ],
-    founder: {
-      "@type": "Person",
-      name: "Vadym Rekel",
-      jobTitle: "Tłumacz przysięgły"
-    }
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteUrl}/#website`,
-    url: siteUrl,
-    name: "Tłumaczenia ukraiński, rosyjski, angielski",
-    inLanguage: "pl-PL",
-    publisher: {
-      "@id": `${siteUrl}/#organization`
-    }
-  };
-
   return (
     <html lang="pl">
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(professionalServiceSchema)
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema)
+            __html: JSON.stringify(professionalServiceJsonLd)
           }}
         />
 
         {children}
+
+        <FloatingCta />
       </body>
     </html>
   );

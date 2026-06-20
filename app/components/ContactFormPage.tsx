@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Wstępna ocena materiału do tłumaczenia",
-  description:
-    "Prześlij dokument, tekst, skan, zdjęcie, fragment akt lub materiał cyfrowy do wstępnej oceny tłumaczenia. Język ukraiński, rosyjski i angielski. Prawo, sądy, Policja, prokuratura, cyber i forensic.",
-  alternates: {
-    canonical: "/kontakt"
-  }
-};
+import Link from "next/link";
+import { FormEvent, useState } from "react";
+import "./contact-form.css";
 
 const languages = [
   "język ukraiński",
@@ -88,7 +82,55 @@ const processSteps = [
   }
 ];
 
-export default function ContactPage() {
+export default function ContactFormPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
+  const [statusMessage, setStatusMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setStatus("sending");
+    setStatusMessage("Wysyłanie zgłoszenia...");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result.ok) {
+        setStatus("error");
+        setStatusMessage(
+          result.message ||
+            "Nie udało się wysłać formularza. Spróbuj ponownie."
+        );
+        return;
+      }
+
+      form.reset();
+      setStatus("success");
+      setStatusMessage(
+        result.message ||
+          "Zgłoszenie zostało wysłane. Materiał trafił do wstępnej oceny."
+      );
+    } catch {
+      setStatus("error");
+      setStatusMessage(
+        "Wystąpił błąd połączenia. Sprawdź internet i spróbuj ponownie."
+      );
+    }
+  }
+
   return (
     <main>
       <div className="topbar">
@@ -161,7 +203,7 @@ export default function ContactPage() {
             <div>Dokumenty prywatne, urzędowe, sądowe i procesowe.</div>
             <div>Materiały dla sądów, Policji, prokuratur i organów.</div>
             <div>Komunikatory, zrzuty ekranu, BLIK, krypto i cyber.</div>
-            <div>Wycena bez publicznego telefonu i e-maila na stronie.</div>
+            <div>Adres e-mail nie jest publikowany w treści strony.</div>
           </div>
         </aside>
       </section>
@@ -192,16 +234,17 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="contact-layout">
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-block">
               <p className="section-label">Krok 1</p>
               <h2>Kto przekazuje materiał?</h2>
 
               <label>
-                Imię, nazwa jednostki albo instytucji
+                Imię, nazwa jednostki albo instytucji *
                 <input
                   name="name"
                   type="text"
+                  required
                   placeholder="np. osoba prywatna, sąd, Policja, prokuratura, kancelaria, firma"
                 />
               </label>
@@ -219,10 +262,11 @@ export default function ContactPage() {
               </label>
 
               <label>
-                Dane do odpowiedzi
+                Dane do odpowiedzi *
                 <input
                   name="reply"
                   type="text"
+                  required
                   placeholder="Wpisz preferowaną formę kontaktu zwrotnego"
                 />
               </label>
@@ -297,10 +341,11 @@ export default function ContactPage() {
               <h2>Opis materiału</h2>
 
               <label>
-                Krótki opis dokumentu, tekstu albo materiału cyfrowego
+                Krótki opis dokumentu, tekstu albo materiału cyfrowego *
                 <textarea
                   name="message"
                   rows={8}
+                  required
                   placeholder="Przykład: dokument z Ukrainy do urzędu, protokół przesłuchania, wyrok, zrzuty ekranu z komunikatora, materiał w sprawie BLIK, kryptowalut, cyberoszustwa albo akta do sprawy sądowej."
                 />
               </label>
@@ -314,24 +359,44 @@ export default function ContactPage() {
                 />
               </label>
 
+              <label>
+                Załączniki
+                <input name="attachments" type="file" multiple />
+              </label>
+
               <div className="file-box">
                 <strong>Załączniki i pliki</strong>
                 <span>
-                  Formularz jest obecnie przygotowany wizualnie. W kolejnym
-                  kroku zostanie podpięta realna obsługa zgłoszeń i plików.
-                  Do tego czasu można używać go jako profesjonalnej strony
-                  wstępnej oceny materiału.
+                  Formularz obsługuje niewielkie załączniki do łącznego limitu
+                  8 MB. Przy większych aktach lub wielu plikach opisz materiał
+                  w formularzu, a sposób przekazania plików zostanie ustalony po
+                  wstępnej ocenie.
                 </span>
               </div>
 
-              <button className="button button-primary" type="button">
-                Prześlij materiał do wstępnej oceny
+              <button
+                className="button button-primary"
+                type="submit"
+                disabled={status === "sending"}
+              >
+                {status === "sending"
+                  ? "Wysyłanie..."
+                  : "Prześlij materiał do wstępnej oceny"}
               </button>
 
-              <p className="form-note">
-                Przycisk nie wysyła jeszcze zgłoszenia. W następnym kroku
-                podepniemy techniczną obsługę formularza.
-              </p>
+              {statusMessage ? (
+                <p
+                  className={
+                    status === "success"
+                      ? "form-note form-note-success"
+                      : status === "error"
+                        ? "form-note form-note-error"
+                        : "form-note"
+                  }
+                >
+                  {statusMessage}
+                </p>
+              ) : null}
             </div>
           </form>
 
@@ -367,12 +432,11 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-card">
-              <span className="tag">Bez ekspozycji danych</span>
-              <h3>Kontakt przez formularz.</h3>
+              <span className="tag">Adres ukryty</span>
+              <h3>Wysyłka przez formularz.</h3>
               <p>
-                Strona nie eksponuje publicznie telefonu ani adresu e-mail.
-                Użytkownik jest kierowany do uporządkowanego formularza
-                wstępnej oceny.
+                Formularz wysyła zgłoszenie na adres skonfigurowany po stronie
+                serwera. Adres e-mail nie jest publikowany w treści strony.
               </p>
             </div>
           </aside>
