@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Tłumaczenia specjalistyczne"
   },
   description:
-    "Specjalistyczne tłumaczenia z języka ukraińskiego, rosyjskiego i angielskiego. Dokumenty prawnicze, sądowe, urzędowe, sprawy karne, cywilne, Policja, prokuratura, materiał cyfrowy, BLIK, krypto i forensic.",
+    "Specjalistyczne tłumaczenia z języka ukraińskiego, rosyjskiego i angielskiego. Dokumenty prawnicze, sądowe, urzędowe, sprawy karne, cywilne, Policja, prokuratura, materiał cyfrowy, BLIK, kryptowaluty i forensic.",
   keywords: [
     "tłumacz przysięgły ukraiński",
     "tłumacz ukraiński Kraków",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title:
       "Tłumaczenia ukraiński, rosyjski, angielski | Prawo, sądy, cyber",
     description:
-      "Centrum wiedzy i formularz wstępnej wyceny tłumaczeń specjalistycznych: ukraiński, rosyjski, angielski, prawo, sądy, Policja, prokuratura, cyber, BLIK, krypto i forensic.",
+      "Tłumaczenia specjalistyczne: ukraiński, rosyjski, angielski, prawo, sądy, Policja, prokuratura, dokumenty z Ukrainy, cyber, BLIK, kryptowaluty i forensic.",
     siteName: "Tłumaczenia specjalistyczne Vadym Rekel"
   },
   robots: {
@@ -106,6 +106,10 @@ const professionalServiceJsonLd = {
     {
       "@type": "Audience",
       audienceType: "prokuratury"
+    },
+    {
+      "@type": "Audience",
+      audienceType: "organy ścigania"
     },
     {
       "@type": "Audience",

@@ -5,6 +5,7 @@ import {
   getAllLandingPages,
   getLandingPageBySlug
 } from "@/lib/landing-pages";
+import { mailtoHref } from "@/lib/mailto";
 
 type PageProps = {
   params: Promise<{
@@ -96,9 +97,9 @@ export default async function LandingPage({ params }: PageProps) {
             <Link href="/blog">Baza wiedzy</Link>
             <Link href="/#prawo">Prawo</Link>
             <Link href="/#cyfrowe">Forensic</Link>
-            <Link className="nav-cta" href="/kontakt">
+            <a className="nav-cta" href={mailtoHref}>
               Wyślij do wyceny
-            </Link>
+            </a>
           </div>
         </nav>
       </div>
@@ -112,9 +113,10 @@ export default async function LandingPage({ params }: PageProps) {
           <p className="lead">{page.lead}</p>
 
           <div className="hero-actions">
-            <Link className="button button-primary" href="/kontakt">
+            <a className="button button-primary" href={mailtoHref}>
               Wyślij tekst do wyceny
-            </Link>
+            </a>
+
             <Link className="button button-secondary" href="/blog">
               Baza wiedzy
             </Link>
@@ -131,7 +133,7 @@ export default async function LandingPage({ params }: PageProps) {
             </div>
             <div>
               <strong>Wycena</strong>
-              <span>formularz wstępnej oceny materiału</span>
+              <span>wiadomość e-mail z gotowym opisem sprawy</span>
             </div>
           </div>
         </div>
@@ -171,9 +173,9 @@ export default async function LandingPage({ params }: PageProps) {
               <p>{page.ctaText}</p>
 
               <div className="hero-actions">
-                <Link className="button button-secondary" href="/kontakt">
-                  Przejdź do formularza wyceny
-                </Link>
+                <a className="button button-secondary" href={mailtoHref}>
+                  Otwórz wiadomość e-mail
+                </a>
               </div>
             </div>
 
@@ -181,8 +183,9 @@ export default async function LandingPage({ params }: PageProps) {
               <strong>Dokumenty, akta, pisma i materiał cyfrowy</strong>
               <span>
                 Do wstępnej oceny można przekazać opis dokumentu, język, termin,
-                liczbę stron lub plików oraz cel tłumaczenia. Szczegóły można
-                doprecyzować po pierwszej analizie materiału.
+                liczbę stron lub plików oraz cel tłumaczenia. Pliki, skany,
+                zdjęcia albo zrzuty ekranu można dodać ręcznie w wiadomości
+                e-mail.
               </span>
             </div>
           </section>
@@ -218,12 +221,12 @@ export default async function LandingPage({ params }: PageProps) {
             <span className="tag">Wycena</span>
             <h3>Prześlij materiał do wstępnej oceny.</h3>
             <p>
-              Opisz dokument, język, termin i cel tłumaczenia. Formularz pomoże
-              uporządkować informacje potrzebne do pierwszej oceny materiału.
+              Opisz dokument, język, termin i cel tłumaczenia. Wiadomość e-mail
+              zostanie otwarta z gotową strukturą opisu.
             </p>
-            <Link className="card-link" href="/kontakt">
-              Przejdź do formularza →
-            </Link>
+            <a className="card-link" href={mailtoHref}>
+              Otwórz wiadomość e-mail →
+            </a>
           </div>
         </aside>
       </section>
@@ -251,9 +254,9 @@ export default async function LandingPage({ params }: PageProps) {
 
           <div>
             <span className="footer-title">Wycena</span>
-            <Link className="footer-link" href="/kontakt">
-              Formularz wyceny
-            </Link>
+            <a className="footer-link" href={mailtoHref}>
+              Otwórz wiadomość e-mail
+            </a>
           </div>
         </div>
       </footer>

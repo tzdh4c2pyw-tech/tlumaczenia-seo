@@ -1,448 +1,357 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  getAllArticles,
+  getArticleBySlug,
+  getRelatedArticles
+} from "@/lib/blog";
+import { mailtoHref } from "@/lib/mailto";
 
-export const metadata: Metadata = {
-  title: "Wstępna ocena materiału do tłumaczenia",
-  description:
-    "Prześlij dokument, tekst, skan, zdjęcie, fragment akt lub materiał cyfrowy do wstępnej oceny tłumaczenia. Język ukraiński, rosyjski i angielski. Prawo, sądy, Policja, prokuratura, cyber i forensic.",
-  alternates: {
-    canonical: "/kontakt"
-  }
+const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
+
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
 };
 
-const languages = [
-  "język ukraiński",
-  "język rosyjski",
-  "język angielski",
-  "kilka języków",
-  "nie wiem / proszę o rozpoznanie języka"
-];
+export async function generateStaticParams() {
+  return getAllArticles().map((article) => ({
+    slug: article.slug
+  }));
+}
 
-const senderTypes = [
-  "osoba prywatna",
-  "sąd",
-  "Policja",
-  "prokuratura",
-  "organ ścigania",
-  "urząd / instytucja publiczna",
-  "kancelaria prawna",
-  "firma",
-  "inna jednostka"
-];
+export async function generateMetadata({
+  params
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
 
-const caseTypes = [
-  "dokument prywatny",
-  "dokument urzędowy",
-  "dokument z Ukrainy",
-  "dokument rosyjskojęzyczny",
-  "dokument angielski",
-  "sprawa sądowa",
-  "sprawa karna",
-  "sprawa cywilna",
-  "sprawa rodzinna",
-  "sprawa gospodarcza",
-  "sprawa administracyjna",
-  "czynności policyjne",
-  "postępowanie prokuratorskie",
-  "akta sprawy",
-  "materiał dowodowy",
-  "IT / cyber / forensic",
-  "BLIK / oszustwo internetowe",
-  "kryptowaluty",
-  "komunikatory / zrzuty ekranu",
-  "inne"
-];
-
-const materialTypes = [
-  "PDF",
-  "skan",
-  "zdjęcie dokumentu",
-  "dokument papierowy",
-  "zrzuty ekranu",
-  "korespondencja",
-  "komunikator",
-  "SMS",
-  "e-mail",
-  "raport",
-  "akta sprawy",
-  "protokół",
-  "wyrok / postanowienie",
-  "umowa",
-  "pełnomocnictwo",
-  "dokument urzędowy",
-  "inny materiał"
-];
-
-const processSteps = [
-  {
-    title: "1. Opis materiału",
-    text: "W pierwszej wiadomości wystarczy wskazać język, rodzaj dokumentu, termin oraz cel tłumaczenia."
-  },
-  {
-    title: "2. Wstępna ocena",
-    text: "Na podstawie opisu, skanu, zdjęcia albo pliku można określić zakres pracy, tryb realizacji i sposób dalszego przekazania materiału."
-  },
-  {
-    title: "3. Realizacja",
-    text: "Po ustaleniu zakresu tłumaczenie jest przygotowywane z uwzględnieniem charakteru dokumentu, jego odbiorcy i funkcji prawnej."
+  if (!article) {
+    return {
+      title: "Artykuł nie istnieje"
+    };
   }
-];
 
-export default function ContactPage() {
+  return {
+    title: article.title,
+    description: article.description,
+    keywords: article.keywords,
+    alternates: {
+      canonical: `/blog/${article.slug}`
+    },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.description,
+      url: `/blog/${article.slug}`,
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      authors: ["Vadym Rekel"],
+      tags: article.keywords
+    }
+  };
+}
+
+export default async function BlogArticlePage({ params }: PageProps) {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    notFound();
+  }
+
+  const relatedArticles = getRelatedArticles(article.relatedSlugs);
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    author: {
+      "@type": "Person",
+      name: "Vadym Rekel"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Tłumaczenia specjalistyczne Vadym Rekel"
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `/blog/${article.slug}`
+    },
+    keywords: article.keywords.join(", "),
+    articleSection: article.category,
+    inLanguage: "pl-PL"
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: article.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd)
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd)
+        }}
+      />
+
       <div className="topbar">
         <nav className="nav">
           <Link className="brand" href="/" aria-label="Strona główna">
             <span className="brand-mark">VR</span>
             <span>
-              <span className="brand-title">Wstępna ocena materiału</span>
+              <span className="brand-title">Baza wiedzy</span>
               <span className="brand-subtitle">
-                dokumenty · prawo · organy · cyber · forensic
+                {article.language} · {article.category}
               </span>
             </span>
           </Link>
 
           <div className="nav-links">
             <Link href="/">Strona główna</Link>
-            <Link href="/#jezyki">Języki</Link>
-            <Link href="/#organy">Dla organów</Link>
-            <Link href="/#prawo">Prawo</Link>
             <Link href="/blog">Baza wiedzy</Link>
-            <Link className="nav-cta" href="/kontakt">
+            <Link href="/#prawo">Prawo</Link>
+            <Link href="/#cyfrowe">Forensic</Link>
+            <a className="nav-cta" href={mailtoHref}>
               Wyślij do wyceny
-            </Link>
+            </a>
           </div>
         </nav>
       </div>
 
-      <section className="contact-hero">
-        <div className="contact-hero-main">
-          <span className="eyebrow">Formularz wstępnej oceny</span>
+      <article>
+        <section className="article-hero">
+          <div className="article-hero-main">
+            <span className="eyebrow">
+              {article.language} · {article.category} · {article.readTime}
+            </span>
 
-          <h1>Prześlij materiał do oceny tłumaczeniowej.</h1>
+            <h1>{article.title}</h1>
 
-          <p className="lead">
-            Formularz służy do wstępnego opisania dokumentu, tekstu, skanu,
-            zdjęcia, fragmentu akt, korespondencji albo materiału cyfrowego.
-            Dotyczy tłumaczeń z języka ukraińskiego, rosyjskiego i angielskiego
-            w sprawach urzędowych, sądowych, policyjnych, prokuratorskich,
-            prawniczych, firmowych oraz technologicznych.
-          </p>
-
-          <div className="hero-mini-grid">
-            <div>
-              <strong>Języki</strong>
-              <span>ukraiński, rosyjski, angielski</span>
-            </div>
-            <div>
-              <strong>Odbiorcy</strong>
-              <span>sądy, Policja, prokuratury, kancelarie, firmy</span>
-            </div>
-            <div>
-              <strong>Materiał</strong>
-              <span>dokumenty, akta, komunikatory, PDF, zrzuty</span>
-            </div>
-          </div>
-        </div>
-
-        <aside className="contact-hero-side">
-          <div className="side-card">
-            <h2>Nie trzeba ujawniać całej sprawy w pierwszej wiadomości.</h2>
-            <p>
-              Wystarczy ogólny opis materiału: język, liczba stron lub plików,
-              termin, rodzaj dokumentu oraz informacja, czy tłumaczenie ma
-              trafić do sądu, organu, urzędu, kancelarii, firmy albo innej
-              instytucji.
-            </p>
-          </div>
-
-          <div className="side-list">
-            <div>Dokumenty prywatne, urzędowe, sądowe i procesowe.</div>
-            <div>Materiały dla sądów, Policji, prokuratur i organów.</div>
-            <div>Komunikatory, zrzuty ekranu, BLIK, krypto i cyber.</div>
-            <div>Wycena bez publicznego telefonu i e-maila na stronie.</div>
-          </div>
-        </aside>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <div>
-            <p className="section-label">Jak działa ocena</p>
-            <h2>Najpierw zakres, potem właściwy tryb tłumaczenia.</h2>
-          </div>
-          <p>
-            Ten formularz nie wymaga pełnego opisu sprawy. Jego celem jest
-            ustalenie, z jakim materiałem mamy do czynienia i jak należy go
-            przygotować do tłumaczenia.
-          </p>
-        </div>
-
-        <div className="grid-3">
-          {processSteps.map((step) => (
-            <article className="card card-gold" key={step.title}>
-              <span className="tag">Etap</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="contact-layout">
-          <form className="contact-form">
-            <div className="form-block">
-              <p className="section-label">Krok 1</p>
-              <h2>Kto przekazuje materiał?</h2>
-
-              <label>
-                Imię, nazwa jednostki albo instytucji
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="np. osoba prywatna, sąd, Policja, prokuratura, kancelaria, firma"
-                />
-              </label>
-
-              <label>
-                Typ zgłaszającego
-                <select name="senderType" defaultValue="">
-                  <option value="" disabled>
-                    Wybierz kategorię
-                  </option>
-                  {senderTypes.map((item) => (
-                    <option key={item}>{item}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                Dane do odpowiedzi
-                <input
-                  name="reply"
-                  type="text"
-                  placeholder="Wpisz preferowaną formę kontaktu zwrotnego"
-                />
-              </label>
-
-              <label>
-                Termin
-                <select name="deadline" defaultValue="">
-                  <option value="" disabled>
-                    Wybierz orientacyjny termin
-                  </option>
-                  <option>pilne</option>
-                  <option>2–3 dni</option>
-                  <option>do tygodnia</option>
-                  <option>termin sądowy / urzędowy</option>
-                  <option>termin do uzgodnienia</option>
-                </select>
-              </label>
-            </div>
-
-            <div className="form-block">
-              <p className="section-label">Krok 2</p>
-              <h2>Język i charakter sprawy</h2>
-
-              <label>
-                Język materiału
-                <select name="language" defaultValue="">
-                  <option value="" disabled>
-                    Wybierz język
-                  </option>
-                  {languages.map((item) => (
-                    <option key={item}>{item}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                Rodzaj sprawy albo dokumentu
-                <select name="caseType" defaultValue="">
-                  <option value="" disabled>
-                    Wybierz kategorię
-                  </option>
-                  {caseTypes.map((item) => (
-                    <option key={item}>{item}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                Forma materiału
-                <select name="materialType" defaultValue="">
-                  <option value="" disabled>
-                    Wybierz formę materiału
-                  </option>
-                  {materialTypes.map((item) => (
-                    <option key={item}>{item}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                Cel tłumaczenia
-                <input
-                  name="purpose"
-                  type="text"
-                  placeholder="np. sąd, urząd, prokuratura, Policja, kancelaria, firma, uczelnia"
-                />
-              </label>
-            </div>
-
-            <div className="form-block">
-              <p className="section-label">Krok 3</p>
-              <h2>Opis materiału</h2>
-
-              <label>
-                Krótki opis dokumentu, tekstu albo materiału cyfrowego
-                <textarea
-                  name="message"
-                  rows={8}
-                  placeholder="Przykład: dokument z Ukrainy do urzędu, protokół przesłuchania, wyrok, zrzuty ekranu z komunikatora, materiał w sprawie BLIK, kryptowalut, cyberoszustwa albo akta do sprawy sądowej."
-                />
-              </label>
-
-              <label>
-                Objętość
-                <input
-                  name="volume"
-                  type="text"
-                  placeholder="np. 2 strony, 15 stron PDF, 30 zrzutów ekranu, kilka plików"
-                />
-              </label>
-
-              <div className="file-box">
-                <strong>Załączniki i pliki</strong>
-                <span>
-                  Formularz jest obecnie przygotowany wizualnie. W kolejnym
-                  kroku zostanie podpięta realna obsługa zgłoszeń i plików.
-                  Do tego czasu można używać go jako profesjonalnej strony
-                  wstępnej oceny materiału.
-                </span>
-              </div>
-
-              <button className="button button-primary" type="button">
-                Prześlij materiał do wstępnej oceny
-              </button>
-
-              <p className="form-note">
-                Przycisk nie wysyła jeszcze zgłoszenia. W następnym kroku
-                podepniemy techniczną obsługę formularza.
-              </p>
-            </div>
-          </form>
-
-          <aside className="contact-aside">
-            <div className="contact-card">
-              <span className="tag">Dla organów</span>
-              <h3>Sądy, Policja, prokuratury i organy ścigania.</h3>
-              <p>
-                Materiał można opisać ogólnie: rodzaj dokumentów, język,
-                objętość, termin i charakter czynności. Nie ma potrzeby
-                ujawniania danych wrażliwych w pierwszej wiadomości.
-              </p>
-            </div>
-
-            <div className="contact-card">
-              <span className="tag">Dla kancelarii</span>
-              <h3>Dokumenty prawnicze i procesowe.</h3>
-              <p>
-                Formularz pozwala wskazać, czy materiał dotyczy sprawy karnej,
-                cywilnej, rodzinnej, gospodarczej, administracyjnej albo
-                dokumentacji klienta.
-              </p>
-            </div>
-
-            <div className="contact-card">
-              <span className="tag">Cyber / forensic</span>
-              <h3>Materiał cyfrowy i ślad elektroniczny.</h3>
-              <p>
-                Komunikatory, zrzuty ekranu, raporty PDF, dane z telefonu, BLIK,
-                kryptowaluty, scam, phishing i inne materiały cyfrowe można
-                najpierw opisać bez przesyłania pełnej dokumentacji.
-              </p>
-            </div>
-
-            <div className="contact-card">
-              <span className="tag">Bez ekspozycji danych</span>
-              <h3>Kontakt przez formularz.</h3>
-              <p>
-                Strona nie eksponuje publicznie telefonu ani adresu e-mail.
-                Użytkownik jest kierowany do uporządkowanego formularza
-                wstępnej oceny.
-              </p>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="cta-box">
-          <div>
-            <p className="section-label">Materiały do oceny</p>
-            <h2>Co można przekazać do wstępnej analizy?</h2>
-            <p>
-              Dokument urzędowy, akt stanu cywilnego, dyplom, zaświadczenie,
-              pismo procesowe, wyrok, postanowienie, protokół, korespondencję,
-              zrzuty ekranu, dane z komunikatora, raport PDF, dokumenty
-              transakcyjne, materiał dotyczący BLIK, kryptowalut albo
-              cyberoszustwa.
-            </p>
+            <p className="lead">{article.description}</p>
 
             <div className="hero-actions">
+              <a className="button button-primary" href={mailtoHref}>
+                Wyślij tekst do wyceny
+              </a>
               <Link className="button button-secondary" href="/blog">
-                Przejdź do bazy wiedzy
+                Wróć do bazy wiedzy
               </Link>
-              <Link
+              <a
                 className="button button-secondary"
-                href="/tlumaczenia-dla-policji"
+                href={mainOfficeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Zakres dla organów
-              </Link>
+                Główna strona kancelarii
+              </a>
+            </div>
+
+            <div className="hero-mini-grid">
+              <div>
+                <strong>Publikacja</strong>
+                <span>{article.publishedAt}</span>
+              </div>
+              <div>
+                <strong>Aktualizacja</strong>
+                <span>{article.updatedAt}</span>
+              </div>
+              <div>
+                <strong>Wycena</strong>
+                <span>wiadomość e-mail z gotowym opisem sprawy</span>
+              </div>
             </div>
           </div>
 
-          <div className="cta-panel">
-            <strong>Wstępna wiadomość może być krótka</strong>
-            <span>
-              Wystarczy wskazać język, rodzaj dokumentu, liczbę stron lub
-              plików, termin oraz cel tłumaczenia. Szczegóły można doprecyzować
-              po pierwszej ocenie materiału.
-            </span>
+          <aside className="article-hero-side">
+            <div className="side-card">
+              <h2>Praktyczny kontekst tłumaczenia.</h2>
+              <p>
+                Artykuł pomaga ustalić, czy dokument wymaga tłumaczenia
+                poświadczonego, jak przygotować materiał oraz jak opisać sprawę
+                przed wstępną oceną.
+              </p>
+            </div>
+
+            <div className="side-list">
+              {article.keywords.slice(0, 6).map((keyword) => (
+                <div key={keyword}>{keyword}</div>
+              ))}
+            </div>
+          </aside>
+        </section>
+
+        <section className="article-layout">
+          <div className="article-content">
+            <div className="article-box">
+              <p className="article-intro">{article.intro}</p>
+            </div>
+
+            {article.sections.map((section) => (
+              <section className="article-box" key={section.heading}>
+                <h2>{section.heading}</h2>
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </section>
+            ))}
+
+            <section className="article-box">
+              <h2>Najczęstsze pytania</h2>
+
+              <div className="faq-list">
+                {article.faqs.map((faq) => (
+                  <div className="faq-item" key={faq.question}>
+                    <h3>{faq.question}</h3>
+                    <p>{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="cta-box article-cta">
+              <div>
+                <p className="section-label">Wycena</p>
+                <h2>Potrzebujesz tłumaczenia podobnego materiału?</h2>
+                <p>
+                  Przygotowana wiadomość e-mail pozwala opisać dokument, język,
+                  liczbę stron lub plików, termin oraz cel tłumaczenia.
+                  Załączniki można dodać ręcznie w programie pocztowym.
+                </p>
+
+                <div className="hero-actions">
+                  <a className="button button-secondary" href={mailtoHref}>
+                    Wyślij tekst do wyceny
+                  </a>
+                  <a
+                    className="button button-secondary"
+                    href={mainOfficeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Główna strona kancelarii
+                  </a>
+                </div>
+              </div>
+
+              <div className="cta-panel">
+                <strong>Dokumenty, akta i materiał cyfrowy</strong>
+                <span>
+                  Wstępna wiadomość może być krótka. Wystarczy wskazać język,
+                  rodzaj dokumentu, termin i cel tłumaczenia.
+                </span>
+              </div>
+            </section>
           </div>
-        </div>
-      </section>
+
+          <aside className="article-sidebar">
+            <div className="contact-card">
+              <span className="tag">Spis treści</span>
+              <h3>W tym artykule</h3>
+              <div className="article-toc">
+                {article.sections.map((section) => (
+                  <span key={section.heading}>{section.heading}</span>
+                ))}
+                <span>Najczęstsze pytania</span>
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <span className="tag">Powiązane</span>
+              <h3>Podobne artykuły</h3>
+              <div className="related-list">
+                {relatedArticles.map((related) => (
+                  <Link key={related.slug} href={`/blog/${related.slug}`}>
+                    {related.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <span className="tag">Wycena</span>
+              <h3>Wyślij materiał do oceny.</h3>
+              <p>
+                Opisz dokument, język, termin i cel tłumaczenia. Wiadomość
+                e-mail zostanie otwarta z gotową strukturą opisu.
+              </p>
+              <a className="card-link" href={mailtoHref}>
+                Otwórz wiadomość e-mail →
+              </a>
+            </div>
+
+            <div className="contact-card">
+              <span className="tag">Kancelaria</span>
+              <h3>Główna strona usług.</h3>
+              <p>
+                Pełny opis działalności kancelarii znajduje się na głównej
+                stronie tłumacza przysięgłego języka ukraińskiego i rosyjskiego.
+              </p>
+              <a
+                className="card-link"
+                href={mainOfficeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Przejdź do strony kancelarii →
+              </a>
+            </div>
+          </aside>
+        </section>
+      </article>
 
       <footer className="footer">
         <div className="footer-inner">
           <div>
-            <span className="footer-title">
-              Wstępna ocena materiału do tłumaczenia
-            </span>
+            <span className="footer-title">{article.title}</span>
             <span className="footer-line">
-              Dokumenty, akta, pisma, korespondencja i materiał cyfrowy.
-            </span>
-          </div>
-
-          <div>
-            <span className="footer-title">Zakres</span>
-            <span className="footer-line">
-              ukraiński · rosyjski · angielski · prawo · cyber · forensic
+              Baza wiedzy o tłumaczeniach specjalistycznych.
             </span>
           </div>
 
           <div>
             <span className="footer-title">Nawigacja</span>
-            <Link className="footer-link" href="/">
-              Wróć do strony głównej
+            <Link className="footer-link" href="/blog">
+              Wróć do bazy wiedzy
             </Link>
             <br />
-            <Link className="footer-link" href="/blog">
-              Baza wiedzy
-            </Link>
+            <a
+              className="footer-link"
+              href={mainOfficeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Główna strona kancelarii
+            </a>
+          </div>
+
+          <div>
+            <span className="footer-title">Wycena</span>
+            <a className="footer-link" href={mailtoHref}>
+              Wyślij tekst do wyceny
+            </a>
           </div>
         </div>
       </footer>

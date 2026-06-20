@@ -2,36 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { mailtoHref } from "@/lib/mailto";
 import "./floating-cta.css";
-
-const targetEmail = "biegly@vadymrekel.pl";
-
-function buildMailtoUrl() {
-  const subject = "Wycena tłumaczenia | wstępna ocena materiału";
-
-  const body = [
-    "Dzień dobry,",
-    "",
-    "proszę o wstępną ocenę materiału do tłumaczenia.",
-    "",
-    "Rodzaj materiału:",
-    "Język:",
-    "Termin:",
-    "Cel tłumaczenia:",
-    "Liczba stron / plików:",
-    "",
-    "Krótki opis:",
-    "",
-    "",
-    "Załączniki dodam ręcznie do tej wiadomości.",
-    "",
-    "Z poważaniem"
-  ].join("\n");
-
-  return `mailto:${targetEmail}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-}
 
 export default function FloatingCta() {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,10 +28,6 @@ export default function FloatingCta() {
     setIsClosed(true);
     setIsVisible(false);
     window.localStorage.setItem("floating-cta-closed", "true");
-  }
-
-  function openEmailClient() {
-    window.location.href = buildMailtoUrl();
   }
 
   if (isClosed) {
@@ -95,13 +63,9 @@ export default function FloatingCta() {
       </div>
 
       <div className="floating-cta-actions">
-        <button
-          className="floating-cta-primary"
-          type="button"
-          onClick={openEmailClient}
-        >
+        <a className="floating-cta-primary" href={mailtoHref}>
           Wyślij tekst do wyceny
-        </button>
+        </a>
 
         <Link className="floating-cta-secondary" href="/tlumaczenia-dla-policji">
           Dla organów
