@@ -127,6 +127,8 @@
 
 .floating-cta-primary {
   flex: 1;
+  border: 0;
+  cursor: pointer;
   background: linear-gradient(145deg, #e1bd73, #c89b4a);
   color: #10131a;
 }

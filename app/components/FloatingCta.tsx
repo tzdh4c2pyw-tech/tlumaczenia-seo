@@ -4,6 +4,35 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import "./floating-cta.css";
 
+const targetEmail = "biegly@vadymrekel.pl";
+
+function buildMailtoUrl() {
+  const subject = "Wycena tłumaczenia | wstępna ocena materiału";
+
+  const body = [
+    "Dzień dobry,",
+    "",
+    "proszę o wstępną ocenę materiału do tłumaczenia.",
+    "",
+    "Rodzaj materiału:",
+    "Język:",
+    "Termin:",
+    "Cel tłumaczenia:",
+    "Liczba stron / plików:",
+    "",
+    "Krótki opis:",
+    "",
+    "",
+    "Załączniki dodam ręcznie do tej wiadomości.",
+    "",
+    "Z poważaniem"
+  ].join("\n");
+
+  return `mailto:${targetEmail}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+}
+
 export default function FloatingCta() {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -18,7 +47,7 @@ export default function FloatingCta() {
 
     const timer = window.setTimeout(() => {
       setIsVisible(true);
-    }, 1800);
+    }, 1200);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -27,6 +56,10 @@ export default function FloatingCta() {
     setIsClosed(true);
     setIsVisible(false);
     window.localStorage.setItem("floating-cta-closed", "true");
+  }
+
+  function openEmailClient() {
+    window.location.href = buildMailtoUrl();
   }
 
   if (isClosed) {
@@ -53,7 +86,7 @@ export default function FloatingCta() {
 
       <p>
         Dokument, fragment akt, pismo procesowe, korespondencję albo materiał
-        cyfrowy można przekazać do wstępnej analizy przez formularz.
+        cyfrowy można przekazać do wstępnej analizy.
       </p>
 
       <div className="floating-cta-note">
@@ -62,9 +95,13 @@ export default function FloatingCta() {
       </div>
 
       <div className="floating-cta-actions">
-        <Link className="floating-cta-primary" href="/kontakt">
+        <button
+          className="floating-cta-primary"
+          type="button"
+          onClick={openEmailClient}
+        >
           Wyślij tekst do wyceny
-        </Link>
+        </button>
 
         <Link className="floating-cta-secondary" href="/tlumaczenia-dla-policji">
           Dla organów
