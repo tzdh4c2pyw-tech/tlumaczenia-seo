@@ -66,7 +66,7 @@ export default async function LandingPage({ params }: PageProps) {
     serviceType: page.type,
     provider: {
       "@type": "ProfessionalService",
-      name: "Tłumaczenia ukraiński, rosyjski, angielski"
+      name: "Tłumaczenia specjalistyczne Vadym Rekel"
     }
   };
 
@@ -84,16 +84,16 @@ export default async function LandingPage({ params }: PageProps) {
           <Link className="brand" href="/" aria-label="Strona główna">
             <span className="brand-mark">VR</span>
             <span>
-              <span className="brand-title">Landing SEO</span>
+              <span className="brand-title">Tłumaczenia specjalistyczne</span>
               <span className="brand-subtitle">
-                {page.type} · ukraiński · rosyjski · angielski
+                ukraiński · rosyjski · angielski · prawo · forensic
               </span>
             </span>
           </Link>
 
           <div className="nav-links">
             <Link href="/">Strona główna</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog">Baza wiedzy</Link>
             <Link href="/#prawo">Prawo</Link>
             <Link href="/#cyfrowe">Forensic</Link>
             <Link className="nav-cta" href="/kontakt">
@@ -113,16 +113,16 @@ export default async function LandingPage({ params }: PageProps) {
 
           <div className="hero-actions">
             <Link className="button button-primary" href="/kontakt">
-              Wyślij dokumenty do wyceny
+              Wyślij tekst do wyceny
             </Link>
             <Link className="button button-secondary" href="/blog">
-              Czytaj blog SEO
+              Baza wiedzy
             </Link>
           </div>
 
           <div className="hero-mini-grid">
             <div>
-              <strong>Typ strony</strong>
+              <strong>Zakres</strong>
               <span>{page.type}</span>
             </div>
             <div>
@@ -130,19 +130,20 @@ export default async function LandingPage({ params }: PageProps) {
               <span>ukraiński, rosyjski, angielski</span>
             </div>
             <div>
-              <strong>Kontakt</strong>
-              <span>formularz bez telefonu i maila w treści</span>
+              <strong>Wycena</strong>
+              <span>formularz wstępnej oceny materiału</span>
             </div>
           </div>
         </div>
 
         <aside className="article-hero-side">
           <div className="side-card">
-            <h2>Podstrona SEO.</h2>
+            <h2>Precyzja, kontekst i funkcja dokumentu.</h2>
             <p>
-              Ta strona została przygotowana jako landing page pod konkretną
-              frazę. Jej celem jest generowanie ruchu z Google i kierowanie
-              użytkownika do formularza wyceny.
+              W tłumaczeniach sądowych, urzędowych, policyjnych,
+              prokuratorskich i prawniczych istotne jest nie tylko znaczenie
+              słów, lecz także rola dokumentu: dowód, załącznik do akt, pismo
+              procesowe, protokół, korespondencja albo materiał cyfrowy.
             </p>
           </div>
 
@@ -165,7 +166,7 @@ export default async function LandingPage({ params }: PageProps) {
 
           <section className="cta-box article-cta">
             <div>
-              <p className="section-label">Wycena</p>
+              <p className="section-label">Wstępna ocena materiału</p>
               <h2>{page.ctaTitle}</h2>
               <p>{page.ctaText}</p>
 
@@ -177,10 +178,11 @@ export default async function LandingPage({ params }: PageProps) {
             </div>
 
             <div className="cta-panel">
-              <strong>Bez telefonu i e-maila w widocznej treści</strong>
+              <strong>Dokumenty, akta, pisma i materiał cyfrowy</strong>
               <span>
-                Podstrona prowadzi do formularza. Dane kontaktowe nie są
-                publikowane jako tekst na stronie SEO.
+                Do wstępnej oceny można przekazać opis dokumentu, język, termin,
+                liczbę stron lub plików oraz cel tłumaczenia. Szczegóły można
+                doprecyzować po pierwszej analizie materiału.
               </span>
             </div>
           </section>
@@ -188,8 +190,8 @@ export default async function LandingPage({ params }: PageProps) {
 
         <aside className="article-sidebar">
           <div className="contact-card">
-            <span className="tag">Słowa kluczowe</span>
-            <h3>Frazy tej strony</h3>
+            <span className="tag">Zakres</span>
+            <h3>Najważniejsze frazy tej strony</h3>
             <div className="article-toc">
               {page.keywords.map((keyword) => (
                 <span key={keyword}>{keyword}</span>
@@ -208,17 +210,16 @@ export default async function LandingPage({ params }: PageProps) {
                 Tłumaczenia prawnicze
               </Link>
               <Link href="/material-cyfrowy">Materiał cyfrowy</Link>
-              <Link href="/blog">Blog SEO</Link>
+              <Link href="/blog">Baza wiedzy</Link>
             </div>
           </div>
 
           <div className="contact-card">
-            <span className="tag">CTA</span>
-            <h3>Wyślij materiał do wyceny.</h3>
+            <span className="tag">Wycena</span>
+            <h3>Prześlij materiał do wstępnej oceny.</h3>
             <p>
-              Opisz dokument, język, termin i cel tłumaczenia. Formularz
-              pozwala przekazać sprawę bez publikowania telefonu i maila w
-              treści SEO.
+              Opisz dokument, język, termin i cel tłumaczenia. Formularz pomoże
+              uporządkować informacje potrzebne do pierwszej oceny materiału.
             </p>
             <Link className="card-link" href="/kontakt">
               Przejdź do formularza →
@@ -232,7 +233,8 @@ export default async function LandingPage({ params }: PageProps) {
           <div>
             <span className="footer-title">{page.title}</span>
             <span className="footer-line">
-              Podstrona SEO dla tłumaczeń specjalistycznych.
+              Tłumaczenia specjalistyczne: dokumenty, prawo, organy i materiał
+              cyfrowy.
             </span>
           </div>
 
@@ -243,7 +245,7 @@ export default async function LandingPage({ params }: PageProps) {
             </Link>
             <br />
             <Link className="footer-link" href="/blog">
-              Blog
+              Baza wiedzy
             </Link>
           </div>
 
