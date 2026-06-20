@@ -4,6 +4,8 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import "./contact-form.css";
 
+const targetEmail = "biegly@vadymrekel.pl";
+
 const languages = [
   "język ukraiński",
   "język rosyjski",
@@ -73,62 +75,104 @@ const processSteps = [
     text: "W pierwszej wiadomości wystarczy wskazać język, rodzaj dokumentu, termin oraz cel tłumaczenia."
   },
   {
-    title: "2. Wstępna ocena",
-    text: "Na podstawie opisu, skanu, zdjęcia albo pliku można określić zakres pracy, tryb realizacji i sposób dalszego przekazania materiału."
+    title: "2. Otwarcie wiadomości",
+    text: "Po kliknięciu przycisku formularz otworzy klienta pocztowego z przygotowanym tematem i treścią wiadomości."
   },
   {
-    title: "3. Realizacja",
-    text: "Po ustaleniu zakresu tłumaczenie jest przygotowywane z uwzględnieniem charakteru dokumentu, jego odbiorcy i funkcji prawnej."
+    title: "3. Dodanie plików",
+    text: "Załączniki, skany, zdjęcia, PDF-y albo zrzuty ekranu należy dodać ręcznie w otwartej wiadomości e-mail."
   }
 ];
 
+function getValue(formData: FormData, key: string) {
+  const value = formData.get(key);
+
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim();
+}
+
+function buildLine(label: string, value: string) {
+  if (!value) {
+    return "";
+  }
+
+  return `${label}: ${value}\n`;
+}
+
 export default function ContactFormPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle"
-  );
   const [statusMessage, setStatusMessage] = useState("");
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    setStatus("sending");
-    setStatusMessage("Wysyłanie zgłoszenia...");
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: formData
-      });
+    const name = getValue(formData, "name");
+    const senderType = getValue(formData, "senderType");
+    const reply = getValue(formData, "reply");
+    const deadline = getValue(formData, "deadline");
+    const language = getValue(formData, "language");
+    const caseType = getValue(formData, "caseType");
+    const materialType = getValue(formData, "materialType");
+    const purpose = getValue(formData, "purpose");
+    const volume = getValue(formData, "volume");
+    const message = getValue(formData, "message");
 
-      const result = (await response.json()) as {
-        ok?: boolean;
-        message?: string;
-      };
-
-      if (!response.ok || !result.ok) {
-        setStatus("error");
-        setStatusMessage(
-          result.message ||
-            "Nie udało się wysłać formularza. Spróbuj ponownie."
-        );
-        return;
-      }
-
-      form.reset();
-      setStatus("success");
+    if (!name || !reply || !message) {
       setStatusMessage(
-        result.message ||
-          "Zgłoszenie zostało wysłane. Materiał trafił do wstępnej oceny."
+        "Uzupełnij wymagane pola: imię lub nazwa jednostki, dane do odpowiedzi oraz opis materiału."
       );
-    } catch {
-      setStatus("error");
-      setStatusMessage(
-        "Wystąpił błąd połączenia. Sprawdź internet i spróbuj ponownie."
-      );
+      return;
     }
+
+    const subject = `Wycena tłumaczenia | ${language || "język do oceny"} | ${
+      senderType || "zgłoszenie"
+    }`;
+
+    const body = [
+      "Dzień dobry,",
+      "",
+      "proszę o wstępną ocenę materiału do tłumaczenia.",
+      "",
+      "DANE ZGŁOSZENIA",
+      "----------------",
+      buildLine("Imię / nazwa jednostki albo instytucji", name),
+      buildLine("Typ zgłaszającego", senderType),
+      buildLine("Dane do odpowiedzi", reply),
+      buildLine("Termin", deadline),
+      "",
+      "MATERIAŁ",
+      "--------",
+      buildLine("Język materiału", language),
+      buildLine("Rodzaj sprawy albo dokumentu", caseType),
+      buildLine("Forma materiału", materialType),
+      buildLine("Cel tłumaczenia", purpose),
+      buildLine("Objętość", volume),
+      "",
+      "OPIS",
+      "----",
+      message,
+      "",
+      "ZAŁĄCZNIKI",
+      "----------",
+      "Pliki, skany, zdjęcia, PDF-y lub zrzuty ekranu zostaną dodane ręcznie do tej wiadomości.",
+      "",
+      "Z poważaniem"
+    ].join("\n");
+
+    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    setStatusMessage(
+      "Otwieram klienta pocztowego. Po otwarciu wiadomości dodaj załączniki ręcznie i wyślij e-mail."
+    );
+
+    window.location.href = mailtoUrl;
   }
 
   return (
@@ -165,11 +209,10 @@ export default function ContactFormPage() {
           <h1>Prześlij materiał do oceny tłumaczeniowej.</h1>
 
           <p className="lead">
-            Formularz służy do wstępnego opisania dokumentu, tekstu, skanu,
-            zdjęcia, fragmentu akt, korespondencji albo materiału cyfrowego.
-            Dotyczy tłumaczeń z języka ukraińskiego, rosyjskiego i angielskiego
-            w sprawach urzędowych, sądowych, policyjnych, prokuratorskich,
-            prawniczych, firmowych oraz technologicznych.
+            Formularz przygotowuje wiadomość e-mail z opisem dokumentu, tekstu,
+            skanu, zdjęcia, fragmentu akt, korespondencji albo materiału
+            cyfrowego. Po kliknięciu przycisku otworzy się klient pocztowy, w
+            którym można dodać załączniki i wysłać wiadomość.
           </p>
 
           <div className="hero-mini-grid">
@@ -203,7 +246,7 @@ export default function ContactFormPage() {
             <div>Dokumenty prywatne, urzędowe, sądowe i procesowe.</div>
             <div>Materiały dla sądów, Policji, prokuratur i organów.</div>
             <div>Komunikatory, zrzuty ekranu, BLIK, krypto i cyber.</div>
-            <div>Adres e-mail nie jest publikowany w treści strony.</div>
+            <div>Po kliknięciu przycisku otworzy się klient pocztowy.</div>
           </div>
         </aside>
       </section>
@@ -211,13 +254,13 @@ export default function ContactFormPage() {
       <section className="section">
         <div className="section-heading">
           <div>
-            <p className="section-label">Jak działa ocena</p>
-            <h2>Najpierw zakres, potem właściwy tryb tłumaczenia.</h2>
+            <p className="section-label">Jak działa formularz</p>
+            <h2>Opis trafia do gotowej wiadomości e-mail.</h2>
           </div>
           <p>
-            Ten formularz nie wymaga pełnego opisu sprawy. Jego celem jest
-            ustalenie, z jakim materiałem mamy do czynienia i jak należy go
-            przygotować do tłumaczenia.
+            Formularz nie zapisuje danych na stronie. Po wypełnieniu pól
+            przygotowuje wiadomość w programie pocztowym użytkownika. Pliki
+            należy dodać ręcznie przed wysłaniem wiadomości.
           </p>
         </div>
 
@@ -359,43 +402,21 @@ export default function ContactFormPage() {
                 />
               </label>
 
-              <label>
-                Załączniki
-                <input name="attachments" type="file" multiple />
-              </label>
-
               <div className="file-box">
-                <strong>Załączniki i pliki</strong>
+                <strong>Załączniki</strong>
                 <span>
-                  Formularz obsługuje niewielkie załączniki do łącznego limitu
-                  8 MB. Przy większych aktach lub wielu plikach opisz materiał
-                  w formularzu, a sposób przekazania plików zostanie ustalony po
-                  wstępnej ocenie.
+                  Po kliknięciu przycisku otworzy się wiadomość e-mail. Dodaj
+                  pliki, skany, zdjęcia, PDF-y albo zrzuty ekranu ręcznie w
+                  programie pocztowym przed wysłaniem wiadomości.
                 </span>
               </div>
 
-              <button
-                className="button button-primary"
-                type="submit"
-                disabled={status === "sending"}
-              >
-                {status === "sending"
-                  ? "Wysyłanie..."
-                  : "Prześlij materiał do wstępnej oceny"}
+              <button className="button button-primary" type="submit">
+                Otwórz wiadomość e-mail
               </button>
 
               {statusMessage ? (
-                <p
-                  className={
-                    status === "success"
-                      ? "form-note form-note-success"
-                      : status === "error"
-                        ? "form-note form-note-error"
-                        : "form-note"
-                  }
-                >
-                  {statusMessage}
-                </p>
+                <p className="form-note form-note-success">{statusMessage}</p>
               ) : null}
             </div>
           </form>
@@ -432,11 +453,12 @@ export default function ContactFormPage() {
             </div>
 
             <div className="contact-card">
-              <span className="tag">Adres ukryty</span>
-              <h3>Wysyłka przez formularz.</h3>
+              <span className="tag">E-mail klienta</span>
+              <h3>Wiadomość wychodzi z programu pocztowego.</h3>
               <p>
-                Formularz wysyła zgłoszenie na adres skonfigurowany po stronie
-                serwera. Adres e-mail nie jest publikowany w treści strony.
+                Po kliknięciu przycisku otworzy się klient pocztowy użytkownika
+                z gotowym tematem i treścią wiadomości. Załączniki należy dodać
+                ręcznie.
               </p>
             </div>
           </aside>
@@ -447,7 +469,7 @@ export default function ContactFormPage() {
         <div className="cta-box">
           <div>
             <p className="section-label">Materiały do oceny</p>
-            <h2>Co można przekazać do wstępnej analizy?</h2>
+            <h2>Co można opisać w formularzu?</h2>
             <p>
               Dokument urzędowy, akt stanu cywilnego, dyplom, zaświadczenie,
               pismo procesowe, wyrok, postanowienie, protokół, korespondencję,
