@@ -319,14 +319,17 @@ export default function HomePage() {
             <strong>Ukraiński</strong>
             dokumenty z Ukrainy, akta, sprawy sądowe i urzędowe
           </div>
+
           <div className="trust-item">
             <strong>Rosyjski</strong>
             dokumenty rosyjskojęzyczne, korespondencja i materiał dowodowy
           </div>
+
           <div className="trust-item">
             <strong>Angielski</strong>
             prawo, biznes, technologia, dokumenty akademickie i urzędowe
           </div>
+
           <div className="trust-item">
             <strong>Forensic</strong>
             komunikatory, BLIK, krypto, cyber i ślad cyfrowy
@@ -567,7 +570,10 @@ export default function HomePage() {
               Po konwersji można łatwiej ocenić długość dokumentu, wybrać
               fragmenty do tłumaczenia albo wkleić tekst do wiadomości.
             </p>
-            <Link className="card-link" href="/blog/wynagrodzenie-tlumacza-przysieglego-strona-1125-znakow">
+            <Link
+              className="card-link"
+              href="/blog/wynagrodzenie-tlumacza-przysieglego-strona-1125-znakow"
+            >
               Strona 1125 znaków →
             </Link>
           </article>
@@ -625,6 +631,7 @@ export default function HomePage() {
               <CtaButton href={mailtoHref} variant="secondary">
                 Wyślij tekst do wyceny
               </CtaButton>
+
               <CtaButton href="/tlumaczenia-dla-prokuratury" variant="secondary">
                 Dla organów i instytucji
               </CtaButton>

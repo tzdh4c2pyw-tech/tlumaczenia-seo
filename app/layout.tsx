@@ -26,7 +26,10 @@ export const metadata: Metadata = {
     "tłumaczenie materiału cyfrowego",
     "BLIK",
     "kryptowaluty",
-    "forensic"
+    "forensic",
+    "PDF na TXT",
+    "konwerter PDF na tekst",
+    "tłumaczenie PDF"
   ],
   authors: [
     {
@@ -37,6 +40,9 @@ export const metadata: Metadata = {
   publisher: "Vadym Rekel",
   alternates: {
     canonical: siteUrl
+  },
+  verification: {
+    google: "IRGY-E1KJFL1eUQihR952TtnvoTINcS0GzMSq0XJbfQ"
   },
   openGraph: {
     type: "website",
@@ -92,7 +98,9 @@ const professionalServiceJsonLd = {
     "tłumaczenia w sprawach cyber",
     "tłumaczenia w sprawach BLIK",
     "tłumaczenia w sprawach kryptowalut",
-    "tłumaczenia forensic"
+    "tłumaczenia forensic",
+    "PDF na TXT",
+    "konwerter PDF na tekst"
   ],
   audience: [
     {
