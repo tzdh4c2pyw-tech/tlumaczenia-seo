@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { mailtoHref } from "@/lib/mailto";
 
 const languages = [
   {
@@ -115,29 +117,29 @@ const knowledgeArticles = [
     href: "/blog/tlumacz-przysiegly-jezyka-ukrainskiego-kiedy-potrzebny"
   },
   {
-    title: "Jak przygotować dokumenty z Ukrainy do tłumaczenia?",
-    text: "Praktyczny przewodnik dotyczący skanów, zdjęć, plików PDF, pieczęci, podpisów i kompletności dokumentu.",
-    href: "/blog/tlumaczenie-dokumentow-z-ukrainy-kompletny-przewodnik"
+    title: "Ustawa o zawodzie tłumacza przysięgłego — co oznacza dla klienta?",
+    text: "Praktyczne omówienie obowiązków tłumacza przysięgłego, poświadczenia, repertorium i odpowiedzialności zawodowej.",
+    href: "/blog/ustawa-o-zawodzie-tlumacza-przysieglego-zasady"
   },
   {
-    title: "Tłumaczenia dla sądu, Policji i prokuratury",
-    text: "Opis materiałów procesowych, akt sprawy, protokołów, korespondencji i dokumentów dowodowych.",
-    href: "/blog/tlumaczenia-dla-sadu-policji-prokuratury-jezyk-ukrainski"
+    title: "Wynagrodzenie tłumacza przysięgłego i strona 1125 znaków",
+    text: "Jak rozumieć stronę obliczeniową, liczbę znaków, tryb pilny i różnicę między wyceną prywatną a zleceniem organu.",
+    href: "/blog/wynagrodzenie-tlumacza-przysieglego-strona-1125-znakow"
+  },
+  {
+    title: "Jak tłumaczy się dokumenty? Etapy pracy tłumacza przysięgłego",
+    text: "Od oceny dokumentu po poświadczenie: jak przebiega tłumaczenie dokumentu urzędowego, sądowego, prywatnego albo cyfrowego.",
+    href: "/blog/jak-tlumaczy-sie-dokumenty-etapy-pracy"
+  },
+  {
+    title: "Repertorium tłumacza przysięgłego — co oznacza numer na tłumaczeniu?",
+    text: "Wyjaśnienie, czym jest repertorium tłumacza przysięgłego, po co prowadzi się wpisy i jakie znaczenie ma numer repertorium.",
+    href: "/blog/repertorium-tlumacza-przysieglego-co-oznacza"
   },
   {
     title: "Materiał cyfrowy: komunikatory, BLIK, krypto i forensic",
     text: "Omówienie tłumaczeń materiału cyfrowego w sprawach sądowych, karnych i dotyczących cyberoszustw.",
     href: "/blog/tlumaczenie-materialu-cyfrowego-komunikatory-blik-krypto"
-  },
-  {
-    title: "Tłumaczenia w sprawach karnych",
-    text: "Protokoły, akty oskarżenia, wyjaśnienia, zeznania, dokumenty dowodowe i komunikacja elektroniczna.",
-    href: "/blog/tlumaczenia-w-sprawach-karnych-ukrainski-rosyjski-angielski"
-  },
-  {
-    title: "Tłumaczenia prawnicze z języka angielskiego",
-    text: "Umowy, opinie, dokumenty korporacyjne, dokumentacja biznesowa, prawo i technologia.",
-    href: "/blog/tlumaczenia-prawnicze-angielski-umowy-opinie-dokumenty"
   }
 ];
 
@@ -188,18 +190,22 @@ function CtaButton({
   variant = "primary"
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: "primary" | "secondary";
 }) {
+  const className =
+    variant === "primary" ? "button button-primary" : "button button-secondary";
+
+  if (href.startsWith("mailto:")) {
+    return (
+      <a className={className} href={href}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      className={
-        variant === "primary"
-          ? "button button-primary"
-          : "button button-secondary"
-      }
-      href={href}
-    >
+    <Link className={className} href={href}>
       {children}
     </Link>
   );
@@ -208,15 +214,9 @@ function CtaButton({
 function cityToSlug(city: string) {
   return city
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace("ł", "l")
-    .replace("ą", "a")
-    .replace("ć", "c")
-    .replace("ę", "e")
-    .replace("ń", "n")
-    .replace("ó", "o")
-    .replace("ś", "s")
-    .replace("ż", "z")
-    .replace("ź", "z")
     .replace(/\s+/g, "-");
 }
 
@@ -240,10 +240,11 @@ export default function HomePage() {
             <a href="#organy">Dla organów</a>
             <a href="#prawo">Prawo</a>
             <a href="#cyfrowe">Materiał cyfrowy</a>
+            <Link href="/pdf-na-tekst">PDF na TXT</Link>
             <Link href="/blog">Baza wiedzy</Link>
-            <Link className="nav-cta" href="/kontakt">
+            <a className="nav-cta" href={mailtoHref}>
               Wyślij do wyceny
-            </Link>
+            </a>
           </div>
         </nav>
       </div>
@@ -267,7 +268,7 @@ export default function HomePage() {
           </p>
 
           <div className="hero-actions">
-            <CtaButton href="/kontakt">Wyślij tekst do wyceny</CtaButton>
+            <CtaButton href={mailtoHref}>Wyślij tekst do wyceny</CtaButton>
             <CtaButton href="/tlumaczenia-dla-policji" variant="secondary">
               Dla sądu, Policji i prokuratury
             </CtaButton>
@@ -287,7 +288,7 @@ export default function HomePage() {
             </div>
             <div>
               <strong>Wycena</strong>
-              <span>formularz bez publicznego telefonu i maila</span>
+              <span>wiadomość e-mail z gotowym opisem materiału</span>
             </div>
           </div>
         </div>
@@ -484,7 +485,7 @@ export default function HomePage() {
         <SectionHeading
           label="Kraków i obsługa online"
           title="Tłumaczenia dla klientów i instytucji z całej Polski."
-          text="Dokumenty można przekazać do wstępnej oceny online. Strona obsługuje zapytania lokalne dla Krakowa i największych miast wojewódzkich."
+          text="Dokumenty można przekazać do wstępnej oceny przez przygotowaną wiadomość e-mail. Obsługa obejmuje Kraków oraz klientów i instytucje z całej Polski."
         />
 
         <div className="grid-3">
@@ -505,12 +506,12 @@ export default function HomePage() {
             <h3>Wstępna wycena zdalna</h3>
             <p>
               Do pierwszej oceny wystarczy opis sprawy, język, termin oraz skan,
-              zdjęcie albo plik PDF. Nie trzeba opisywać wszystkich szczegółów w
-              pierwszej wiadomości.
+              zdjęcie albo plik PDF. Załączniki można dodać ręcznie do
+              przygotowanej wiadomości e-mail.
             </p>
-            <Link className="card-link" href="/kontakt">
+            <a className="card-link" href={mailtoHref}>
               Wyślij dokument do wyceny →
-            </Link>
+            </a>
           </article>
 
           <article className="card card-petrol">
@@ -518,7 +519,7 @@ export default function HomePage() {
             <h3>Największe miasta w Polsce</h3>
             <p>
               Podstrony lokalne prowadzą użytkowników z miast wojewódzkich do
-              formularza wstępnej oceny dokumentów.
+              wstępnej oceny dokumentów i materiałów.
             </p>
             <Link className="card-link" href="/tlumacz-ukrainski-warszawa">
               Przykład: Warszawa →
@@ -539,11 +540,57 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section" id="narzedzia">
+        <SectionHeading
+          label="Narzędzia"
+          title="PDF na TXT — pomoc przy przygotowaniu materiału."
+          text="Klient może wyciągnąć tekst z pliku PDF, skopiować go albo pobrać jako plik TXT. Narzędzie jest przydatne przy raportach, pismach, dokumentach elektronicznych i materiałach do wstępnej oceny."
+        />
+
+        <div className="grid-3">
+          <article className="card card-gold">
+            <span className="tag">PDF</span>
+            <h3>Konwerter PDF na TXT</h3>
+            <p>
+              Narzędzie wyciąga tekst z PDF-ów posiadających warstwę tekstową.
+              Pomaga przygotować materiał do zapytania o tłumaczenie.
+            </p>
+            <Link className="card-link" href="/pdf-na-tekst">
+              Otwórz PDF na TXT →
+            </Link>
+          </article>
+
+          <article className="card">
+            <span className="tag">Objętość</span>
+            <h3>Tekst do orientacyjnej oceny</h3>
+            <p>
+              Po konwersji można łatwiej ocenić długość dokumentu, wybrać
+              fragmenty do tłumaczenia albo wkleić tekst do wiadomości.
+            </p>
+            <Link className="card-link" href="/blog/wynagrodzenie-tlumacza-przysieglego-strona-1125-znakow">
+              Strona 1125 znaków →
+            </Link>
+          </article>
+
+          <article className="card card-petrol">
+            <span className="tag">Dokumenty</span>
+            <h3>PDF, raporty i materiał cyfrowy</h3>
+            <p>
+              Raporty, dokumenty elektroniczne i pliki PDF często wymagają
+              wstępnego uporządkowania przed tłumaczeniem.
+            </p>
+            <Link className="card-link" href="/material-cyfrowy">
+              Materiał cyfrowy →
+            </Link>
+          </article>
+        </div>
+      </section>
+
       <section className="section" id="wiedza">
         <SectionHeading
           label="Baza wiedzy"
           title="Poradnik tłumaczeń specjalistycznych."
-          text="Artykuły wyjaśniają, kiedy potrzebne jest tłumaczenie poświadczone, jak przygotować dokumenty, jak opisać materiał cyfrowy oraz na co zwrócić uwagę w sprawach sądowych i urzędowych."
+          text="Artykuły wyjaśniają, kiedy potrzebne jest tłumaczenie poświadczone, jak przygotować dokumenty, jak działa strona obliczeniowa, czym jest repertorium oraz jak opisać materiał cyfrowy."
         />
 
         <div className="grid-3">
@@ -566,16 +613,16 @@ export default function HomePage() {
             <p className="section-label">Wstępna ocena</p>
             <h2>Wyślij dokument, tekst albo materiał cyfrowy do wyceny.</h2>
             <p>
-              W formularzu wskaż język, rodzaj materiału, termin oraz cel
-              tłumaczenia. Możesz przekazać dokument urzędowy, skan, zdjęcie,
-              fragment akt, pismo procesowe, korespondencję albo materiał
-              cyfrowy. Sądy, Policja, prokuratury, organy ścigania, kancelarie i
-              instytucje mogą opisać zakres materiału bez ujawniania danych
-              wrażliwych w pierwszej wiadomości.
+              W przygotowanej wiadomości wskaż język, rodzaj materiału, termin
+              oraz cel tłumaczenia. Możesz przekazać dokument urzędowy, skan,
+              zdjęcie, fragment akt, pismo procesowe, korespondencję albo
+              materiał cyfrowy. Sądy, Policja, prokuratury, organy ścigania,
+              kancelarie i instytucje mogą opisać zakres materiału bez
+              ujawniania danych wrażliwych w pierwszej wiadomości.
             </p>
 
             <div className="hero-actions">
-              <CtaButton href="/kontakt" variant="secondary">
+              <CtaButton href={mailtoHref} variant="secondary">
                 Wyślij tekst do wyceny
               </CtaButton>
               <CtaButton href="/tlumaczenia-dla-prokuratury" variant="secondary">
@@ -588,8 +635,8 @@ export default function HomePage() {
             <strong>Dokumenty, akta, komunikatory i materiał cyfrowy</strong>
             <span>
               Wstępna ocena pozwala ustalić zakres, język, termin oraz sposób
-              przygotowania tłumaczenia. Formularz nie publikuje telefonu ani
-              adresu e-mail w widocznej treści strony.
+              przygotowania tłumaczenia. Wiadomość e-mail można uzupełnić o
+              pliki, skany, zdjęcia albo zrzuty ekranu.
             </span>
           </div>
         </div>
@@ -622,13 +669,17 @@ export default function HomePage() {
             <Link className="footer-link" href="/material-cyfrowy">
               Materiał cyfrowy
             </Link>
+            <br />
+            <Link className="footer-link" href="/pdf-na-tekst">
+              PDF na TXT
+            </Link>
           </div>
 
           <div>
             <span className="footer-title">Wycena</span>
-            <Link className="footer-link" href="/kontakt">
+            <a className="footer-link" href={mailtoHref}>
               Wyślij tekst do wyceny
-            </Link>
+            </a>
             <br />
             <Link className="footer-link" href="/blog">
               Baza wiedzy

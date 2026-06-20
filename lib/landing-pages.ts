@@ -26,15 +26,15 @@ export type LandingPage = {
 const commonLegalSections: LandingPageSection[] = [
   {
     heading: "Tłumaczenia dokumentów wymagających precyzji",
-    text: "W sprawach prawniczych, sądowych, urzędowych i dowodowych tłumaczenie nie polega wyłącznie na przełożeniu słów. Ważne jest zachowanie znaczenia dokumentu, jego funkcji procesowej, układu, numeracji, nazw instytucji, dat, podpisów, pieczęci i elementów formalnych."
+    text: "W sprawach prawniczych, sądowych, urzędowych i dowodowych tłumaczenie nie polega wyłącznie na przełożeniu słów. Znaczenie mają także funkcja dokumentu, jego układ, numeracja, nazwy instytucji, daty, podpisy, pieczęcie oraz kontekst, w którym dokument będzie używany."
   },
   {
     heading: "Materiały dla sądów, Policji, prokuratur i kancelarii",
-    text: "Do wyceny można przekazać dokumenty procesowe, protokoły, pisma, akty sprawy, materiał dowodowy, zrzuty ekranu, korespondencję, dokumenty z zagranicy albo opis większego zestawu materiałów."
+    text: "Do wstępnej oceny można przekazać dokumenty procesowe, protokoły, pisma, akty sprawy, materiał dowodowy, zrzuty ekranu, korespondencję, dokumenty z zagranicy albo opis większego zestawu materiałów."
   },
   {
-    heading: "Wstępna ocena bez publikowania telefonu i adresu e-mail",
-    text: "Ten projekt SEO kieruje użytkownika do formularza wyceny. Dane kontaktowe nie są eksponowane w treści podstron, co ogranicza ich automatyczne skanowanie przez roboty i narzędzia zewnętrzne."
+    heading: "Wstępna ocena zakresu tłumaczenia",
+    text: "Przed rozpoczęciem tłumaczenia warto ustalić język materiału, liczbę stron lub plików, termin, cel użycia dokumentu oraz instytucję, do której ma trafić tłumaczenie. Pozwala to dobrać właściwy tryb pracy i uniknąć niejasności."
   }
 ];
 
@@ -62,13 +62,13 @@ export const landingPages: LandingPage[] = [
       },
       {
         heading: "Język ukraiński w postępowaniach",
-        text: "Język ukraiński często pojawia się w sprawach karnych, cywilnych, rodzinnych, administracyjnych, imigracyjnych i dowodowych. W takich sprawach istotna jest precyzja oraz spójność terminologiczna."
+        text: "Język ukraiński często pojawia się w sprawach karnych, cywilnych, rodzinnych, administracyjnych, imigracyjnych i dowodowych. W takich sprawach szczególne znaczenie ma precyzja oraz spójność terminologiczna."
       },
       ...commonLegalSections
     ],
     ctaTitle: "Masz dokument w języku ukraińskim?",
     ctaText:
-      "Prześlij dokument do wstępnej wyceny przez formularz. Wskaż rodzaj dokumentu, termin i cel tłumaczenia."
+      "Prześlij opis dokumentu do wstępnej oceny. Wskaż rodzaj dokumentu, termin i cel tłumaczenia."
   },
   {
     slug: "rosyjski",
@@ -93,13 +93,13 @@ export const landingPages: LandingPage[] = [
       },
       {
         heading: "Rosyjski a ukraiński",
-        text: "W praktyce użytkownik często nie wie, czy dokument jest po rosyjsku czy po ukraińsku. Do wstępnej oceny można przekazać plik lub zdjęcie i wskazać, że język wymaga rozpoznania."
+        text: "W praktyce użytkownik nie zawsze wie, czy dokument został sporządzony po rosyjsku czy po ukraińsku. Do wstępnej oceny można przekazać plik, skan albo zdjęcie i wskazać, że język wymaga rozpoznania."
       },
       ...commonLegalSections
     ],
     ctaTitle: "Masz dokument w języku rosyjskim?",
     ctaText:
-      "Przekaż materiał przez formularz wyceny. W opisie wskaż, czy dokument ma być użyty w urzędzie, sądzie, sprawie prywatnej albo postępowaniu."
+      "Przekaż opis materiału do wstępnej oceny. Wskaż, czy dokument ma być użyty w urzędzie, sądzie, sprawie prywatnej albo postępowaniu."
   },
   {
     slug: "angielski",
@@ -130,7 +130,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz dokument w języku angielskim?",
     ctaText:
-      "Wyślij dokument do wstępnej oceny. Opisz, czy chodzi o dokument prawniczy, biznesowy, urzędowy, techniczny albo procesowy."
+      "Wyślij opis dokumentu do wstępnej oceny. Wskaż, czy chodzi o dokument prawniczy, biznesowy, urzędowy, techniczny albo procesowy."
   },
   {
     slug: "tlumaczenia-prawnicze",
@@ -162,7 +162,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Potrzebujesz tłumaczenia prawniczego?",
     ctaText:
-      "Przekaż dokumenty przez formularz i opisz, czy dotyczą sprawy sądowej, urzędowej, biznesowej, karnej, cywilnej albo rodzinnej."
+      "Przekaż opis dokumentów i wskaż, czy dotyczą sprawy sądowej, urzędowej, biznesowej, karnej, cywilnej albo rodzinnej."
   },
   {
     slug: "sprawy-karne",
@@ -194,7 +194,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz materiał do sprawy karnej?",
     ctaText:
-      "Prześlij opis materiału do formularza. Wskaż język, rodzaj dokumentów, liczbę stron lub plików oraz termin."
+      "Prześlij opis materiału. Wskaż język, rodzaj dokumentów, liczbę stron lub plików oraz termin."
   },
   {
     slug: "sprawy-cywilne",
@@ -226,7 +226,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz dokument do sprawy cywilnej?",
     ctaText:
-      "Opisz sprawę w formularzu i wskaż, czy dokument będzie użyty w sądzie, u pełnomocnika, w urzędzie albo prywatnie."
+      "Opisz sprawę i wskaż, czy dokument będzie użyty w sądzie, u pełnomocnika, w urzędzie albo prywatnie."
   },
   {
     slug: "material-cyfrowy",
@@ -258,7 +258,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz materiał cyfrowy do tłumaczenia?",
     ctaText:
-      "Prześlij opis materiału przez formularz. Podaj liczbę plików, format, język i cel tłumaczenia."
+      "Prześlij opis materiału. Podaj liczbę plików, format, język i cel tłumaczenia."
   },
   {
     slug: "oszustwa-internetowe",
@@ -290,7 +290,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz materiał dotyczący oszustwa internetowego?",
     ctaText:
-      "Opisz materiał w formularzu. Wskaż, czy chodzi o BLIK, krypto, komunikatory, platformę internetową, phishing albo inny typ sprawy."
+      "Opisz materiał i wskaż, czy chodzi o BLIK, krypto, komunikatory, platformę internetową, phishing albo inny typ sprawy."
   },
   {
     slug: "tlumaczenia-dla-sadu",
@@ -322,7 +322,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Potrzebujesz tłumaczenia dla sądu?",
     ctaText:
-      "Przekaż dokumenty do wstępnej wyceny przez formularz. Wskaż język, typ sprawy i termin."
+      "Przekaż opis dokumentów do wstępnej oceny. Wskaż język, typ sprawy i termin."
   },
   {
     slug: "tlumaczenia-dla-policji",
@@ -354,7 +354,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Jesteś funkcjonariuszem albo pracownikiem organu?",
     ctaText:
-      "Prześlij opis materiału przez formularz wyceny. Wskaż język, rodzaj dokumentów i termin czynności."
+      "Prześlij opis materiału do wstępnej oceny. Wskaż język, rodzaj dokumentów i termin czynności."
   },
   {
     slug: "tlumaczenia-dla-prokuratury",
@@ -386,7 +386,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Potrzebujesz tłumaczenia dla prokuratury?",
     ctaText:
-      "Prześlij opis materiału do wstępnej wyceny. Podaj język, rodzaj dokumentów, zakres i termin."
+      "Prześlij opis materiału do wstępnej oceny. Podaj język, rodzaj dokumentów, zakres i termin."
   },
   {
     slug: "dokumenty-z-ukrainy",
@@ -417,7 +417,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz dokument z Ukrainy?",
     ctaText:
-      "Prześlij skan, zdjęcie albo PDF przez formularz. Wskaż, gdzie dokument ma zostać złożony."
+      "Prześlij opis dokumentu. Wskaż, gdzie dokument ma zostać złożony."
   },
   {
     slug: "dokumenty-z-rosji",
@@ -448,7 +448,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz dokument rosyjskojęzyczny?",
     ctaText:
-      "Prześlij dokument do wstępnej wyceny przez formularz. Wskaż cel tłumaczenia i termin."
+      "Prześlij opis dokumentu do wstępnej oceny. Wskaż cel tłumaczenia i termin."
   },
   {
     slug: "dokumenty-angielskie",
@@ -479,7 +479,7 @@ export const landingPages: LandingPage[] = [
     ],
     ctaTitle: "Masz dokument w języku angielskim?",
     ctaText:
-      "Wyślij dokument do wstępnej wyceny i wskaż, czy chodzi o użycie urzędowe, biznesowe, sądowe albo prywatne."
+      "Wyślij opis dokumentu do wstępnej oceny i wskaż, czy chodzi o użycie urzędowe, biznesowe, sądowe albo prywatne."
   }
 ];
 
@@ -510,8 +510,8 @@ export const cityLandingPages: LandingPage[] = cityNames.map(([slug, city]) => (
   title: `Tłumacz ukraiński ${city} | Tłumaczenia dokumentów z Ukrainy`,
   description: `Tłumacz ukraiński ${city}. Tłumaczenia dokumentów z Ukrainy, spraw sądowych, urzędowych, karnych, cywilnych i materiału cyfrowego z obsługą online.`,
   h1: `Tłumacz ukraiński ${city}.`,
-  lead: `Tłumaczenia języka ukraińskiego dla osób i instytucji z miasta ${city}. Dokumenty z Ukrainy, sprawy sądowe, urzędowe, karne, cywilne i materiał cyfrowy można przekazać do wstępnej wyceny online.`,
-  badge: `SEO lokalne · ${city}`,
+  lead: `Tłumaczenia języka ukraińskiego dla osób i instytucji z miasta ${city}. Dokumenty z Ukrainy, sprawy sądowe, urzędowe, karne, cywilne i materiał cyfrowy można przekazać do wstępnej oceny zdalnie.`,
+  badge: `obsługa zdalna · ${city}`,
   keywords: [
     `tłumacz ukraiński ${city}`,
     `tłumacz przysięgły ukraiński ${city}`,
@@ -521,20 +521,20 @@ export const cityLandingPages: LandingPage[] = cityNames.map(([slug, city]) => (
   sections: [
     {
       heading: `Tłumaczenia ukraińskie dla miasta ${city}`,
-      text: `Podstrona lokalna kieruje ruch z Google dla użytkowników szukających tłumacza języka ukraińskiego w mieście ${city}. Treść łączy lokalną frazę z możliwością przekazania dokumentów online.`
+      text: `Osoby i instytucje z miasta ${city} mogą przekazać dokumenty z Ukrainy, materiały urzędowe, sądowe, prywatne lub cyfrowe do wstępnej oceny. W pierwszej wiadomości wystarczy wskazać rodzaj dokumentu, język, termin i cel tłumaczenia.`
     },
     {
       heading: "Dokumenty z Ukrainy i sprawy specjalistyczne",
-      text: "Do wyceny można przekazać akty stanu cywilnego, dyplomy, świadectwa, zaświadczenia, pełnomocnictwa, dokumenty sądowe, protokoły, korespondencję i materiał cyfrowy."
+      text: "Do oceny można przekazać akty stanu cywilnego, dyplomy, świadectwa, zaświadczenia, pełnomocnictwa, dokumenty sądowe, protokoły, korespondencję i materiał cyfrowy."
     },
     {
       heading: "Obsługa zdalna dokumentów",
-      text: "Wstępna wycena może zostać przygotowana na podstawie skanu, zdjęcia lub pliku PDF. W formularzu warto wskazać rodzaj dokumentu, cel tłumaczenia i termin."
+      text: "Wstępna ocena może zostać przygotowana na podstawie opisu, skanu, zdjęcia albo pliku PDF. W wiadomości warto wskazać rodzaj dokumentu, cel tłumaczenia oraz oczekiwany termin."
     }
   ],
   ctaTitle: `Szukasz tłumacza ukraińskiego w mieście ${city}?`,
   ctaText:
-    "Przejdź do formularza i opisz dokument. Nie trzeba podawać danych wrażliwych w pierwszej wiadomości."
+    "Przygotuj krótki opis dokumentu, wskaż język, termin i cel tłumaczenia. Pliki można dodać ręcznie do wiadomości e-mail."
 }));
 
 export const allLandingPages: LandingPage[] = [

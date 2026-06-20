@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/blog";
 import { getAllLandingPages } from "@/lib/landing-pages";
 
-const siteUrl = "https://tlumaczenia-seo-vadym-rekel.vercel.app";
+const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -15,16 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1
     },
     {
-      url: `${siteUrl}/kontakt`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9
-    },
-    {
       url: `${siteUrl}/blog`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9
+    },
+    {
+      url: `${siteUrl}/pdf-na-tekst`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.82
     }
   ];
 
