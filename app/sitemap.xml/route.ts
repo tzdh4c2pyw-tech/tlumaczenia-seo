@@ -35,6 +35,12 @@ export async function GET() {
   const now = new Date().toISOString();
 
   const corePages = [
+  {
+    url: `${siteUrl}/llms.txt`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly",
+    priority: "0.4"
+  },
     {
       url: siteUrl,
       lastModified: now,

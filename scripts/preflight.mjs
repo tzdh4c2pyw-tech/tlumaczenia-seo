@@ -10,6 +10,7 @@ const steps = [
   ["npm", ["run", "check:landing-pages-data"]],
   ["npm", ["run", "check:landing-routes"]],
   ["npm", ["run", "check:internal-links"]],
+  ["npm", ["run", "check:llms"]],
 ];
 
 for (const [cmd, args] of steps) {
