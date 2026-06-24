@@ -22,6 +22,9 @@ const steps = [
   ["npm", ["run", "check:faq-hub"]],
   ["npm", ["run", "check:local-seo"]],
   ["npm", ["run", "check:malopolskie-seo"]],
+  ["npm", ["run", "check:krakow-seo"]],
+  ["npm", ["run", "check:visual-polish"]],
+  ["npm", ["run", "check:local-visual-pages"]],
 ];
 
 for (const [cmd, args] of steps) {

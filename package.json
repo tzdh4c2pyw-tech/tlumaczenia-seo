@@ -27,7 +27,10 @@
     "check:decision-guide": "node scripts/check-decision-guide.mjs",
     "check:faq-hub": "node scripts/check-faq-hub.mjs",
     "check:local-seo": "node scripts/check-local-seo-articles.mjs",
-    "check:malopolskie-seo": "node scripts/check-malopolskie-seo.mjs"
+    "check:malopolskie-seo": "node scripts/check-malopolskie-seo.mjs",
+    "check:krakow-seo": "node scripts/check-krakow-seo.mjs",
+    "check:visual-polish": "node scripts/check-visual-polish.mjs",
+    "check:local-visual-pages": "node scripts/check-local-visual-pages.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

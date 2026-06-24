@@ -55,6 +55,7 @@ const topicSource = readIfExists("lib/topic-clusters.ts");
 const expertGuidesSource = readIfExists("lib/expert-guides.ts");
 const localSeoSource = readIfExists("lib/local-seo-articles.ts");
 const malopolskieSeoSource = readIfExists("lib/malopolskie-seo-pages.ts");
+const krakowSeoSource = readIfExists("lib/krakow-seo-pages.ts");
 
 const landingSlugs = extractSlugs(landingSource);
 const blogSlugs = extractSlugs(blogSource);
@@ -62,6 +63,7 @@ const topicSlugs = extractSlugs(topicSource);
 const expertGuideSlugs = extractSlugs(expertGuidesSource);
 const localSeoArticleSlugs = extractSlugs(localSeoSource);
 const malopolskieSeoSlugs = extractSlugs(malopolskieSeoSource);
+const krakowSeoSlugs = extractSlugs(krakowSeoSource);
 
 const knownRoutes = new Set([
   "/",
@@ -78,7 +80,8 @@ const knownRoutes = new Set([
   "/dobierz-tlumaczenie",
   "/faq",
   "/lokalnie",
-  "/malopolskie"
+  "/malopolskie",
+  "/krakow"
 ]);
 
 for (const slug of landingSlugs) {
@@ -103,6 +106,10 @@ for (const slug of localSeoArticleSlugs) {
 
 for (const slug of malopolskieSeoSlugs) {
   knownRoutes.add(`/malopolskie/${slug}`);
+}
+
+for (const slug of krakowSeoSlugs) {
+  knownRoutes.add(`/krakow/${slug}`);
 }
 
 walk("app");

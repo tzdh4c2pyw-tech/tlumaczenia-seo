@@ -4,6 +4,7 @@ import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
 import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
+import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
@@ -52,6 +53,7 @@ export async function GET() {
   const expertGuides = getAllExpertGuides();
   const localSeoArticles = getAllLocalSeoArticles();
   const malopolskieSeoPages = getAllMalopolskieSeoPages();
+  const krakowSeoPages = getAllKrakowSeoPages();
 
   const payload = {
     name: "Tłumaczenia specjalistyczne Vadym Rekel",
@@ -175,6 +177,19 @@ export async function GET() {
         }))
       };
     }),
+    krakowSeoPages: krakowSeoPages.map((page) => ({
+      title: page.title,
+      slug: page.slug,
+      url: `${siteUrl}/krakow/${page.slug}`,
+      description: page.description,
+      service: page.service,
+      date: page.date,
+      keywords: page.keywords,
+      relatedLinks: page.relatedLinks.map((link) => ({
+        label: link.label,
+        url: `${siteUrl}${link.href}`
+      }))
+    })),
     malopolskieSeoPages: malopolskieSeoPages.map((page) => ({
       title: page.title,
       slug: page.slug,

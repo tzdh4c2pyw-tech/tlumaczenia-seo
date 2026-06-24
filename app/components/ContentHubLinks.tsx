@@ -1,131 +1,134 @@
 import Link from "next/link";
 
-const primaryHubs = [
+type ContentHubLinksProps = {
+  variant?: string;
+};
+
+const hubLinks = [
   {
     title: "Tematy eksperckie",
     description:
-      "Strukturalne klastry wiedzy o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sądach, Policji i Prokuraturze.",
+      "Klastry wiedzy o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sądach, Policji i Prokuraturze.",
     href: "/tematy",
-    label: "Przejdź do tematów"
+    eyebrow: "Struktura wiedzy"
   },
   {
     title: "Poradniki eksperckie",
     description:
-      "Praktyczne opracowania o tłumaczeniu akt, korespondencji, dowodów cyfrowych, dokumentów urzędowych i materiałów procesowych.",
+      "Praktyczne opracowania o aktach, korespondencji, dowodach cyfrowych, dokumentach urzędowych i materiałach procesowych.",
     href: "/poradniki",
-    label: "Przejdź do poradników"
+    eyebrow: "Poradniki"
   },
   {
     title: "Dobierz tłumaczenie",
     description:
-      "Szybka ścieżka wyboru właściwego rodzaju tłumaczenia: dokumenty, akta, dowody cyfrowe, sąd, Policja, Prokuratura.",
+      "Szybka ścieżka wyboru rodzaju tłumaczenia: dokumenty, akta, dowody cyfrowe, sąd, Policja i Prokuratura.",
     href: "/dobierz-tlumaczenie",
-    label: "Dobierz tłumaczenie"
+    eyebrow: "Decyzja"
   },
   {
-    title: "Blog",
+    title: "Baza artykułów",
     description:
       "Artykuły o tłumaczeniach przysięgłych, wynagrodzeniu tłumacza, ustawie o zawodzie i praktyce tłumaczeń prawnych.",
     href: "/blog",
-    label: "Przejdź do bloga"
+    eyebrow: "Blog"
   },
   {
     title: "FAQ",
     description:
       "Najczęstsze pytania o dokumenty, akta, dowody cyfrowe, wycenę i przygotowanie materiałów do tłumaczenia.",
     href: "/faq",
-    label: "Przejdź do FAQ"
+    eyebrow: "Pytania"
   },
   {
     title: "Lokalne artykuły SEO",
     description:
       "Treści lokalne dla Krakowa, miast pod Krakowem oraz Małopolski: dokumenty z Ukrainy, sądy, urzędy i dowody cyfrowe.",
     href: "/lokalnie",
-    label: "Przejdź do artykułów lokalnych"
+    eyebrow: "SEO lokalne"
   },
   {
     title: "Małopolskie SEO",
     description:
       "Lokalne strony dla Krakowa i miast Małopolski pod frazy: tłumacz przysięgły ukraiński, dokumenty z Ukrainy, sąd i urząd.",
     href: "/malopolskie",
-    label: "Przejdź do Małopolskie SEO"
-  }
-];
-
-const expertRoutes = [
+    eyebrow: "Region"
+  },
   {
+    title: "Tłumaczenia poświadczone",
+    description:
+      "Najważniejsze informacje o tłumaczeniach poświadczonych, dokumentach urzędowych, sądowych i formalnych.",
     href: "/tematy/tlumaczenia-poswiadczone",
-    label: "Tłumaczenia poświadczone"
+    eyebrow: "Temat"
   },
   {
+    title: "Dokumenty z Ukrainy",
+    description:
+      "Akty, zaświadczenia, pełnomocnictwa, wyroki, dokumenty edukacyjne, pracownicze i urzędowe z Ukrainy.",
     href: "/tematy/dokumenty-z-ukrainy",
-    label: "Dokumenty z Ukrainy"
+    eyebrow: "Ukraina"
   },
   {
+    title: "Sąd, Policja, Prokuratura",
+    description:
+      "Materiały procesowe, akta sprawy, protokoły, dowody cyfrowe i dokumenty dla organów postępowania.",
     href: "/tematy/sady-policja-prokuratura",
-    label: "Sądy, Policja, Prokuratura"
+    eyebrow: "Prawo"
   },
   {
+    title: "Dowody cyfrowe",
+    description:
+      "Poradnik o tłumaczeniu zrzutów ekranu, komunikatorów, danych transakcyjnych i materiałów elektronicznych.",
     href: "/poradniki/tlumaczenie-dowodow-cyfrowych-w-sprawach-karnych",
-    label: "Dowody cyfrowe w sprawach karnych"
+    eyebrow: "Cyber"
   },
   {
-    href: "/poradniki/tlumaczenie-korespondencji-telegram-whatsapp-signal",
-    label: "Telegram, WhatsApp i Signal"
-  },
-  {
-    href: "/poradniki/tlumaczenie-dokumentow-z-ukrainy-do-sadu-w-polsce",
-    label: "Dokumenty z Ukrainy do sądu"
+    title: "Kraków SEO",
+    description:
+      "Strony lokalne dla Krakowa: ukraiński, rosyjski, angielski, sąd, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
+    href: "/krakow",
+    eyebrow: "Miasto"
   }
 ];
 
-export default function ContentHubLinks() {
+export default function ContentHubLinks({}: ContentHubLinksProps = {}) {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-14">
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-xl shadow-black/20 md:p-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-          Centrum wiedzy
-        </p>
-        <h2 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight text-white md:text-4xl">
-          Powiązane ścieżki: usługi, tematy, poradniki i blog
-        </h2>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">
-          Ta sekcja łączy najważniejsze warstwy serwisu: strony usługowe,
-          klastry tematyczne, poradniki eksperckie i artykuły blogowe. Ułatwia
-          przechodzenie między treściami użytkownikom, wyszukiwarkom i systemom
-          AI indeksującym stronę.
-        </p>
+    <section className="mx-auto max-w-6xl px-6 py-16">
+      <div className="rounded-[2rem] border border-white/10 bg-slate-950/75 p-6 shadow-2xl shadow-black/30 ring-1 ring-white/5 md:p-8">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.6fr] lg:items-start">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-300">
+              Centrum wiedzy
+            </p>
+            <h2 className="mt-4 max-w-xl text-3xl font-black tracking-tight text-white md:text-4xl">
+              Powiązane ścieżki: usługi, tematy, poradniki i blog.
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300">
+              Ta sekcja prowadzi użytkownika przez najważniejsze warstwy serwisu.
+              Zamiast listy luźnych linków pokazuje uporządkowane bloki, które są
+              czytelne dla użytkownika, wyszukiwarki i systemów AI.
+            </p>
+          </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {primaryHubs.map((hub) => (
-            <article
-              key={hub.href}
-              className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5"
-            >
-              <h3 className="text-xl font-bold text-white">{hub.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                {hub.description}
-              </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {hubLinks.map((item) => (
               <Link
-                href={hub.href}
-                className="mt-5 inline-flex text-sm font-semibold text-cyan-300 hover:text-cyan-100"
+                key={item.href}
+                href={item.href}
+                className="group rounded-3xl border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-0.5 hover:border-amber-300/60 hover:bg-white/[0.07]"
               >
-                {hub.label} →
-              </Link>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8">
-          <h3 className="text-lg font-bold text-white">Najważniejsze linki eksperckie</h3>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {expertRoutes.map((route) => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className="rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 hover:border-cyan-300 hover:text-cyan-200"
-              >
-                {route.label}
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-300/90">
+                  {item.eyebrow}
+                </p>
+                <h3 className="mt-3 text-xl font-black leading-tight text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  {item.description}
+                </p>
+                <span className="mt-5 inline-flex text-sm font-bold text-amber-200 group-hover:text-amber-100">
+                  Przejdź dalej →
+                </span>
               </Link>
             ))}
           </div>
