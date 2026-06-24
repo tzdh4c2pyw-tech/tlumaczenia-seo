@@ -7,6 +7,7 @@ import ExpertConversionSections from "../components/ExpertConversionSections";
 import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
 import LegalGlossaryTeaser from "@/app/components/LegalGlossaryTeaser";
+import InternalKnowledgeLinks from "@/app/components/InternalKnowledgeLinks";
 
 export const metadata: Metadata = {
   title: "Tematy eksperckie | Tłumaczenia specjalistyczne",
@@ -141,6 +142,7 @@ export default function TopicClustersPage() {
       <ExpertConversionSections />
       <LegalKnowledgeNavigator />
           <LegalGlossaryTeaser />
+          <InternalKnowledgeLinks />
     </main>
   );
 }

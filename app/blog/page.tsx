@@ -11,6 +11,7 @@ import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
 import LegalGlossaryTeaser from "@/app/components/LegalGlossaryTeaser";
 import BlogExpertIndex from "@/app/components/BlogExpertIndex";
 import BlogKnowledgeGraphJsonLd from "@/app/components/BlogKnowledgeGraphJsonLd";
+import InternalKnowledgeLinks from "@/app/components/InternalKnowledgeLinks";
 
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
@@ -345,6 +346,7 @@ export default function BlogPage() {
           <LegalKnowledgeNavigator />
           <LegalGlossaryTeaser />
           <BlogExpertIndex />
+          <InternalKnowledgeLinks />
     </main>
   );
 }

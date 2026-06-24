@@ -6,6 +6,7 @@ import ExpertConversionSections from "../components/ExpertConversionSections";
 import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
 import LegalGlossaryTeaser from "@/app/components/LegalGlossaryTeaser";
+import InternalKnowledgeLinks from "@/app/components/InternalKnowledgeLinks";
 
 export const metadata: Metadata = {
   title: "Poradniki eksperckie | Tłumaczenia prawne, sądowe i cyfrowe",
@@ -79,6 +80,7 @@ export default function ExpertGuidesIndexPage() {
       <ExpertConversionSections />
       <LegalKnowledgeNavigator />
           <LegalGlossaryTeaser />
+          <InternalKnowledgeLinks />
     </main>
   );
 }

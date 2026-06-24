@@ -5,6 +5,7 @@ import ContentHubLinks from "./components/ContentHubLinks";
 import ExpertConversionSections from "./components/ExpertConversionSections";
 import RegionalSeoNavigation from "./components/RegionalSeoNavigation";
 import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
+import InternalKnowledgeLinks from "@/app/components/InternalKnowledgeLinks";
 
 const languages = [
   {
@@ -705,6 +706,7 @@ export default function HomePage() {
 
       <ExpertConversionSections />
       <LegalKnowledgeNavigator />
+          <InternalKnowledgeLinks />
     </main>
   );
 }
