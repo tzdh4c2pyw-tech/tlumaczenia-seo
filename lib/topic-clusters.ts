@@ -97,7 +97,7 @@ export const topicClusters: TopicCluster[] = [
     slug: "sady-policja-prokuratura",
     title: "Tłumaczenia dla sądów, Policji i prokuratury",
     description:
-      "Hub ekspercki dla tłumaczeń materiałów procesowych, policyjnych, prokuratorskich, dowodowych i kancelaryjnych.",
+      "Dział ekspercki dla tłumaczeń materiałów procesowych, policyjnych, prokuratorskich, dowodowych i kancelaryjnych.",
     lead:
       "Materiały dla organów wymagają precyzji terminologicznej, zachowania struktury dokumentu oraz jasnego oznaczenia osób, dat, numerów spraw, załączników i źródeł materiału.",
     audience:

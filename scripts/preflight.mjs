@@ -26,8 +26,8 @@ const steps = [
   ["npm", ["run", "check:visual-polish"]],
   ["npm", ["run", "check:local-visual-pages"]],
   ["npm", ["run", "check:regional-navigation"]],
-  ["npm", ["run", "check:global-text-polish",
-  "check:visual-scale-guard"]],
+  ["npm", ["run", "check:global-text-polish"]],
+  ["npm", ["run", "check:visual-scale-guard"]],
   ["npm", ["run", "check:rendered-pages-audit"]],
   ["npm", ["run", "check:no-raw-expert-conversion"]],
 ];

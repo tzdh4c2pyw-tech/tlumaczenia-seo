@@ -107,7 +107,7 @@ export async function GET() {
       url: `${siteUrl}/tematy`,
       path: "/tematy",
       description: "Klastry tematyczne o tłumaczeniach specjalistycznych.",
-      keywords: ["tematy eksperckie", "topic clusters", "tłumaczenia sądowe"],
+      keywords: ["tematy eksperckie", "tematy eksperckie", "tłumaczenia sądowe"],
       content: "Strukturalne tematy eksperckie łączące usługi, blog i poradniki."
     },
     {

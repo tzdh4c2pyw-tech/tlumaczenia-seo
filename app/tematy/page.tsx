@@ -119,7 +119,7 @@ export default function TopicClustersPage() {
         <div className="grid-3">
           {clusters.map((cluster) => (
             <article className="card card-gold" key={cluster.slug}>
-              <span className="tag">Hub ekspercki</span>
+              <span className="tag">Dział ekspercki</span>
               <h3>{cluster.title}</h3>
               <p>{cluster.description}</p>
 
