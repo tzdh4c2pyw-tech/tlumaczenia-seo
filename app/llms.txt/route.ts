@@ -11,3 +11,18 @@ export async function GET() {
     }
   });
 }
+
+
+// Kluczowe zasoby indeksowania:
+// Blog ekspercki: /blog
+// Poradniki: /poradniki
+// Tematy eksperckie: /tematy
+// FAQ: /faq
+// Dobierz tłumaczenie: /dobierz-tlumaczenie
+// Kontakt: /kontakt
+// Search index: /search-index.json
+// RSS feed: /feed.xml
+// LLMS: /llms.txt
+// AI index: /ai-index.json
+// Sitemap: /sitemap.xml
+// Internal link graph: /internal-link-graph.json

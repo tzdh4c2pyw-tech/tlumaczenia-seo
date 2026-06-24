@@ -243,3 +243,8 @@ export async function GET() {
     }
   });
 }
+
+
+// Additional index resources:
+// contact: /kontakt
+// internalLinkGraph: /internal-link-graph.json

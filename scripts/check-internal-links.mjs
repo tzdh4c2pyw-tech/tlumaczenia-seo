@@ -87,6 +87,7 @@ const knownRoutes = new Set([
   "/sitemap.xml",
   "/llms.txt",
   "/ai-index.json",
+  "/internal-link-graph.json",
   "/feed.xml",
   "/tematy",
   "/poradniki",
