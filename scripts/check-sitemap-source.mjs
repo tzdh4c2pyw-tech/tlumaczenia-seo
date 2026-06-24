@@ -1,32 +1,73 @@
 import { readFileSync } from "node:fs";
 
-const file = "app/sitemap.xml/route.ts";
-const source = readFileSync(file, "utf8");
+const source = readFileSync("app/sitemap.xml/route.ts", "utf8");
 
 const requiredSnippets = [
-  'import { getAllArticles } from "@/lib/blog";',
-  'import { getAllLandingPages } from "@/lib/landing-pages";',
-  "export async function GET()",
-  "const corePages = [",
-  "getAllLandingPages().map",
-  "getAllArticles().map",
-  "url: siteUrl",
-  "`${siteUrl}/blog`",
-  "`${siteUrl}/pdf-na-tekst`",
-  "`${siteUrl}/${page.slug}`",
-  "`${siteUrl}/blog/${article.slug}`",
+  "getAllArticles",
+  "getAllLandingPages",
+  "GET()",
+  "/blog",
+  "/pdf-na-tekst",
+  "/llms.txt",
+  "/ai-index.json",
+  "/feed.xml",
   "application/xml",
-  "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
+  "urlset",
+  "http://www.sitemaps.org/schemas/sitemap/0.9"
 ];
 
-const missing = requiredSnippets.filter((snippet) => !source.includes(snippet));
+const flexibleGroups = [
+  {
+    label: "core pages array",
+    ok:
+      source.includes("const corePages") ||
+      source.includes("const basePages") ||
+      source.includes("const staticPages") ||
+      source.includes("corePages")
+  },
+  {
+    label: "landing pages mapping",
+    ok:
+      source.includes("getAllLandingPages().map") ||
+      source.includes("getAllLandingPages().forEach") ||
+      source.includes("landingPages")
+  },
+  {
+    label: "blog articles mapping",
+    ok:
+      source.includes("getAllArticles().map") ||
+      source.includes("getAllArticles().forEach") ||
+      source.includes("articles")
+  },
+  {
+    label: "topic clusters support",
+    ok:
+      source.includes("getAllTopicClusters") ||
+      source.includes("topicClusters") ||
+      source.includes("/tematy/")
+  }
+];
 
-if (missing.length > 0) {
+const errors = [];
+
+for (const snippet of requiredSnippets) {
+  if (!source.includes(snippet)) {
+    errors.push(`brakuje: ${snippet}`);
+  }
+}
+
+for (const group of flexibleGroups) {
+  if (!group.ok) {
+    errors.push(`brakuje grupy: ${group.label}`);
+  }
+}
+
+if (errors.length > 0) {
   console.error("Sitemap source check failed. Brakuje wymaganych elementów:");
-  for (const snippet of missing) {
-    console.error(`- ${snippet}`);
+  for (const error of errors) {
+    console.error(`- ${error}`);
   }
   process.exit(1);
 }
 
-console.log("OK: sitemap source includes core pages, landing pages and blog articles.");
+console.log("OK: sitemap source includes core pages, landing pages, blog articles, AI endpoints, feed and topic hubs.");

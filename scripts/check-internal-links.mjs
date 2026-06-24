@@ -42,6 +42,7 @@ const allowedPaths = new Set([
   "/",
   "/blog",
   "/kontakt",
+  "/tematy",
   "/pdf-na-tekst"
 ]);
 

@@ -56,5 +56,6 @@ Relevant market and jurisdiction: Poland.
 
 
 ## Machine-readable resources
+- Expert topic clusters: /tematy and /tematy/[slug]
 - Expert blog RSS feed: /feed.xml
 - AI content index: /ai-index.json

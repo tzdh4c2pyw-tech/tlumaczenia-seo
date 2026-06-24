@@ -18,7 +18,8 @@
     "check:internal-links": "node scripts/check-internal-links.mjs",
     "check:llms": "node scripts/check-llms.mjs",
     "check:ai-index": "node scripts/check-ai-index.mjs",
-    "check:feed": "node scripts/check-feed.mjs"
+    "check:feed": "node scripts/check-feed.mjs",
+    "check:topic-clusters": "node scripts/check-topic-clusters.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
