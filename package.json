@@ -14,7 +14,8 @@
     "check:blog-routes": "node scripts/check-blog-routes.mjs",
     "check:blog-schema": "node scripts/check-blog-schema.mjs",
     "check:landing-pages-data": "node scripts/check-landing-pages-data.mjs",
-    "check:landing-routes": "node scripts/check-landing-routes.mjs"
+    "check:landing-routes": "node scripts/check-landing-routes.mjs",
+    "check:internal-links": "node scripts/check-internal-links.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

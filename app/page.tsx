@@ -499,7 +499,7 @@ export default function HomePage() {
               Lokalna podstrona dla dokumentów z Ukrainy, spraw sądowych,
               urzędowych, policyjnych, prokuratorskich i cyfrowych.
             </p>
-            <Link className="card-link" href="/tlumacz-ukrainski-krakow">
+            <Link className="card-link" href="/ukrainski">
               Tłumacz ukraiński Kraków →
             </Link>
           </article>
@@ -524,7 +524,7 @@ export default function HomePage() {
               Podstrony lokalne prowadzą użytkowników z miast wojewódzkich do
               wstępnej oceny dokumentów i materiałów.
             </p>
-            <Link className="card-link" href="/tlumacz-ukrainski-warszawa">
+            <Link className="card-link" href="/ukrainski">
               Przykład: Warszawa →
             </Link>
           </article>
