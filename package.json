@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "preflight": "node scripts/preflight.mjs",
-    "check:technical-domain": "node scripts/check-technical-domain.mjs"
+    "check:technical-domain": "node scripts/check-technical-domain.mjs",
+    "check:sitemap-source": "node scripts/check-sitemap-source.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

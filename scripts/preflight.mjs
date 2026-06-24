@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 const steps = [
   ["npm", ["run", "build"]],
   ["npm", ["run", "lint"]],
+  ["npm", ["run", "check:sitemap-source"]],
 ];
 
 for (const [cmd, args] of steps) {
