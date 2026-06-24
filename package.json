@@ -10,7 +10,8 @@
     "preflight": "node scripts/preflight.mjs",
     "check:technical-domain": "node scripts/check-technical-domain.mjs",
     "check:sitemap-source": "node scripts/check-sitemap-source.mjs",
-    "check:google-verification": "node scripts/check-google-verification.mjs"
+    "check:google-verification": "node scripts/check-google-verification.mjs",
+    "check:blog-routes": "node scripts/check-blog-routes.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

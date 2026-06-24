@@ -5,6 +5,7 @@ const steps = [
   ["npm", ["run", "lint"]],
   ["npm", ["run", "check:sitemap-source"]],
   ["npm", ["run", "check:google-verification"]],
+  ["npm", ["run", "check:blog-routes"]],
 ];
 
 for (const [cmd, args] of steps) {
