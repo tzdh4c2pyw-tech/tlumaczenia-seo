@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { setTimeout as delay } from "node:timers/promises";
 
 const port = Number(process.env.AUDIT_PORT || 4177);
@@ -8,6 +8,15 @@ const reportPath = "reports/rendered-pages-audit.json";
 
 const hardLimit = Number(process.env.AUDIT_HARD_LIMIT || 0);
 const maxParagraphChars = Number(process.env.AUDIT_MAX_PARAGRAPH_CHARS || 900);
+
+const technicalNoH1Routes = new Set([
+  "/ai-index.json",
+  "/feed.xml",
+  "/llms.txt",
+  "/robots.txt",
+  "/search-index.json",
+  "/sitemap.xml"
+]);
 
 const rawLeakPatterns = [
   /display\s*:\s*grid/i,
@@ -146,7 +155,7 @@ async function main() {
       const paragraphs = extractTagText(html, "p");
       const links = [...html.matchAll(/<a\s+[^>]*href=["']([^"']+)["']/gi)].map((m) => m[1]);
 
-      if (h1.length === 0) {
+      if (h1.length === 0 && !technicalNoH1Routes.has(path)) {
         pageProblems.push({
           type: "missing-h1",
           message: "No H1 found"
