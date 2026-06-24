@@ -70,7 +70,7 @@ export default function TopicClustersPage() {
       <section className="hero">
         <div className="hero-main">
           <span className="eyebrow">Tematy z praktyki tłumacza</span>
-          <h1>Tematy eksperckie o tłumaczeniach specjalistycznych.</h1>
+          <h1>Tematy eksperckie o dokumentach, sprawach i tłumaczeniach specjalistycznych.</h1>
           <p className="lead">
             Uporządkowane działy prowadzą do najważniejszych artykułów, usług i
             zagadnień: tłumaczenia poświadczone, dokumenty z Ukrainy, sądy,

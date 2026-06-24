@@ -61,7 +61,7 @@ export default function SiteDesignSystem() {
 
           main h1 {
             max-width: 980px !important;
-            font-size: clamp(42px, 5.7vw, 74px) !important;
+            font-size: clamp(38px, 4.9vw, 62px) !important;
             line-height: 1.02 !important;
             letter-spacing: -0.052em !important;
           }
@@ -107,7 +107,7 @@ export default function SiteDesignSystem() {
           main [class*="text-[7"],
           main [class*="text-[8"],
           main [class*="text-[9"] {
-            font-size: clamp(42px, 5.7vw, 74px) !important;
+            font-size: clamp(38px, 4.9vw, 62px) !important;
             line-height: 1.02 !important;
             letter-spacing: -0.052em !important;
           }
@@ -208,7 +208,7 @@ export default function SiteDesignSystem() {
           main [data-component="content-hub-links"] h2,
           main [data-component="regional-seo-navigation"] h2,
           main [data-component="local-page-shell"] h1 {
-            font-size: clamp(38px, 5.6vw, 70px) !important;
+            font-size: clamp(36px, 4.8vw, 60px) !important;
             line-height: 1.02 !important;
           }
 
@@ -231,10 +231,61 @@ export default function SiteDesignSystem() {
             display: none !important;
           }
 
+
+          /* Premium layout guard: hero i sekcje nie wychodzą poza ekran */
+          main section {
+            padding-left: clamp(20px, 4vw, 56px) !important;
+            padding-right: clamp(20px, 4vw, 56px) !important;
+          }
+
+          main section > div {
+            max-width: min(1180px, calc(100vw - 40px));
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          main h1 {
+            max-width: 860px !important;
+          }
+
+          main [data-component="local-page-shell"] h1 {
+            max-width: 900px !important;
+            font-size: clamp(38px, 4.8vw, 64px) !important;
+            line-height: 1.04 !important;
+          }
+
+          main [data-component="content-hub-links"] h2,
+          main [data-component="regional-seo-navigation"] h2 {
+            max-width: 820px !important;
+          }
+
+          main [data-component="content-hub-links"] article,
+          main [data-component="regional-seo-navigation"] article {
+            min-height: 100%;
+          }
+
+          main [data-component="content-hub-links"] p,
+          main [data-component="regional-seo-navigation"] p,
+          main [data-component="local-page-shell"] p {
+            color: var(--site-muted-strong) !important;
+          }
+
+          main [data-component="content-hub-links"] [style*="rgba(255"],
+          main [data-component="regional-seo-navigation"] [style*="rgba(255"] {
+            background: linear-gradient(145deg, rgba(20, 28, 48, 0.94), rgba(12, 18, 34, 0.96)) !important;
+            border-color: rgba(217, 185, 111, 0.2) !important;
+          }
+
+          @media (min-width: 981px) {
+            main [data-component="local-page-shell"] {
+              padding-top: 42px !important;
+            }
+          }
+
           @media (max-width: 980px) {
             main h1,
             main [data-component="local-page-shell"] h1 {
-              font-size: clamp(36px, 9.4vw, 58px) !important;
+              font-size: clamp(34px, 8.2vw, 52px) !important;
               line-height: 1.04 !important;
             }
 
@@ -251,7 +302,7 @@ export default function SiteDesignSystem() {
           @media (max-width: 640px) {
             main h1,
             main [data-component="local-page-shell"] h1 {
-              font-size: clamp(32px, 10.5vw, 47px) !important;
+              font-size: clamp(31px, 9.5vw, 43px) !important;
               line-height: 1.06 !important;
               letter-spacing: -0.04em !important;
             }
