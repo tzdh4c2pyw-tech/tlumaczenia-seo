@@ -8,6 +8,7 @@ import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
+import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
 
 export const metadata: Metadata = {
   title: "Mapa strony | Tłumaczenia specjalistyczne",
@@ -184,6 +185,7 @@ export default function SiteMapPage() {
           />
         </div>
       </section>
+          <LegalKnowledgeNavigator />
     </main>
   );
 }

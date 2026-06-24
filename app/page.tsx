@@ -4,6 +4,7 @@ import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "./components/ContentHubLinks";
 import ExpertConversionSections from "./components/ExpertConversionSections";
 import RegionalSeoNavigation from "./components/RegionalSeoNavigation";
+import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
 
 const languages = [
   {
@@ -703,6 +704,7 @@ export default function HomePage() {
       <ContentHubLinks />
 
       <ExpertConversionSections />
-</main>
+      <LegalKnowledgeNavigator />
+    </main>
   );
 }
