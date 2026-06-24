@@ -59,6 +59,7 @@ export async function GET() {
       home: `${siteUrl}/`,
       blog: `${siteUrl}/blog`,
       llms: `${siteUrl}/llms.txt`,
+      feed: `${siteUrl}/feed.xml`,
       sitemap: `${siteUrl}/sitemap.xml`,
       pdfToText: `${siteUrl}/pdf-na-tekst`,
       contact: `${siteUrl}/kontakt`

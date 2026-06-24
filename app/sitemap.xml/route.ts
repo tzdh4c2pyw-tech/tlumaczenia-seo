@@ -48,6 +48,13 @@ export async function GET() {
     changeFrequency: "monthly",
     priority: "0.4"
   },
+
+  {
+    url: `${siteUrl}/feed.xml`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "daily",
+    priority: "0.5"
+  },
     {
       url: siteUrl,
       lastModified: now,
