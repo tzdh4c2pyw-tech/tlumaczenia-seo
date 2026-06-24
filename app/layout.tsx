@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import FloatingCta from "./components/FloatingCta";
+import VisualScaleGuard from "./components/VisualScaleGuard";
 
 import { TextVisualPolish } from "./components/TextVisualPolish";
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
@@ -144,6 +145,7 @@ export default function RootLayout({
     <html lang="pl">
       <body>
         <TextVisualPolish />
+        <VisualScaleGuard />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
