@@ -68,6 +68,7 @@ const krakowSeoSlugs = extractSlugs(krakowSeoSource);
 const knownRoutes = new Set([
   "/",
   "/blog",
+  "/blog/indeks-ekspercki",
   "/blog/slownik-prawno-tlumaczeniowy",
   "/blog/tlumaczenia-ustne-i-konferencje",
   "/blog/dowody-cyfrowe-i-korespondencja",
