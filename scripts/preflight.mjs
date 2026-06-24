@@ -19,6 +19,7 @@ const steps = [
   ["npm", ["run", "check:expert-conversion"]],
   ["npm", ["run", "check:search-index"]],
   ["npm", ["run", "check:decision-guide"]],
+  ["npm", ["run", "check:faq-hub"]],
 ];
 
 for (const [cmd, args] of steps) {

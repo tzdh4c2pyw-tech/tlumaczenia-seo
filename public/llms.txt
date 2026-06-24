@@ -79,3 +79,7 @@ Relevant market and jurisdiction: Poland.
 ## Decision guide
 
 - /dobierz-tlumaczenie
+
+## FAQ
+
+- /faq

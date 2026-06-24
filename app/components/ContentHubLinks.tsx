@@ -28,6 +28,13 @@ const primaryHubs = [
       "Artykuły o tłumaczeniach przysięgłych, wynagrodzeniu tłumacza, ustawie o zawodzie i praktyce tłumaczeń prawnych.",
     href: "/blog",
     label: "Przejdź do bloga"
+  },
+  {
+    title: "FAQ",
+    description:
+      "Najczęstsze pytania o dokumenty, akta, dowody cyfrowe, wycenę i przygotowanie materiałów do tłumaczenia.",
+    href: "/faq",
+    label: "Przejdź do FAQ"
   }
 ];
 

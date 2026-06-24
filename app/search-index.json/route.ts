@@ -71,6 +71,17 @@ export async function GET() {
     },
     {
       type: "core",
+      title: "FAQ",
+      url: `${siteUrl}/faq`,
+      path: "/faq",
+      description:
+        "Najczęstsze pytania o tłumaczenia poświadczone, sądowe, dokumenty z Ukrainy, dowody cyfrowe i wycenę.",
+      keywords: ["FAQ", "pytania o tłumaczenia", "tłumaczenie poświadczone", "dowody cyfrowe"],
+      content:
+        "FAQ zawiera odpowiedzi o tłumaczeniach poświadczonych, dokumentach z Ukrainy, materiałach dla sądu, Policji, Prokuratury, dowodach cyfrowych, komunikatorach, terminach i wycenie."
+    },
+    {
+      type: "core",
       title: "Kontakt",
       url: `${siteUrl}/kontakt`,
       path: "/kontakt",

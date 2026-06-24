@@ -71,7 +71,8 @@ const knownRoutes = new Set([
   "/feed.xml",
   "/tematy",
   "/poradniki",
-  "/dobierz-tlumaczenie"
+  "/dobierz-tlumaczenie",
+  "/faq"
 ]);
 
 for (const slug of landingSlugs) {
