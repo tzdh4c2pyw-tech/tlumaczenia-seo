@@ -7,6 +7,7 @@ const steps = [
   ["npm", ["run", "check:google-verification"]],
   ["npm", ["run", "check:blog-routes"]],
   ["npm", ["run", "check:blog-schema"]],
+  ["npm", ["run", "check:landing-pages-data"]],
 ];
 
 for (const [cmd, args] of steps) {
