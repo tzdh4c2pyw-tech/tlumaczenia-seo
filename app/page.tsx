@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "./components/ContentHubLinks";
+import ExpertConversionSections from "./components/ExpertConversionSections";
 
 const languages = [
   {
@@ -697,6 +698,8 @@ export default function HomePage() {
       </footer>
     
       <ContentHubLinks />
+
+      <ExpertConversionSections />
 </main>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 import ContentHubLinks from "../components/ContentHubLinks";
+import ExpertConversionSections from "../components/ExpertConversionSections";
 
 export const metadata: Metadata = {
   title: "Poradniki eksperckie | Tłumaczenia prawne, sądowe i cyfrowe",
@@ -69,6 +70,8 @@ export default function ExpertGuidesIndexPage() {
       </section>
     
       <ContentHubLinks />
+
+      <ExpertConversionSections />
 </main>
   );
 }

@@ -7,6 +7,7 @@ import {
   getRelatedArticles
 } from "@/lib/blog";
 import { mailtoHref } from "@/lib/mailto";
+import ExpertConversionSections from "../../components/ExpertConversionSections";
 
 type PageProps = {
   params: Promise<{
@@ -362,6 +363,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
           </div>
         </div>
       </footer>
-    </main>
+    
+      <ExpertConversionSections />
+</main>
   );
 }

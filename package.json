@@ -21,7 +21,8 @@
     "check:feed": "node scripts/check-feed.mjs",
     "check:topic-clusters": "node scripts/check-topic-clusters.mjs",
     "check:expert-guides": "node scripts/check-expert-guides.mjs",
-    "check:content-hubs": "node scripts/check-content-hubs.mjs"
+    "check:content-hubs": "node scripts/check-content-hubs.mjs",
+    "check:expert-conversion": "node scripts/check-expert-conversion-sections.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

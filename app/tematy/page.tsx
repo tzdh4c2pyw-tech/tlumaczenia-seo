@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
 import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "../components/ContentHubLinks";
+import ExpertConversionSections from "../components/ExpertConversionSections";
 
 export const metadata: Metadata = {
   title: "Tematy eksperckie | Tłumaczenia specjalistyczne",
@@ -131,6 +132,8 @@ export default function TopicClustersPage() {
       </section>
     
       <ContentHubLinks />
+
+      <ExpertConversionSections />
 </main>
   );
 }

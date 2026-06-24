@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllExpertGuides, getExpertGuideBySlug } from "@/lib/expert-guides";
+import ExpertConversionSections from "../../components/ExpertConversionSections";
 
 type PageProps = {
   params: Promise<{
@@ -174,6 +175,8 @@ export default async function ExpertGuidePage({ params }: PageProps) {
           </div>
         </section>
       </article>
-    </main>
+    
+      <ExpertConversionSections />
+</main>
   );
 }

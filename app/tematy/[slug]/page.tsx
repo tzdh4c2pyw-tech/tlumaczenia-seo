@@ -8,6 +8,7 @@ import {
   getTopicClusterBySlug
 } from "@/lib/topic-clusters";
 import { mailtoHref } from "@/lib/mailto";
+import ExpertConversionSections from "../../components/ExpertConversionSections";
 
 type PageProps = {
   params: Promise<{
@@ -257,6 +258,8 @@ export default async function TopicClusterPage({ params }: PageProps) {
           </div>
         </aside>
       </section>
-    </main>
+    
+      <ExpertConversionSections />
+</main>
   );
 }
