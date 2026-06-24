@@ -36,7 +36,8 @@
     "audit:rendered-pages": "node scripts/audit-rendered-pages.mjs",
     "check:rendered-pages-audit": "node scripts/check-rendered-pages-audit.mjs",
     "check:no-raw-expert-conversion": "node scripts/check-no-raw-expert-conversion.mjs",
-    "check:visual-scale-guard": "node scripts/check-visual-scale-guard.mjs"
+    "check:visual-scale-guard": "node scripts/check-visual-scale-guard.mjs",
+    "audit:visible-html": "node scripts/audit-visible-html.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
