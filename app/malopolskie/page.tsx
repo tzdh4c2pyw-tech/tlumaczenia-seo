@@ -5,14 +5,14 @@ import { LocalCard, LocalCardGrid, LocalPageShell } from "../components/LocalPag
 export const metadata: Metadata = {
   title: "Tłumacz przysięgły ukraiński Małopolskie | Kraków i okolice",
   description:
-    "Lokalne strony SEO dla Małopolski: Kraków, Wieliczka, Skawina, Niepołomice, Bochnia, Tarnów, Nowy Sącz i inne miasta.",
+    "Informacje o tłumaczeniach dla Małopolski: Kraków, Wieliczka, Skawina, Niepołomice, Bochnia, Tarnów, Nowy Sącz i inne miasta.",
   alternates: {
     canonical: "/malopolskie"
   },
   openGraph: {
     title: "Tłumacz przysięgły ukraiński Małopolskie",
     description:
-      "Lokalne treści SEO o tłumaczeniach ukraińskich, dokumentach z Ukrainy i tłumaczeniach poświadczonych w Małopolsce.",
+      "Praktyczne opracowania o tłumaczeniach dokumentów ukraińskich, dokumentach z Ukrainy i tłumaczeniach poświadczonych w Małopolsce.",
     type: "website",
     url: "/malopolskie"
   }
@@ -23,9 +23,9 @@ export default function MalopolskieSeoHubPage() {
 
   return (
     <LocalPageShell
-      eyebrow="Małopolskie SEO"
+      eyebrow="Małopolska"
       title="Tłumacz przysięgły ukraiński — Kraków i Małopolskie"
-      description="Lokalne strony SEO dla miast w Małopolsce. Każda strona opisuje tłumaczenia dokumentów z Ukrainy, tłumaczenia poświadczone, materiały sądowe, dokumenty urzędowe i zlecenia zdalne."
+      description="Opracowania dla miast w Małopolsce. Każda strona wyjaśnia, jak przygotować dokumenty z Ukrainy, materiały sądowe, dokumenty urzędowe i zlecenia przekazywane zdalnie."
       secondaryHref="/lokalnie"
       secondaryLabel="Lokalne artykuły"
     >

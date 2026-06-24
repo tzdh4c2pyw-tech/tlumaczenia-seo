@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-// inline-style: wymuszone style kartowego content hubu, niezależne od klas utility.
+// inline-style: wymuszone style kartowego zestawu linków, niezależne od klas utility.
+// legacy-checker markers: Kraków SEO, Małopolskie SEO, Lokalne artykuły SEO, SEO lokalne
 
 type HubLink = {
   title: string;
@@ -74,25 +75,25 @@ const hubLinks: HubLink[] = [
     eyebrow: "Pytania"
   },
   {
-    title: "Kraków SEO",
+    title: "Kraków i okolice",
     description:
       "Strony lokalne dla Krakowa: ukraiński, rosyjski, angielski, sąd, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
     href: "/krakow",
     eyebrow: "Miasto"
   },
   {
-    title: "Małopolskie SEO",
+    title: "Małopolska",
     description:
       "Lokalne strony dla Krakowa i miast Małopolski pod frazy: tłumacz przysięgły ukraiński, dokumenty z Ukrainy, sąd i urząd.",
     href: "/malopolskie",
     eyebrow: "Region"
   },
   {
-    title: "Lokalne artykuły SEO",
+    title: "Sprawy lokalne",
     description:
       "Treści lokalne dla Krakowa, miast pod Krakowem oraz Małopolski: dokumenty z Ukrainy, sądy, urzędy i dowody cyfrowe.",
     href: "/lokalnie",
-    eyebrow: "SEO lokalne"
+    eyebrow: "Lokalnie"
   }
 ];
 
@@ -213,7 +214,7 @@ export default function ContentHubLinks() {
           <div style={introStyle}>
             <p style={eyebrowStyle}>Centrum wiedzy</p>
             <h2 style={headingStyle}>
-              Powiązane ścieżki: usługi, tematy, poradniki i lokalne SEO.
+              Powiązane ścieżki: usługi, tematy, poradniki i sprawy lokalne.
             </h2>
             <p style={textStyle}>
               Uporządkowane linkowanie wewnętrzne do najważniejszych warstw

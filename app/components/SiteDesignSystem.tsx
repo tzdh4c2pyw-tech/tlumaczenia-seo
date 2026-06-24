@@ -169,6 +169,41 @@ export default function SiteDesignSystem() {
             transform-origin: bottom right;
           }
 
+
+          /* Czytelność jasnych kart */
+          main [class*="bg-white"] h1,
+          main [class*="bg-white"] h2,
+          main [class*="bg-white"] h3,
+          main [class*="bg-white"] p,
+          main [class*="bg-white"] li,
+          main [class*="bg-white"] span,
+          main [class*="bg-stone"] h1,
+          main [class*="bg-stone"] h2,
+          main [class*="bg-stone"] h3,
+          main [class*="bg-stone"] p,
+          main [class*="bg-stone"] li,
+          main [class*="bg-stone"] span,
+          main [class*="bg-zinc"] h1,
+          main [class*="bg-zinc"] h2,
+          main [class*="bg-zinc"] h3,
+          main [class*="bg-zinc"] p,
+          main [class*="bg-zinc"] li,
+          main [class*="bg-zinc"] span {
+            color: #111827 !important;
+            text-shadow: none !important;
+          }
+
+          main [class*="bg-white"] a,
+          main [class*="bg-stone"] a,
+          main [class*="bg-zinc"] a {
+            color: #111827 !important;
+          }
+
+          /* Pływający panel kontaktowy zasłania treść */
+          [data-component="floating-cta"] {
+            display: none !important;
+          }
+
           @media (max-width: 1100px) {
             main [data-component="floating-cta"] {
               display: none !important;

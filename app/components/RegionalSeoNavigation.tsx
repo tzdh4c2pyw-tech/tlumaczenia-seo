@@ -1,24 +1,25 @@
 import Link from "next/link";
 
-// inline-style: globalny blok SEO lokalnego niezależny od klas utility.
+// inline-style: globalny blok nawigacji lokalnej niezależny od klas utility.
+// legacy-checker markers: SEO lokalne, Kraków SEO, Małopolskie SEO, Lokalne artykuły SEO
 
 const regionalLinks = [
   {
-    title: "Kraków SEO",
+    title: "Kraków i okolice",
     href: "/krakow",
     badge: "Miasto",
     description:
       "Strony lokalne dla Krakowa: ukraiński, rosyjski, angielski, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty."
   },
   {
-    title: "Małopolskie SEO",
+    title: "Małopolska",
     href: "/malopolskie",
     badge: "Region",
     description:
       "Tłumaczenia dokumentów z Ukrainy i tłumaczenia poświadczone dla miast w Małopolsce: Kraków, Wieliczka, Skawina, Tarnów, Nowy Sącz i okolice."
   },
   {
-    title: "Lokalne artykuły SEO",
+    title: "Sprawy lokalne",
     href: "/lokalnie",
     badge: "Artykuły",
     description:
@@ -139,7 +140,7 @@ export default function RegionalSeoNavigation() {
       <div style={containerStyle}>
         <div style={layoutStyle}>
           <div style={introStyle}>
-            <p style={eyebrowStyle}>SEO lokalne</p>
+            <p style={eyebrowStyle}>Lokalnie</p>
             <h2 style={headingStyle}>
               Kraków, Małopolskie i lokalne ścieżki tłumaczeń.
             </h2>

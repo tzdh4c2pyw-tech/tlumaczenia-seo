@@ -135,7 +135,7 @@ export default async function TopicClusterPage({ params }: PageProps) {
 
       <section className="article-hero">
         <div className="article-hero-main">
-          <span className="eyebrow">Hub ekspercki · SEO · AI</span>
+          <span className="eyebrow">Dział ekspercki</span>
           <h1>{cluster.title}</h1>
           <p className="lead">{cluster.lead}</p>
 
@@ -169,10 +169,10 @@ export default async function TopicClusterPage({ params }: PageProps) {
 
         <aside className="article-hero-side">
           <div className="side-card">
-            <h2>Słowa kluczowe.</h2>
+            <h2>Najważniejsze zagadnienia.</h2>
             <p>
-              Ten hub łączy zapytania informacyjne, eksperckie i usługowe w
-              jeden klaster tematyczny.
+              Ten dział porządkuje praktyczne pytania, przykłady dokumentów i opis usługi w
+              jeden jeden uporządkowany temat.
             </p>
           </div>
 

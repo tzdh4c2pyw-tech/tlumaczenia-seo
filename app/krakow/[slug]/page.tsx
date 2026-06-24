@@ -94,7 +94,7 @@ export default async function KrakowSeoPage({ params }: PageProps) {
   return (
     <LocalArticleShell
       backHref="/krakow"
-      backLabel="Kraków SEO"
+      backLabel="Kraków i okolice"
       eyebrow={`Kraków · ${page.service}`}
       title={page.title}
       intro={page.intro}

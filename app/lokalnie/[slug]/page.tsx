@@ -86,7 +86,7 @@ export default async function LocalSeoArticlePage({ params }: PageProps) {
   return (
     <LocalArticleShell
       backHref="/lokalnie"
-      backLabel="Lokalne artykuły SEO"
+      backLabel="Sprawy lokalne"
       eyebrow={`${article.city} · ${article.region}`}
       title={article.title}
       intro={article.intro}

@@ -52,7 +52,7 @@ export default function TopicClustersPage() {
             <span className="brand-mark">VR</span>
             <span>
               <span className="brand-title">Tematy eksperckie</span>
-              <span className="brand-subtitle">SEO · AI · baza wiedzy</span>
+              <span className="brand-subtitle">Dokumenty · prawo · praktyka</span>
             </span>
           </Link>
 
@@ -69,10 +69,10 @@ export default function TopicClustersPage() {
 
       <section className="hero">
         <div className="hero-main">
-          <span className="eyebrow">Centra wiedzy dla SEO i AI</span>
+          <span className="eyebrow">Tematy z praktyki tłumacza</span>
           <h1>Tematy eksperckie o tłumaczeniach specjalistycznych.</h1>
           <p className="lead">
-            Uporządkowane huby prowadzą do najważniejszych artykułów, usług i
+            Uporządkowane działy prowadzą do najważniejszych artykułów, usług i
             zagadnień: tłumaczenia poświadczone, dokumenty z Ukrainy, sądy,
             Policja, prokuratura, cyber, forensic, wynagrodzenie i obowiązki
             tłumacza.
@@ -90,7 +90,7 @@ export default function TopicClustersPage() {
 
         <aside className="hero-side">
           <div className="side-card">
-            <h2>Dlaczego huby tematyczne?</h2>
+            <h2>Dlaczego taki podział spraw?</h2>
             <p>
               Huby wzmacniają strukturę strony: grupują artykuły, usługi i
               pytania użytkowników w logiczne klastry. To pomaga wyszukiwarkom,
@@ -109,7 +109,7 @@ export default function TopicClustersPage() {
             <h2>Główne klastry tematyczne.</h2>
           </div>
           <p>
-            Każdy hub łączy artykuły poradnikowe, landing pages i najczęstsze
+            Każdy dział łączy poradniki, opisy spraw i najczęstsze
             pytania. Dzięki temu strona ma mocniejszą architekturę informacji.
           </p>
         </div>

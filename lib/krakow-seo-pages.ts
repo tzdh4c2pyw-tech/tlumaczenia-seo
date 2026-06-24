@@ -221,7 +221,7 @@ export const krakowSeoPages: KrakowSeoPage[] = pageSeeds.map((seed) => ({
   title: seed.title,
   slug: seed.slug,
   service: seed.service,
-  description: `${seed.title}: lokalna strona SEO o usłudze ${seed.service}. Zakres obejmuje ${seed.focus}.`,
+  description: `${seed.title}: praktyczne opracowanie o usłudze ${seed.service}. Zakres obejmuje ${seed.focus}.`,
   keywords: seed.keywords,
   date,
   intro: `${seed.title} to lokalna ścieżka dla osób, firm, kancelarii i instytucji z Krakowa, które potrzebują tłumaczenia dokumentów, akt, korespondencji albo materiałów specjalistycznych. Strona opisuje zakres usługi, przygotowanie plików i sytuacje, w których warto rozważyć tłumaczenie poświadczone.`,
@@ -241,7 +241,7 @@ export const krakowSeoPages: KrakowSeoPage[] = pageSeeds.map((seed) => ({
       ]
     },
     {
-      heading: "SEO lokalne i zlecenia z Krakowa",
+      heading: "Sprawy lokalne i zlecenia z Krakowa",
       paragraphs: [
         "Lokalna fraza nie oznacza, że cała obsługa musi odbywać się stacjonarnie. W wielu przypadkach pierwszy etap polega na zdalnej ocenie materiału na podstawie przesłanych plików.",
         "Dla użytkownika najważniejsze jest ustalenie, czy potrzebne jest tłumaczenie poświadczone, specjalistyczne, prawnicze, sądowe albo tłumaczenie materiałów cyfrowych."

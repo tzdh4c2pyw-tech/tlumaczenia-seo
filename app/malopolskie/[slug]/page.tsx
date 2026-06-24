@@ -94,7 +94,7 @@ export default async function MalopolskieSeoPage({ params }: PageProps) {
   return (
     <LocalArticleShell
       backHref="/malopolskie"
-      backLabel="Małopolskie SEO"
+      backLabel="Małopolska"
       eyebrow={`${page.city} · ${page.county}`}
       title={page.title}
       intro={page.intro}

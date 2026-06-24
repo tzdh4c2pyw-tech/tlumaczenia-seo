@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-// inline-style: lokalne strony SEO niezależne od klas utility.
+// inline-style: lokalne strony informacyjne niezależne od klas utility.
 
 type LocalPageShellProps = {
   [key: string]: unknown;
@@ -395,7 +395,7 @@ export function LocalPageShell({
                     Małopolskie
                   </Link>
                   <Link href="/lokalnie" style={secondaryLinkStyle}>
-                    Lokalne SEO
+                    Lokalnie
                   </Link>
                 </div>
               </div>

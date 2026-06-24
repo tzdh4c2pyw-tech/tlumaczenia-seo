@@ -155,14 +155,14 @@ main video {
   border-radius: 18px;
 }
 
-/* Karty i sekcje generowane przez lokalne/tematyczne huby */
+/* Karty i sekcje generowane przez lokalne oraz tematyczne opracowania */
 main [data-component],
 main [data-card],
 main [data-section] {
   overflow-wrap: break-word;
 }
 
-/* Długie teksty SEO: lepsze światło między blokami */
+/* Długie teksty: lepsze światło między blokami */
 main [data-component="content-hub-links"],
 main [data-component="regional-seo-navigation"],
 main [data-component="expert-conversion-section"],

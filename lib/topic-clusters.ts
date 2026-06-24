@@ -20,7 +20,7 @@ export const topicClusters: TopicCluster[] = [
     description:
       "Centrum wiedzy o tłumaczeniach poświadczonych dokumentów urzędowych, sądowych, akademickich i prywatnych.",
     lead:
-      "Ten hub porządkuje najważniejsze informacje o tłumaczeniach poświadczonych: kiedy są wymagane, jak przygotować dokument, jak ocenić kompletność materiału i jak przekazać pliki do wstępnej wyceny.",
+      "Ten dział porządkuje najważniejsze informacje o tłumaczeniach poświadczonych: kiedy są wymagane, jak przygotować dokument, jak ocenić kompletność materiału i jak przekazać pliki do wstępnej wyceny.",
     audience:
       "Dla osób prywatnych, firm, kancelarii, sądów, Policji, prokuratur i instytucji publicznych.",
     keywords: [

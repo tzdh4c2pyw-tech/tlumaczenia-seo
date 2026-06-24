@@ -36,7 +36,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Tłumaczenia ukraińskie",
     description:
-      "Lokalny poradnik SEO o tłumaczeniach poświadczonych z języka ukraińskiego w Krakowie: dokumenty urzędowe, sądowe, rodzinne i firmowe.",
+      "Praktyczny poradnik o tłumaczeniach poświadczonych z języka ukraińskiego w Krakowie: dokumenty urzędowe, sądowe, rodzinne i firmowe.",
     intro:
       "Kraków jest jednym z głównych ośrodków, w których dokumenty ukraińskie trafiają do urzędów, sądów, uczelni, kancelarii oraz instytucji publicznych. W praktyce najczęściej chodzi o akty stanu cywilnego, pełnomocnictwa, zaświadczenia, wyroki, decyzje, dokumenty pracownicze i materiały procesowe.",
     keywords: [
@@ -210,7 +210,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Dowody cyfrowe",
     description:
-      "Lokalny artykuł SEO o tłumaczeniu dowodów cyfrowych w Krakowie: komunikatory, screeny, BLIK, kryptowaluty, e-mail i materiały z postępowań.",
+      "Praktyczne opracowanie o tłumaczeniu dowodów cyfrowych w Krakowie: komunikatory, screeny, BLIK, kryptowaluty, e-mail i materiały z postępowań.",
     intro:
       "Dowody cyfrowe pojawiają się w sprawach karnych, cywilnych, rodzinnych i gospodarczych. Tłumaczenie takich materiałów wymaga zachowania treści, układu, dat, godzin, nazw użytkowników oraz elementów technicznych.",
     keywords: [
@@ -319,7 +319,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Lokalne tłumaczenia ukraińskie",
     description:
-      "Lokalny artykuł SEO dla Skawiny: tłumaczenia dokumentów ukraińskich, poświadczonych, urzędowych i sądowych.",
+      "Praktyczne opracowanie dla Skawiny: tłumaczenia dokumentów ukraińskich, poświadczonych, urzędowych i sądowych.",
     intro:
       "W Skawinie zapytania o tłumaczenia ukraińskie dotyczą zwykle dokumentów urzędowych, rodzinnych, pracowniczych i materiałów składanych w instytucjach.",
     keywords: [
@@ -409,7 +409,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Lokalne tłumaczenia ukraińskie",
     description:
-      "Lokalna treść SEO dla Bochni: tłumaczenia dokumentów ukraińskich, aktów stanu cywilnego, zaświadczeń i dokumentów do instytucji.",
+      "Praktyczne opracowanie dla Bochni: tłumaczenia dokumentów ukraińskich, aktów stanu cywilnego, zaświadczeń i dokumentów do instytucji.",
     intro:
       "W Bochni zapytania o tłumaczenia ukraińskie dotyczą najczęściej dokumentów rodzinnych, urzędowych, szkolnych, pracowniczych oraz pism do instytucji.",
     keywords: [
@@ -454,7 +454,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Lokalne tłumaczenia ukraińskie",
     description:
-      "Lokalny artykuł SEO dla Myślenic: tłumaczenia poświadczone dokumentów ukraińskich i materiałów do instytucji.",
+      "Praktyczne opracowanie dla Myślenic: tłumaczenia poświadczone dokumentów ukraińskich i materiałów do instytucji.",
     intro:
       "Myślenice i okolice to częsty obszar zapytań o tłumaczenia dokumentów ukraińskich, szczególnie w sprawach rodzinnych, pracowniczych i urzędowych.",
     keywords: [
@@ -634,7 +634,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Lokalne tłumaczenia ukraińskie",
     description:
-      "Lokalny artykuł SEO dla Tarnowa: tłumaczenia poświadczone dokumentów ukraińskich, sądowych, urzędowych i firmowych.",
+      "Praktyczne opracowanie dla Tarnowa: tłumaczenia poświadczone dokumentów ukraińskich, sądowych, urzędowych i firmowych.",
     intro:
       "Tarnów jest ważnym ośrodkiem wschodniej Małopolski, gdzie dokumenty ukraińskie bywają używane w sprawach urzędowych, sądowych, rodzinnych, pracowniczych i edukacyjnych.",
     keywords: [
@@ -679,7 +679,7 @@ const localArticles: LocalSeoArticle[] = [
     region: "Małopolskie",
     category: "Lokalne tłumaczenia ukraińskie",
     description:
-      "Artykuł lokalny SEO dla Nowego Sącza: tłumaczenia dokumentów ukraińskich do urzędów, sądów, firm i instytucji.",
+      "Praktyczne opracowanie dla Nowego Sącza: tłumaczenia dokumentów ukraińskich do urzędów, sądów, firm i instytucji.",
     intro:
       "Nowy Sącz i południowa Małopolska to region, z którego mogą pochodzić zapytania o tłumaczenia dokumentów ukraińskich, urzędowych, sądowych i edukacyjnych.",
     keywords: [

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tłumacz przysięgły Kraków | Lokalne SEO",
     description:
-      "Hub lokalnych stron SEO dla Krakowa: tłumaczenia poświadczone, prawnicze, sądowe i cyfrowe.",
+      "Przewodnik po tłumaczeniach w Krakowie: dokumenty poświadczone, pisma sądowe, sprawy urzędowe i materiały cyfrowe.",
     type: "website",
     url: "/krakow"
   }
@@ -23,11 +23,11 @@ export default function KrakowSeoHubPage() {
 
   return (
     <LocalPageShell
-      eyebrow="Kraków SEO"
+      eyebrow="Kraków i okolice"
       title="Tłumacz przysięgły Kraków — ukraiński, rosyjski, angielski, sąd i dowody cyfrowe"
-      description="Lokalny hub SEO dla Krakowa: dokumenty z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury, akta sprawy, komunikatory, BLIK, kryptowaluty, język ukraiński, rosyjski i angielski."
+      description="Praktyczne opracowania dla Krakowa: dokumenty z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury, akta sprawy, komunikatory, BLIK, kryptowaluty oraz język ukraiński, rosyjski i angielski."
       secondaryHref="/malopolskie"
-      secondaryLabel="Małopolskie SEO"
+      secondaryLabel="Małopolska"
     >
       <LocalCardGrid>
         {pages.map((page) => (

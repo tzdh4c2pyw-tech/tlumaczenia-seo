@@ -3,9 +3,9 @@ import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { LocalCard, LocalCardGrid, LocalPageShell } from "../components/LocalPageShell";
 
 export const metadata: Metadata = {
-  title: "Tłumaczenia lokalne Kraków i Małopolskie | Artykuły SEO",
+  title: "Tłumaczenia lokalne Kraków i Małopolska | Praktyczne opracowania",
   description:
-    "Lokalne artykuły SEO o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sprawach sądowych i dowodach cyfrowych w Krakowie oraz Małopolsce.",
+    "Praktyczne opracowania o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sprawach sądowych i materiałach cyfrowych w Krakowie oraz Małopolsce.",
   alternates: {
     canonical: "/lokalnie"
   },
@@ -23,7 +23,7 @@ export default function LocalSeoArticlesPage() {
 
   return (
     <LocalPageShell
-      eyebrow="Lokalne SEO"
+      eyebrow="Sprawy lokalne"
       title="Tłumaczenia poświadczone i specjalistyczne — Kraków i Małopolskie"
       description="Artykuły lokalne dla osób, firm, kancelarii i instytucji szukających tłumaczeń dokumentów z Ukrainy, materiałów sądowych, dowodów cyfrowych oraz tłumaczeń poświadczonych w Krakowie i Małopolsce."
     >

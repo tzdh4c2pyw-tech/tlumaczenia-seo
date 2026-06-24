@@ -186,7 +186,7 @@ export const malopolskieSeoPages: MalopolskieSeoPage[] = cityPages.map((item) =>
       ]
     },
     {
-      heading: "Tłumaczenia dla Małopolski: lokalne SEO i zlecenia zdalne",
+      heading: "Tłumaczenia dla Małopolski: dokumenty lokalne i zlecenia zdalne",
       paragraphs: [
         "Zapytania lokalne nie muszą oznaczać osobistego spotkania. W wielu przypadkach wstępna ocena materiału może zostać wykonana na podstawie przesłanych plików, a dalsze kroki zależą od rodzaju dokumentu i celu użycia tłumaczenia.",
         "Dla użytkownika istotne jest szybkie ustalenie, czy potrzebna jest forma poświadczona, czy wystarczy tłumaczenie specjalistyczne. Pomocne może być także skorzystanie ze strony „Dobierz tłumaczenie”."
