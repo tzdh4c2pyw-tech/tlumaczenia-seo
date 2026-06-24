@@ -4,6 +4,7 @@ import { getAllTopicClusters } from "@/lib/topic-clusters";
 import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "../components/ContentHubLinks";
 import ExpertConversionSections from "../components/ExpertConversionSections";
+import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 
 export const metadata: Metadata = {
   title: "Tematy eksperckie | Tłumaczenia specjalistyczne",
@@ -98,6 +99,8 @@ export default function TopicClustersPage() {
           </div>
         </aside>
       </section>
+
+      <RegionalSeoNavigation />
 
       <section className="section">
         <div className="section-heading">

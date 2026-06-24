@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 import ContentHubLinks from "../components/ContentHubLinks";
 import ExpertConversionSections from "../components/ExpertConversionSections";
+import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 
 export const metadata: Metadata = {
   title: "Poradniki eksperckie | Tłumaczenia prawne, sądowe i cyfrowe",
@@ -38,6 +39,8 @@ export default function ExpertGuidesIndexPage() {
           materiałów cyfrowych w języku ukraińskim, rosyjskim lub angielskim.
         </p>
       </section>
+
+      <RegionalSeoNavigation />
 
       <section className="mx-auto grid max-w-6xl gap-6 px-6 pb-20 md:grid-cols-2">
         {guides.map((guide) => (

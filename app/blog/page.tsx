@@ -4,6 +4,7 @@ import { getAllArticles } from "@/lib/blog";
 import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "../components/ContentHubLinks";
 import ExpertConversionSections from "../components/ExpertConversionSections";
+import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
@@ -159,6 +160,8 @@ export default function BlogPage() {
           </div>
         </aside>
       </section>
+
+      <RegionalSeoNavigation />
 
       <section className="section">
         <div className="section-heading">

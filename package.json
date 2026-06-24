@@ -30,7 +30,8 @@
     "check:malopolskie-seo": "node scripts/check-malopolskie-seo.mjs",
     "check:krakow-seo": "node scripts/check-krakow-seo.mjs",
     "check:visual-polish": "node scripts/check-visual-polish.mjs",
-    "check:local-visual-pages": "node scripts/check-local-visual-pages.mjs"
+    "check:local-visual-pages": "node scripts/check-local-visual-pages.mjs",
+    "check:regional-navigation": "node scripts/check-regional-navigation.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "./components/ContentHubLinks";
 import ExpertConversionSections from "./components/ExpertConversionSections";
+import RegionalSeoNavigation from "./components/RegionalSeoNavigation";
 
 const languages = [
   {
@@ -314,6 +315,8 @@ export default function HomePage() {
           </div>
         </aside>
       </section>
+
+      <RegionalSeoNavigation />
 
       <section className="trust">
         <div className="trust-inner">
