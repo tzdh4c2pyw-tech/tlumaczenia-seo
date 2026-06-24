@@ -4,23 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "FAQ | Tłumaczenia poświadczone, sądowe i cyfrowe",
   description:
-    "Najczęstsze pytania o tłumaczenia poświadczone, dokumenty z Ukrainy, materiały dla sądu, Policji i Prokuratury, dowody cyfrowe oraz wycenę tłumaczenia.",
-  alternates: {
-    canonical: "/faq"
-  },
-  openGraph: {
-    title: "FAQ | Tłumaczenia poświadczone, sądowe i cyfrowe",
-    description:
-      "Odpowiedzi na najczęstsze pytania o tłumaczenia dokumentów, akt, korespondencji i materiałów cyfrowych.",
-    type: "website",
-    url: "/faq"
-  }
+    "Najczęstsze pytania o tłumaczenia poświadczone dokumentów z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury oraz materiałów cyfrowych."
 };
 
-const faqGroups = [
+const faqSections = [
   {
-    heading: "Tłumaczenia poświadczone",
-    questions: [
+    title: "Tłumaczenia poświadczone",
+    items: [
       {
         question: "Kiedy potrzebne jest tłumaczenie poświadczone?",
         answer:
@@ -32,147 +22,280 @@ const faqGroups = [
           "Nie zawsze. Zależy to od celu użycia dokumentu. Jeżeli dokument ma być składany w instytucji publicznej albo w postępowaniu, tłumaczenie poświadczone jest często właściwym wyborem."
       },
       {
-        question: "Czy tłumaczenie obejmuje pieczęcie, podpisy i adnotacje?",
+        question: "Czy można przesłać skan albo zdjęcie dokumentu?",
         answer:
-          "Tak. Widoczne pieczęcie, podpisy, dopiski, numery, daty i adnotacje są odnotowywane w tłumaczeniu zgodnie z dokumentem źródłowym."
+          "Tak, do wstępnej oceny można przesłać skan albo zdjęcie. Przy dokumentach urzędowych warto zachować czytelność pieczęci, podpisów, numerów, dat i wszystkich stron dokumentu."
       }
     ]
   },
   {
-    heading: "Sąd, Policja i Prokuratura",
-    questions: [
+    title: "Sąd, Policja i Prokuratura",
+    items: [
       {
-        question: "Jak przygotować dokumenty do tłumaczenia dla sądu?",
+        question: "Jakie dokumenty są najczęściej tłumaczone na potrzeby postępowań?",
         answer:
-          "Najlepiej przekazać pełny, czytelny materiał: skany, PDF, komplet stron, załączniki i informację, do jakiej sprawy albo instytucji tłumaczenie ma trafić."
+          "Najczęściej są to postanowienia, wezwania, protokoły, zawiadomienia, akty stanu cywilnego, zaświadczenia, pełnomocnictwa, oświadczenia, umowy, korespondencja oraz załączniki do akt."
       },
       {
-        question: "Czy można tłumaczyć tylko część akt sprawy?",
+        question: "Czy tłumaczenie może dotyczyć materiałów dowodowych?",
         answer:
-          "Tak, jeżeli taka część została wskazana przez osobę zlecającą, pełnomocnika albo instytucję. Tłumacz nie powinien samodzielnie decydować, które fragmenty akt są procesowo istotne."
-      },
-      {
-        question: "Czy protokoły i pisma procesowe tłumaczy się dosłownie?",
-        answer:
-          "Tłumaczenie powinno być wierne, precyzyjne i terminologicznie spójne. Zachowuje się sens, strukturę dokumentu, role procesowe, daty, sygnatury i oznaczenia organów."
+          "Tak. Zakres zależy od rodzaju materiału, celu użycia oraz tego, czy materiał ma zostać złożony jako załącznik, dowód, wydruk, opis albo część akt."
       }
     ]
   },
   {
-    heading: "Dowody cyfrowe i komunikatory",
-    questions: [
+    title: "Dowody cyfrowe i korespondencja",
+    items: [
       {
-        question: "Czy zrzuty ekranu można tłumaczyć poświadczone?",
+        question: "Czy można tłumaczyć wiadomości z komunikatorów?",
         answer:
-          "Tak, jeżeli ich treść jest czytelna. Warto zachować daty, godziny, nazwy użytkowników, układ rozmowy i kolejność plików."
+          "Tak, ale materiał powinien być uporządkowany. Przydatne są daty, nazwy uczestników, ciągłość rozmowy, zrzuty ekranu albo eksport korespondencji."
       },
       {
-        question: "Jak przygotować rozmowy z Telegrama, WhatsAppa lub Signal?",
+        question: "Czy tłumaczy się e-mail, SMS, BLIK albo opisy przelewów?",
         answer:
-          "Najlepiej przekazać eksport rozmowy albo uporządkowany PDF. Jeżeli dostępne są tylko screeny, należy zachować ich kolejność i nie usuwać elementów kontekstowych."
-      },
-      {
-        question: "Czy emoji, literówki i potoczny język mają znaczenie?",
-        answer:
-          "Mogą mieć znaczenie. Tłumaczenie nie powinno sztucznie wygładzać wypowiedzi, jeżeli styl, błędy albo potoczność są widoczne w materiale źródłowym."
+          "Tak. W tego typu materiałach ważne są daty, identyfikatory, kontekst rozmowy, oznaczenia nadawców, potwierdzenia oraz powiązanie z pozostałymi dokumentami."
       }
     ]
   },
   {
-    heading: "Wycena, termin i kontakt",
-    questions: [
+    title: "Wycena i przygotowanie materiału",
+    items: [
       {
-        question: "Co przesłać do wstępnej wyceny?",
+        question: "Od czego zależy wycena tłumaczenia?",
         answer:
-          "Najlepiej przesłać skan, PDF albo zdjęcia dokumentów oraz krótki opis celu tłumaczenia, języka, terminu i instytucji, do której materiał ma zostać złożony."
+          "Od języka, objętości, czytelności materiału, formy dokumentu, terminologii, liczby załączników oraz tego, czy potrzebna jest forma poświadczona."
       },
       {
-        question: "Czy można zapytać bez przesyłania całego dokumentu?",
+        question: "Co przesłać do wstępnej oceny?",
         answer:
-          "Można, ale dokładna wycena wymaga oceny objętości i czytelności materiału. Wstępny opis pozwala jedynie określić ogólny zakres sprawy."
-      },
-      {
-        question: "Czy materiały pilne powinny być oznaczone od razu?",
-        answer:
-          "Tak. Przy sprawach pilnych należy od razu wskazać termin, objętość materiału i sposób użycia tłumaczenia."
+          "Najlepiej przesłać cały dokument albo kompletny zestaw materiałów, wskazać język, termin, cel użycia i instytucję, do której dokument ma trafić."
       }
     ]
   }
 ];
 
 export default function FaqPage() {
-  const allQuestions = faqGroups.flatMap((group) => group.questions);
-
-  const faqJsonLd = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: allQuestions.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer
-      }
-    }))
+    mainEntity: faqSections.flatMap((section) =>
+      section.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer
+        }
+      }))
+    )
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-50">
+    <main
+      style={{
+        minHeight: "100vh",
+        background:
+          "radial-gradient(circle at 80% 0%, rgba(30, 64, 175, 0.22), transparent 32rem), linear-gradient(180deg, #111827 0%, #172033 55%, #101827 100%)",
+        color: "#f8fafc"
+      }}
+    >
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+      <section
+        style={{
+          maxWidth: "78rem",
+          margin: "0 auto",
+          padding: "5rem 1.5rem 3rem"
+        }}
+      >
+        <p
+          style={{
+            margin: 0,
+            color: "#c4b5fd",
+            fontSize: "0.85rem",
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase"
+          }}
+        >
           FAQ
         </p>
-        <h1 className="max-w-4xl text-4xl font-bold tracking-tight md:text-6xl">
+
+        <h1
+          style={{
+            margin: "1.1rem 0 0",
+            maxWidth: "62rem",
+            color: "#f8fafc",
+            fontSize: "clamp(3rem, 8vw, 6.8rem)",
+            lineHeight: 0.9,
+            letterSpacing: "-0.07em",
+            fontWeight: 950
+          }}
+        >
           Najczęstsze pytania o tłumaczenia poświadczone, sądowe i cyfrowe
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-          Odpowiedzi dotyczą dokumentów z Ukrainy, materiałów dla sądu, Policji i
-          Prokuratury, akt sprawy, dowodów cyfrowych, komunikatorów oraz wyceny
-          tłumaczenia.
+
+        <p
+          style={{
+            margin: "1.5rem 0 0",
+            maxWidth: "58rem",
+            color: "#cbd5e1",
+            fontSize: "1.12rem",
+            lineHeight: 1.8
+          }}
+        >
+          Odpowiedzi dotyczą dokumentów z Ukrainy, materiałów dla sądu,
+          Policji i Prokuratury, akt sprawy, dowodów cyfrowych, komunikatorów
+          oraz wyceny tłumaczenia.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <nav
+          aria-label="Najważniejsze działania"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "0.85rem",
+            marginTop: "1.75rem"
+          }}
+        >
           <Link
             href="/kontakt"
-            className="rounded-full bg-cyan-300 px-6 py-3 text-sm font-bold text-slate-950 hover:bg-cyan-200"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "999px",
+              background: "#facc15",
+              color: "#020617",
+              padding: "0.9rem 1.15rem",
+              fontSize: "0.95rem",
+              fontWeight: 950,
+              textDecoration: "none"
+            }}
           >
             Przejdź do kontaktu
           </Link>
+
           <Link
             href="/dobierz-tlumaczenie"
-            className="rounded-full border border-cyan-300 px-6 py-3 text-sm font-bold text-cyan-100 hover:bg-cyan-300/10"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "999px",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
+              background: "rgba(15, 23, 42, 0.72)",
+              color: "#ffffff",
+              padding: "0.9rem 1.15rem",
+              fontSize: "0.95rem",
+              fontWeight: 950,
+              textDecoration: "none"
+            }}
           >
             Dobierz tłumaczenie
           </Link>
+
           <Link
             href="/poradniki"
-            className="rounded-full border border-slate-600 px-6 py-3 text-sm font-bold text-slate-100 hover:border-cyan-300 hover:text-cyan-100"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "999px",
+              border: "1px solid rgba(255, 255, 255, 0.14)",
+              background: "rgba(255, 255, 255, 0.06)",
+              color: "#e0e7ff",
+              padding: "0.9rem 1.15rem",
+              fontSize: "0.95rem",
+              fontWeight: 950,
+              textDecoration: "none"
+            }}
           >
             Zobacz poradniki
           </Link>
-        </div>
+        </nav>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <div className="space-y-8">
-          {faqGroups.map((group) => (
+      <section
+        style={{
+          maxWidth: "72rem",
+          margin: "0 auto",
+          padding: "1rem 1.5rem 5rem"
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gap: "1.25rem"
+          }}
+        >
+          {faqSections.map((section) => (
             <section
-              key={group.heading}
-              className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-xl shadow-black/20 md:p-8"
+              key={section.title}
+              style={{
+                borderRadius: "2rem",
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                background: "rgba(15, 23, 42, 0.56)",
+                padding: "1.5rem",
+                boxShadow: "0 24px 80px rgba(0, 0, 0, 0.22)"
+              }}
             >
-              <h2 className="text-2xl font-bold text-white">{group.heading}</h2>
-              <div className="mt-6 space-y-6">
-                {group.questions.map((item) => (
-                  <article key={item.question}>
-                    <h3 className="text-lg font-semibold text-cyan-200">
+              <h2
+                style={{
+                  margin: 0,
+                  color: "#ffffff",
+                  fontSize: "clamp(1.75rem, 3vw, 2.75rem)",
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.045em",
+                  fontWeight: 950
+                }}
+              >
+                {section.title}
+              </h2>
+
+              <div
+                style={{
+                  display: "grid",
+                  gap: "1rem",
+                  marginTop: "1.25rem"
+                }}
+              >
+                {section.items.map((item) => (
+                  <article
+                    key={item.question}
+                    style={{
+                      borderRadius: "1.4rem",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      background: "rgba(2, 6, 23, 0.36)",
+                      padding: "1.25rem"
+                    }}
+                  >
+                    <h3
+                      style={{
+                        margin: 0,
+                        color: "#f8fafc",
+                        fontSize: "1.3rem",
+                        lineHeight: 1.22,
+                        fontWeight: 950,
+                        letterSpacing: "-0.025em"
+                      }}
+                    >
                       {item.question}
                     </h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">
+
+                    <p
+                      style={{
+                        margin: "0.75rem 0 0",
+                        color: "#cbd5e1",
+                        fontSize: "1rem",
+                        lineHeight: 1.8
+                      }}
+                    >
                       {item.answer}
                     </p>
                   </article>
@@ -180,6 +303,97 @@ export default function FaqPage() {
               </div>
             </section>
           ))}
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: "72rem",
+          margin: "0 auto",
+          padding: "0 1.5rem 5rem"
+        }}
+      >
+        <div
+          style={{
+            borderRadius: "2rem",
+            border: "1px solid rgba(250, 204, 21, 0.32)",
+            background:
+              "linear-gradient(135deg, rgba(250, 204, 21, 0.14), rgba(15, 23, 42, 0.86))",
+            padding: "2rem"
+          }}
+        >
+          <h2
+            style={{
+              margin: 0,
+              color: "#ffffff",
+              fontSize: "clamp(2rem, 4vw, 3.4rem)",
+              lineHeight: 1,
+              letterSpacing: "-0.055em",
+              fontWeight: 950
+            }}
+          >
+            Masz konkretne dokumenty do oceny?
+          </h2>
+
+          <p
+            style={{
+              margin: "1rem 0 0",
+              maxWidth: "48rem",
+              color: "#dbeafe",
+              fontSize: "1.05rem",
+              lineHeight: 1.8
+            }}
+          >
+            Prześlij pliki albo opisz sprawę. Do wstępnej oceny wystarczy
+            czytelny skan, zdjęcie lub komplet materiałów z informacją, gdzie
+            dokument ma zostać użyty.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.85rem",
+              marginTop: "1.5rem"
+            }}
+          >
+            <Link
+              href="/kontakt"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "999px",
+                background: "#facc15",
+                color: "#020617",
+                padding: "0.9rem 1.15rem",
+                fontSize: "0.95rem",
+                fontWeight: 950,
+                textDecoration: "none"
+              }}
+            >
+              Przejdź do kontaktu
+            </Link>
+
+            <Link
+              href="/dobierz-tlumaczenie"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "999px",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                background: "rgba(15, 23, 42, 0.72)",
+                color: "#ffffff",
+                padding: "0.9rem 1.15rem",
+                fontSize: "0.95rem",
+                fontWeight: 950,
+                textDecoration: "none"
+              }}
+            >
+              Dobierz tłumaczenie
+            </Link>
+          </div>
         </div>
       </section>
     </main>
