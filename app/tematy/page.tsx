@@ -92,8 +92,8 @@ export default function TopicClustersPage() {
           <div className="side-card">
             <h2>Dlaczego taki podział spraw?</h2>
             <p>
-              Huby wzmacniają strukturę strony: grupują artykuły, usługi i
-              pytania użytkowników w logiczne klastry. To pomaga wyszukiwarkom,
+              Działy porządkują sprawy i dokumenty: grupują artykuły, usługi i
+              pytania użytkowników w logiczne działy. To pomaga wyszukiwarkom,
               modelom AI i użytkownikom szybciej zrozumieć specjalizację strony.
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function TopicClustersPage() {
         <div className="section-heading">
           <div>
             <p className="section-label">Mapa ekspercka</p>
-            <h2>Główne klastry tematyczne.</h2>
+            <h2>Główne działy tematyczne.</h2>
           </div>
           <p>
             Każdy dział łączy poradniki, opisy spraw i najczęstsze

@@ -23,7 +23,7 @@ const regionalLinks = [
     href: "/lokalnie",
     badge: "Artykuły",
     description:
-      "Artykuły pod frazy lokalne: tłumacz przysięgły, dokumenty z Ukrainy, sąd, urząd, Policja, Prokuratura i dowody cyfrowe."
+      "Praktyczne omówienia spraw lokalnych: dokumenty z Ukrainy, tłumaczenia poświadczone, sąd, urząd, Policja, Prokuratura i materiały cyfrowe."
   }
 ];
 

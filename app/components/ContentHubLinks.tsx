@@ -14,7 +14,7 @@ const hubLinks: HubLink[] = [
   {
     title: "Tematy eksperckie",
     description:
-      "Strukturalne klastry wiedzy o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sądach, Policji i Prokuraturze.",
+      "Strukturalne działy wiedzy o tłumaczeniach poświadczonych, dokumentach z Ukrainy, sądach, Policji i Prokuraturze.",
     href: "/tematy",
     eyebrow: "Struktura"
   },

@@ -37,6 +37,7 @@ export async function GET() {
   const corePages: SitemapEntry[] = [
     { url: siteUrl, lastModified: today, changeFrequency: "weekly", priority: "1.0" },
     { url: `${siteUrl}/blog`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
+    { url: `${siteUrl}/mapa-strony`, lastModified: today, changeFrequency: "monthly", priority: "0.5" },
     { url: `${siteUrl}/kontakt`, lastModified: today, changeFrequency: "monthly", priority: "0.7" },
     { url: `${siteUrl}/pdf-na-tekst`, lastModified: today, changeFrequency: "monthly", priority: "0.6" },
     { url: `${siteUrl}/tematy`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },

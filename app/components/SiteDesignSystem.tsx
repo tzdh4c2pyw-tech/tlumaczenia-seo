@@ -5,26 +5,25 @@ export default function SiteDesignSystem() {
       dangerouslySetInnerHTML={{
         __html: `
           :root {
-            --site-bg: #090d18;
-            --site-ink: #f4efe6;
-            --site-ink-soft: #d8d0c4;
-            --site-muted: #aeb7c8;
-            --site-muted-strong: #c4cad6;
-            --site-navy: #101827;
-            --site-navy-2: #151d31;
-            --site-navy-3: #1b2338;
-            --site-violet: #29213e;
-            --site-gold: #d9b96f;
-            --site-gold-2: #f0d58c;
-            --site-ivory: #f3ead8;
-            --site-ivory-2: #e8ddc8;
-            --site-border: rgba(255, 255, 255, 0.13);
-            --site-border-gold: rgba(217, 185, 111, 0.34);
-            --site-shadow: 0 32px 100px rgba(0, 0, 0, 0.38);
-            --site-radius-xl: 34px;
-            --site-radius-lg: 26px;
-            --site-radius-md: 18px;
-            --site-max: 1180px;
+            --site-bg: #07111f;
+            --site-bg-2: #101827;
+            --site-panel: rgba(13, 22, 38, 0.96);
+            --site-card: #111b2e;
+            --site-card-2: #16233a;
+            --site-light: #f3ead8;
+            --site-text: #fff8ea;
+            --site-muted: #cdd6e6;
+            --site-muted-2: #b7c1d4;
+            --site-dark-text: #111827;
+            --site-gold: #d8b767;
+            --site-gold-2: #f0d489;
+            --site-border: rgba(255, 255, 255, 0.16);
+            --site-border-gold: rgba(216, 183, 103, 0.38);
+            --site-shadow: 0 26px 90px rgba(0, 0, 0, 0.4);
+            --site-radius-xl: 30px;
+            --site-radius-lg: 22px;
+            --site-radius-md: 16px;
+            --site-max: 1160px;
           }
 
           html {
@@ -35,24 +34,33 @@ export default function SiteDesignSystem() {
           body {
             overflow-x: hidden;
             background:
-              radial-gradient(circle at 12% 4%, rgba(130, 91, 160, 0.22), transparent 34%),
-              radial-gradient(circle at 80% 0%, rgba(63, 86, 150, 0.22), transparent 38%),
-              linear-gradient(180deg, #090d18 0%, #12182a 48%, #090d18 100%);
-            color: var(--site-ink);
+              radial-gradient(circle at 10% 0%, rgba(79, 58, 130, 0.28), transparent 34%),
+              radial-gradient(circle at 86% 4%, rgba(40, 77, 135, 0.23), transparent 36%),
+              linear-gradient(180deg, #07111f 0%, #101827 52%, #07111f 100%);
+            color: var(--site-text);
           }
 
           main {
             overflow-x: clip;
+            color: var(--site-text);
           }
 
           main section {
             box-sizing: border-box;
+            padding-left: clamp(20px, 4vw, 56px) !important;
+            padding-right: clamp(20px, 4vw, 56px) !important;
+          }
+
+          main section > div {
+            max-width: min(var(--site-max), calc(100vw - 40px));
+            margin-left: auto;
+            margin-right: auto;
           }
 
           main h1,
           main h2,
           main h3 {
-            color: var(--site-ink);
+            color: var(--site-text);
             text-wrap: balance;
             overflow-wrap: normal;
             word-break: normal;
@@ -60,34 +68,34 @@ export default function SiteDesignSystem() {
           }
 
           main h1 {
-            max-width: 980px !important;
-            font-size: clamp(38px, 4.9vw, 62px) !important;
-            line-height: 1.02 !important;
-            letter-spacing: -0.052em !important;
-          }
-
-          main h2 {
-            max-width: 900px !important;
-            font-size: clamp(30px, 4vw, 50px) !important;
-            line-height: 1.06 !important;
+            max-width: 880px !important;
+            font-size: clamp(34px, 4.3vw, 58px) !important;
+            line-height: 1.08 !important;
             letter-spacing: -0.043em !important;
           }
 
+          main h2 {
+            max-width: 840px !important;
+            font-size: clamp(28px, 3.4vw, 44px) !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.036em !important;
+          }
+
           main h3 {
-            font-size: clamp(21px, 2.3vw, 31px) !important;
-            line-height: 1.12 !important;
-            letter-spacing: -0.03em !important;
+            font-size: clamp(21px, 2.05vw, 30px) !important;
+            line-height: 1.16 !important;
+            letter-spacing: -0.026em !important;
           }
 
           main p,
           main li {
             color: var(--site-muted);
-            font-size: clamp(15.5px, 1.05vw, 17px) !important;
-            line-height: 1.72 !important;
+            font-size: clamp(15.5px, 1vw, 17px) !important;
+            line-height: 1.76 !important;
           }
 
           main strong {
-            color: var(--site-ink);
+            color: var(--site-text);
           }
 
           main a {
@@ -107,19 +115,19 @@ export default function SiteDesignSystem() {
           main [class*="text-[7"],
           main [class*="text-[8"],
           main [class*="text-[9"] {
-            font-size: clamp(38px, 4.9vw, 62px) !important;
-            line-height: 1.02 !important;
-            letter-spacing: -0.052em !important;
+            font-size: clamp(34px, 4.3vw, 58px) !important;
+            line-height: 1.08 !important;
+            letter-spacing: -0.043em !important;
           }
 
           main [class*="leading-none"],
           main [class*="leading-[0."],
           main [class*="leading-[."] {
-            line-height: 1.03 !important;
+            line-height: 1.08 !important;
           }
 
           main [class*="tracking-[-"] {
-            letter-spacing: -0.044em !important;
+            letter-spacing: -0.036em !important;
           }
 
           main [class*="grid"] > *,
@@ -144,8 +152,8 @@ export default function SiteDesignSystem() {
           main article h3,
           main [class*="rounded"] h2,
           main [class*="rounded"] h3 {
-            font-size: clamp(22px, 2.65vw, 33px) !important;
-            line-height: 1.1 !important;
+            font-size: clamp(22px, 2.4vw, 32px) !important;
+            line-height: 1.14 !important;
           }
 
           main article p,
@@ -158,9 +166,9 @@ export default function SiteDesignSystem() {
           main [class*="bg-zinc"],
           main [class*="bg-neutral"] {
             background:
-              linear-gradient(145deg, rgba(246, 238, 220, 0.98), rgba(222, 211, 190, 0.94)) !important;
-            border: 1px solid rgba(67, 56, 38, 0.14) !important;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28) !important;
+              linear-gradient(145deg, rgba(246, 238, 220, 0.98), rgba(224, 213, 192, 0.96)) !important;
+            border: 1px solid rgba(67, 56, 38, 0.16) !important;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.26) !important;
           }
 
           main [class*="bg-white"] h1,
@@ -187,111 +195,49 @@ export default function SiteDesignSystem() {
           main [class*="bg-neutral"] p,
           main [class*="bg-neutral"] li,
           main [class*="bg-neutral"] span {
-            color: #151922 !important;
+            color: var(--site-dark-text) !important;
             text-shadow: none !important;
-          }
-
-          main [class*="bg-white"] a,
-          main [class*="bg-stone"] a,
-          main [class*="bg-zinc"] a,
-          main [class*="bg-neutral"] a {
-            color: #111827 !important;
-          }
-
-          main [data-component="content-hub-links"],
-          main [data-component="regional-seo-navigation"],
-          main [data-component="local-page-shell"],
-          main [data-component="expert-conversion-section"] {
-            isolation: isolate;
           }
 
           main [data-component="content-hub-links"] h2,
           main [data-component="regional-seo-navigation"] h2,
           main [data-component="local-page-shell"] h1 {
-            font-size: clamp(36px, 4.8vw, 60px) !important;
-            line-height: 1.02 !important;
+            max-width: 860px !important;
+            font-size: clamp(34px, 4.2vw, 56px) !important;
+            line-height: 1.08 !important;
           }
 
           main [data-component="content-hub-links"] h3,
           main [data-component="regional-seo-navigation"] h3 {
-            font-size: clamp(22px, 2.4vw, 30px) !important;
-            line-height: 1.1 !important;
+            font-size: clamp(22px, 2.25vw, 30px) !important;
+            line-height: 1.14 !important;
+          }
+
+          main [data-component="content-hub-links"] p,
+          main [data-component="regional-seo-navigation"] p,
+          main [data-component="local-page-shell"] p {
+            color: var(--site-muted) !important;
           }
 
           main [data-component="expert-conversion-section"] h2 {
-            font-size: clamp(30px, 3.75vw, 46px) !important;
-            line-height: 1.05 !important;
-          }
-
-          main [data-component="expert-conversion-section"] h3 {
-            font-size: clamp(23px, 2.4vw, 30px) !important;
+            font-size: clamp(28px, 3.3vw, 42px) !important;
+            line-height: 1.1 !important;
           }
 
           [data-component="floating-cta"] {
             display: none !important;
           }
 
-
-          /* Premium layout guard: hero i sekcje nie wychodzą poza ekran */
-          main section {
-            padding-left: clamp(20px, 4vw, 56px) !important;
-            padding-right: clamp(20px, 4vw, 56px) !important;
-          }
-
-          main section > div {
-            max-width: min(1180px, calc(100vw - 40px));
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          main h1 {
-            max-width: 860px !important;
-          }
-
-          main [data-component="local-page-shell"] h1 {
-            max-width: 900px !important;
-            font-size: clamp(38px, 4.8vw, 64px) !important;
-            line-height: 1.04 !important;
-          }
-
-          main [data-component="content-hub-links"] h2,
-          main [data-component="regional-seo-navigation"] h2 {
-            max-width: 820px !important;
-          }
-
-          main [data-component="content-hub-links"] article,
-          main [data-component="regional-seo-navigation"] article {
-            min-height: 100%;
-          }
-
-          main [data-component="content-hub-links"] p,
-          main [data-component="regional-seo-navigation"] p,
-          main [data-component="local-page-shell"] p {
-            color: var(--site-muted-strong) !important;
-          }
-
-          main [data-component="content-hub-links"] [style*="rgba(255"],
-          main [data-component="regional-seo-navigation"] [style*="rgba(255"] {
-            background: linear-gradient(145deg, rgba(20, 28, 48, 0.94), rgba(12, 18, 34, 0.96)) !important;
-            border-color: rgba(217, 185, 111, 0.2) !important;
-          }
-
-          @media (min-width: 981px) {
-            main [data-component="local-page-shell"] {
-              padding-top: 42px !important;
-            }
-          }
-
           @media (max-width: 980px) {
             main h1,
             main [data-component="local-page-shell"] h1 {
-              font-size: clamp(34px, 8.2vw, 52px) !important;
-              line-height: 1.04 !important;
+              font-size: clamp(32px, 7.8vw, 50px) !important;
+              line-height: 1.1 !important;
             }
 
             main h2 {
-              font-size: clamp(28px, 7.2vw, 43px) !important;
-              line-height: 1.07 !important;
+              font-size: clamp(26px, 6.4vw, 40px) !important;
+              line-height: 1.12 !important;
             }
 
             main [style*="grid-template-columns"] {
@@ -302,17 +248,17 @@ export default function SiteDesignSystem() {
           @media (max-width: 640px) {
             main h1,
             main [data-component="local-page-shell"] h1 {
-              font-size: clamp(31px, 9.5vw, 43px) !important;
-              line-height: 1.06 !important;
-              letter-spacing: -0.04em !important;
+              font-size: clamp(30px, 9vw, 42px) !important;
+              line-height: 1.12 !important;
+              letter-spacing: -0.035em !important;
             }
 
             main h2 {
-              font-size: clamp(26px, 8.4vw, 37px) !important;
+              font-size: clamp(24px, 7.6vw, 34px) !important;
             }
 
             main h3 {
-              font-size: clamp(21px, 6.6vw, 28px) !important;
+              font-size: clamp(20px, 6.2vw, 27px) !important;
             }
 
             main p,
@@ -328,7 +274,7 @@ export default function SiteDesignSystem() {
 
             main [class*="rounded"],
             main [data-component] {
-              border-radius: 22px !important;
+              border-radius: 20px !important;
             }
           }
         `
