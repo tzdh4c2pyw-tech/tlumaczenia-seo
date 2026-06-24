@@ -20,7 +20,8 @@
     "check:ai-index": "node scripts/check-ai-index.mjs",
     "check:feed": "node scripts/check-feed.mjs",
     "check:topic-clusters": "node scripts/check-topic-clusters.mjs",
-    "check:expert-guides": "node scripts/check-expert-guides.mjs"
+    "check:expert-guides": "node scripts/check-expert-guides.mjs",
+    "check:content-hubs": "node scripts/check-content-hubs.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

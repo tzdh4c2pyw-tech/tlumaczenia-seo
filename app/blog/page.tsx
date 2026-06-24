@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticles } from "@/lib/blog";
 import { mailtoHref } from "@/lib/mailto";
+import ContentHubLinks from "../components/ContentHubLinks";
 
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
@@ -324,6 +325,8 @@ export default function BlogPage() {
           </div>
         </div>
       </footer>
-    </main>
+    
+      <ContentHubLinks />
+</main>
   );
 }

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { mailtoHref } from "@/lib/mailto";
+import ContentHubLinks from "./components/ContentHubLinks";
 
 const languages = [
   {
@@ -694,6 +695,8 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-    </main>
+    
+      <ContentHubLinks />
+</main>
   );
 }
