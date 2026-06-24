@@ -71,3 +71,7 @@ Relevant market and jurisdiction: Poland.
 - /poradniki/tlumaczenie-dokumentacji-kryptowalutowej-i-blockchain
 - /poradniki/rola-tlumacza-przysieglego-w-kontaktach-z-policja-i-prokuratura
 - /poradniki/tlumaczenie-pelnomocnictw-wyrokow-i-zaswiadczen-z-ukrainy
+
+## Machine-readable indexes
+
+- /search-index.json

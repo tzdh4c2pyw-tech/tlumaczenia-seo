@@ -98,7 +98,8 @@ export async function GET() {
       llms: `${siteUrl}/llms.txt`,
       feed: `${siteUrl}/feed.xml`,
       sitemap: `${siteUrl}/sitemap.xml`,
-      aiIndex: `${siteUrl}/ai-index.json`
+      aiIndex: `${siteUrl}/ai-index.json`,
+      searchIndex: `${siteUrl}/search-index.json`
     },
     mainTopics: [
       "certified translations",
