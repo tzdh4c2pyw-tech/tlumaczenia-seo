@@ -47,6 +47,7 @@ export async function GET() {
     { url: `${siteUrl}/blog/policja-prokuratura-sad`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
     { url: `${siteUrl}/blog/dowody-cyfrowe-i-korespondencja`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
     { url: `${siteUrl}/blog/tlumaczenia-ustne-i-konferencje`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
+        { url: `${siteUrl}/blog/slownik-prawno-tlumaczeniowy`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
     { url: `${siteUrl}/blog`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
     { url: `${siteUrl}/mapa-strony`, lastModified: today, changeFrequency: "monthly", priority: "0.5" },
     { url: `${siteUrl}/kontakt`, lastModified: today, changeFrequency: "monthly", priority: "0.7" },

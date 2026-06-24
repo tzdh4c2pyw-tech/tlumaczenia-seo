@@ -8,6 +8,7 @@ import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
 import LegalExpertBlogSection from "@/app/components/LegalExpertBlogSection";
 import ExpertBlogMagazine from "@/app/components/ExpertBlogMagazine";
 import LegalKnowledgeNavigator from "@/app/components/LegalKnowledgeNavigator";
+import LegalGlossaryTeaser from "@/app/components/LegalGlossaryTeaser";
 
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
@@ -339,6 +340,7 @@ export default function BlogPage() {
       <LegalExpertBlogSection />
           <ExpertBlogMagazine />
           <LegalKnowledgeNavigator />
+          <LegalGlossaryTeaser />
     </main>
   );
 }
