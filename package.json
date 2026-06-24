@@ -19,7 +19,8 @@
     "check:llms": "node scripts/check-llms.mjs",
     "check:ai-index": "node scripts/check-ai-index.mjs",
     "check:feed": "node scripts/check-feed.mjs",
-    "check:topic-clusters": "node scripts/check-topic-clusters.mjs"
+    "check:topic-clusters": "node scripts/check-topic-clusters.mjs",
+    "check:expert-guides": "node scripts/check-expert-guides.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

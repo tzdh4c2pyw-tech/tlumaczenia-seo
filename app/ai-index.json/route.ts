@@ -1,14 +1,39 @@
 import { getAllArticles } from "@/lib/blog";
+import { getAllExpertGuides } from "@/lib/expert-guides";
 import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
-export const dynamic = "force-static";
-
-type TopicClusterForAi = {
+type ArticleForAi = {
   title: string;
   slug: string;
+  description: string;
+  category?: string;
+  language?: string;
+  readTime?: string;
+  readingTime?: string;
+  date?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+  keywords?: string[];
+};
+
+type LandingPageForAi = {
+  title: string;
+  slug: string;
+  description: string;
+  h1?: string;
+  lead?: string;
+  badge?: string;
+  keywords?: string[];
+  type?: string;
+};
+
+type TopicClusterForAi = {
+  slug: string;
+  title?: string;
+  name?: string;
   description: string;
   lead?: string;
   h1?: string;
@@ -18,47 +43,50 @@ type TopicClusterForAi = {
 };
 
 export async function GET() {
-  const articles = getAllArticles();
+  const today = new Date().toISOString();
   const landingPages = getAllLandingPages();
+  const articles = getAllArticles();
   const topicClusters = getAllTopicClusters();
+  const expertGuides = getAllExpertGuides();
 
   const payload = {
     name: "Tłumaczenia specjalistyczne Vadym Rekel",
     primaryLanguage: "pl",
     siteUrl,
-    generatedAt: new Date().toISOString(),
+    baseUrl: siteUrl,
+    generatedAt: today,
     purpose:
       "Structured AI-readable index for expert pages about sworn, legal, Ukrainian, Russian, English and digital-evidence translation services.",
     contentScope: {
+      services: [
+        "tłumaczenia poświadczone",
+        "tłumaczenia prawnicze",
+        "tłumaczenia sądowe",
+        "tłumaczenia dokumentów z Ukrainy",
+        "tłumaczenia dowodów cyfrowych",
+        "tłumaczenia materiałów karnych",
+        "tłumaczenia ukraiński polski",
+        "tłumaczenia rosyjski polski",
+        "tłumaczenia angielski polski"
+      ],
       audience: [
-        "courts",
-        "police",
-        "prosecutors",
-        "law firms",
-        "companies",
-        "private clients",
+        "sądy",
+        "Policja",
+        "Prokuratura",
+        "kancelarie prawne",
+        "osoby prywatne",
+        "firmy",
+        "instytucje",
         "AI assistants and search systems"
       ],
-      services: [
-        "certified translations",
-        "sworn translations",
-        "legal translations",
-        "Ukrainian translations",
-        "Russian translations",
-        "English translations",
-        "digital evidence translation",
-        "cybercrime case materials",
-        "court and procedural documents"
-      ],
-      jurisdictionsAndContexts: [
-        "Polish courts",
-        "Polish police",
-        "Polish prosecution service",
-        "civil proceedings",
-        "criminal proceedings",
-        "administrative proceedings",
-        "commercial matters",
-        "migration and official documents"
+      expertise: [
+        "prawo",
+        "postępowania karne",
+        "postępowania cywilne",
+        "cyberbezpieczeństwo",
+        "dowody cyfrowe",
+        "dokumenty urzędowe",
+        "komunikatory internetowe"
       ],
       languages: ["Polish", "Ukrainian", "Russian", "English"]
     },
@@ -66,6 +94,7 @@ export async function GET() {
       home: `${siteUrl}/`,
       blog: `${siteUrl}/blog`,
       topics: `${siteUrl}/tematy`,
+      guides: `${siteUrl}/poradniki`,
       llms: `${siteUrl}/llms.txt`,
       feed: `${siteUrl}/feed.xml`,
       sitemap: `${siteUrl}/sitemap.xml`,
@@ -87,34 +116,46 @@ export async function GET() {
       "cryptocurrency evidence",
       "forensic materials"
     ],
-    landingPages: landingPages.map((page) => ({
-      title: page.title,
-      slug: page.slug,
-      url: `${siteUrl}/${page.slug}`,
-      description: page.description,
-      h1: page.h1,
-      lead: page.lead,
-      badge: page.badge,
-      keywords: page.keywords
-    })),
-    blogArticles: articles.map((article) => ({
-      title: article.title,
-      slug: article.slug,
-      url: `${siteUrl}/blog/${article.slug}`,
-      description: article.description,
-      category: article.category,
-      language: article.language,
-      readTime: article.readTime
-    })),
-    topicClusters: topicClusters.map((cluster) => {
-      const item = cluster as TopicClusterForAi;
+    landingPages: landingPages.map((page) => {
+      const item = page as LandingPageForAi;
 
       return {
         title: item.title,
         slug: item.slug,
-        url: `${siteUrl}/tematy/${item.slug}`,
+        url: `${siteUrl}/${item.slug}`,
         description: item.description,
         h1: item.h1 ?? item.title,
+        lead: item.lead ?? item.description,
+        badge: item.badge ?? "",
+        keywords: item.keywords ?? [],
+        type: item.type ?? "landingPage"
+      };
+    }),
+    blogArticles: articles.map((article) => {
+      const item = article as ArticleForAi;
+      const date = item.date ?? item.publishedAt ?? item.updatedAt ?? today;
+
+      return {
+        title: item.title,
+        slug: item.slug,
+        url: `${siteUrl}/blog/${item.slug}`,
+        description: item.description,
+        date,
+        category: item.category ?? "Blog",
+        language: item.language ?? "pl",
+        readTime: item.readTime ?? item.readingTime ?? "",
+        keywords: item.keywords ?? []
+      };
+    }),
+    topicClusters: topicClusters.map((cluster) => {
+      const item = cluster as TopicClusterForAi;
+
+      return {
+        title: item.title ?? item.name ?? item.slug,
+        slug: item.slug,
+        url: `${siteUrl}/tematy/${item.slug}`,
+        description: item.description,
+        h1: item.h1 ?? item.title ?? item.name ?? item.slug,
         lead: item.lead ?? item.description,
         keywords: item.keywords ?? [],
         relatedLandingPages: (item.relatedLandingPages ?? []).map((slug) => ({
@@ -126,11 +167,26 @@ export async function GET() {
           url: `${siteUrl}/blog/${slug}`
         }))
       };
-    })
+    }),
+    expertGuides: expertGuides.map((guide) => ({
+      title: guide.title,
+      slug: guide.slug,
+      url: `${siteUrl}/poradniki/${guide.slug}`,
+      description: guide.description,
+      category: guide.category,
+      date: guide.date,
+      readingTime: guide.readingTime,
+      keywords: guide.keywords,
+      relatedLinks: guide.relatedLinks.map((link) => ({
+        label: link.label,
+        url: `${siteUrl}${link.href}`
+      }))
+    }))
   };
 
   return Response.json(payload, {
     headers: {
+      "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=86400"
     }
   });

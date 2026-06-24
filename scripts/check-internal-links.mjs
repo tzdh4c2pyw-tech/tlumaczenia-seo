@@ -1,86 +1,147 @@
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const sourceRoots = ["app", "lib"];
+const filesToScan = [];
 
 function walk(dir) {
-  const files = [];
+  if (!existsSync(dir)) {
+    return;
+  }
 
   for (const entry of readdirSync(dir)) {
-    const path = join(dir, entry);
-    const stat = statSync(path);
+    const full = join(dir, entry);
+    const stat = statSync(full);
 
     if (stat.isDirectory()) {
-      if (entry === ".next" || entry === "node_modules") continue;
-      files.push(...walk(path));
+      if ([".next", "node_modules", ".git"].includes(entry)) {
+        continue;
+      }
+      walk(full);
       continue;
     }
 
-    if (/\.(tsx|ts|jsx|js)$/.test(entry)) {
-      files.push(path);
+    if (/\.(tsx|ts|jsx|js|mdx|md|txt)$/.test(entry)) {
+      filesToScan.push(full);
     }
   }
-
-  return files;
 }
 
-function extractSlugs(file) {
-  const source = readFileSync(file, "utf8");
-  const slugs = new Set();
+function readIfExists(path) {
+  return existsSync(path) ? readFileSync(path, "utf8") : "";
+}
 
-  for (const match of source.matchAll(/slug:\s*"([^"]+)"/g)) {
-    slugs.add(match[1]);
+function extractSlugs(source) {
+  const slugs = new Set();
+  const patterns = [
+    /slug:\s*"([^"]+)"/g,
+    /slug:\s*'([^']+)'/g
+  ];
+
+  for (const pattern of patterns) {
+    let match;
+    while ((match = pattern.exec(source)) !== null) {
+      if (match[1] && !match[1].includes("${")) {
+        slugs.add(match[1]);
+      }
+    }
   }
 
   return slugs;
 }
 
-const landingSlugs = extractSlugs("lib/landing-pages.ts");
-const blogSlugs = extractSlugs("lib/blog.ts");
+const landingSource = readIfExists("lib/landing-pages.ts");
+const blogSource = readIfExists("lib/blog.ts");
+const topicSource = readIfExists("lib/topic-clusters.ts");
+const expertGuidesSource = readIfExists("lib/expert-guides.ts");
 
-const allowedPaths = new Set([
+const landingSlugs = extractSlugs(landingSource);
+const blogSlugs = extractSlugs(blogSource);
+const topicSlugs = extractSlugs(topicSource);
+const expertGuideSlugs = extractSlugs(expertGuidesSource);
+
+const knownRoutes = new Set([
   "/",
   "/blog",
   "/kontakt",
+  "/pdf-na-tekst",
+  "/robots.txt",
+  "/sitemap.xml",
+  "/llms.txt",
+  "/ai-index.json",
+  "/feed.xml",
   "/tematy",
-  "/pdf-na-tekst"
+  "/poradniki"
 ]);
 
 for (const slug of landingSlugs) {
-  allowedPaths.add(`/${slug}`);
+  knownRoutes.add(`/${slug}`);
 }
 
 for (const slug of blogSlugs) {
-  allowedPaths.add(`/blog/${slug}`);
+  knownRoutes.add(`/blog/${slug}`);
 }
 
-const linkPatterns = [
-  /href="([^"]+)"/g,
-  /href='([^']+)'/g,
-  /href:\s*"([^"]+)"/g,
-  /href:\s*'([^']+)'/g
-];
+for (const slug of topicSlugs) {
+  knownRoutes.add(`/tematy/${slug}`);
+}
+
+for (const slug of expertGuideSlugs) {
+  knownRoutes.add(`/poradniki/${slug}`);
+}
+
+walk("app");
+walk("lib");
 
 const errors = [];
 
-for (const root of sourceRoots) {
-  for (const file of walk(root)) {
-    const source = readFileSync(file, "utf8");
+function shouldIgnoreLink(link) {
+  if (!link) return true;
+  if (!link.startsWith("/")) return true;
+  if (link.startsWith("//")) return true;
+  if (link.includes("${")) return true;
+  if (link.includes("*")) return true;
+  if (link.startsWith("/api/")) return true;
+  if (link.startsWith("/_next/")) return true;
+  if (link.match(/\.(png|jpg|jpeg|webp|svg|ico|pdf|zip|xml|txt|json)$/)) return true;
 
-    for (const pattern of linkPatterns) {
-      for (const match of source.matchAll(pattern)) {
-        const raw = match[1];
+  return false;
+}
 
-        if (!raw.startsWith("/")) continue;
-        if (raw.startsWith("//")) continue;
+function normalizeLink(link) {
+  return link.split("#")[0].split("?")[0].replace(/\/$/, "") || "/";
+}
 
-        const clean = raw.split("#")[0].split("?")[0] || "/";
+const linkPatterns = [
+  /href:\s*"([^"]+)"/g,
+  /href:\s*'([^']+)'/g,
+  /href="([^"]+)"/g,
+  /href='([^']+)'/g,
+  /url:\s*"([^"]+)"/g,
+  /url:\s*'([^']+)'/g,
+  /item:\s*"([^"]+)"/g,
+  /item:\s*'([^']+)'/g
+];
 
-        if (clean.includes("${")) continue;
+for (const file of filesToScan) {
+  if (file.includes("scripts/check-internal-links.mjs")) {
+    continue;
+  }
 
-        if (!allowedPaths.has(clean)) {
-          errors.push(`${file}: unknown internal link ${raw}`);
-        }
+  const source = readFileSync(file, "utf8");
+
+  for (const pattern of linkPatterns) {
+    let match;
+    while ((match = pattern.exec(source)) !== null) {
+      const raw = match[1];
+
+      if (shouldIgnoreLink(raw)) {
+        continue;
+      }
+
+      const link = normalizeLink(raw);
+
+      if (!knownRoutes.has(link)) {
+        errors.push(`${file}: unknown internal link ${link}`);
       }
     }
   }
@@ -94,4 +155,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: static internal links point to known routes, landing pages or blog articles.");
+console.log("OK: static internal links point to known routes, landing pages, blog articles, topic clusters or expert guides.");

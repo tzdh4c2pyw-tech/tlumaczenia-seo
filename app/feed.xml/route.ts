@@ -1,11 +1,16 @@
 import { getAllArticles } from "@/lib/blog";
-
-export const dynamic = "force-static";
+import { getAllExpertGuides } from "@/lib/expert-guides";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
-const feedTitle = "Baza wiedzy | Tłumaczenia specjalistyczne Vadym Rekel";
-const feedDescription =
-  "Ekspercki blog o tłumaczeniach poświadczonych i specjalistycznych: ukraiński, rosyjski, angielski, sądy, Policja, prokuratura, prawo, cyber, forensic i PDF.";
+
+type ArticleForFeed = {
+  title: string;
+  slug: string;
+  description: string;
+  date?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+};
 
 function escapeXml(value: string) {
   return value
@@ -16,41 +21,64 @@ function escapeXml(value: string) {
     .replaceAll("'", "&apos;");
 }
 
+function safePubDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return new Date().toUTCString();
+  }
+  return date.toUTCString();
+}
+
 export async function GET() {
-  const articles = getAllArticles();
+  const today = new Date().toISOString();
 
-  const items = articles
-    .map((article) => {
-      const url = `${siteUrl}/blog/${article.slug}`;
+  const blogItems = getAllArticles().map((article) => {
+    const item = article as ArticleForFeed;
 
-      return `
-    <item>
-      <title>${escapeXml(article.title)}</title>
-      <link>${url}</link>
-      <guid>${url}</guid>
-      <description>${escapeXml(article.description)}</description>
-      <category>${escapeXml(article.category)}</category>
-      <pubDate>${new Date(article.publishedAt).toUTCString()}</pubDate>
-    </item>`;
-    })
-    .join("");
+    return {
+      title: item.title,
+      description: item.description,
+      url: `${siteUrl}/blog/${item.slug}`,
+      date: item.date ?? item.publishedAt ?? item.updatedAt ?? today
+    };
+  });
+
+  const guideItems = getAllExpertGuides().map((guide) => ({
+    title: guide.title,
+    description: guide.description,
+    url: `${siteUrl}/poradniki/${guide.slug}`,
+    date: guide.date
+  }));
+
+  const items = [...blogItems, ...guideItems].sort((a, b) =>
+    String(b.date).localeCompare(String(a.date))
+  );
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${escapeXml(feedTitle)}</title>
-    <link>${siteUrl}/blog</link>
-    <description>${escapeXml(feedDescription)}</description>
+    <title>Tłumaczenia specjalistyczne Vadym Rekel</title>
+    <link>${escapeXml(siteUrl)}</link>
+    <description>Eksperckie materiały o tłumaczeniach poświadczonych, prawniczych, sądowych i cyfrowych.</description>
     <language>pl</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-${items}
+${items
+  .map(
+    (item) => `    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${escapeXml(item.url)}</link>
+      <guid>${escapeXml(item.url)}</guid>
+      <pubDate>${safePubDate(item.date)}</pubDate>
+      <description>${escapeXml(item.description)}</description>
+    </item>`
+  )
+  .join("\n")}
   </channel>
 </rss>`;
 
   return new Response(xml, {
     headers: {
-      "Content-Type": "application/rss+xml; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=86400"
+      "Content-Type": "application/rss+xml; charset=utf-8"
     }
   });
 }

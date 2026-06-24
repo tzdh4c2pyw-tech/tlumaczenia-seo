@@ -59,3 +59,15 @@ Relevant market and jurisdiction: Poland.
 - Expert topic clusters: /tematy and /tematy/[slug]
 - Expert blog RSS feed: /feed.xml
 - AI content index: /ai-index.json
+
+## Expert guides
+
+- /poradniki
+- /poradniki/tlumaczenie-dowodow-cyfrowych-w-sprawach-karnych
+- /poradniki/tlumaczenie-korespondencji-telegram-whatsapp-signal
+- /poradniki/tlumaczenie-dokumentow-z-ukrainy-do-sadu-w-polsce
+- /poradniki/tlumaczenie-akt-sprawy-karnej-z-jezyka-ukrainskiego
+- /poradniki/tlumaczenie-materialow-dotyczacych-oszustw-internetowych-i-blik
+- /poradniki/tlumaczenie-dokumentacji-kryptowalutowej-i-blockchain
+- /poradniki/rola-tlumacza-przysieglego-w-kontaktach-z-policja-i-prokuratura
+- /poradniki/tlumaczenie-pelnomocnictw-wyrokow-i-zaswiadczen-z-ukrainy
