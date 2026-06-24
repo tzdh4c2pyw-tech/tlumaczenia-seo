@@ -2,6 +2,7 @@ import { getAllArticles } from "@/lib/blog";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
+import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
@@ -48,6 +49,7 @@ export async function GET() {
   const articles = getAllArticles();
   const topicClusters = getAllTopicClusters();
   const expertGuides = getAllExpertGuides();
+  const localSeoArticles = getAllLocalSeoArticles();
 
   const payload = {
     name: "Tłumaczenia specjalistyczne Vadym Rekel",
@@ -171,6 +173,21 @@ export async function GET() {
         }))
       };
     }),
+    localArticles: localSeoArticles.map((article) => ({
+      title: article.title,
+      slug: article.slug,
+      url: `${siteUrl}/lokalnie/${article.slug}`,
+      description: article.description,
+      city: article.city,
+      region: article.region,
+      category: article.category,
+      date: article.date,
+      keywords: article.keywords,
+      relatedLinks: article.relatedLinks.map((link) => ({
+        label: link.label,
+        url: `${siteUrl}${link.href}`
+      }))
+    })),
     expertGuides: expertGuides.map((guide) => ({
       title: guide.title,
       slug: guide.slug,

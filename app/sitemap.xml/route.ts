@@ -2,6 +2,7 @@ import { getAllArticles } from "@/lib/blog";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
+import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
@@ -40,6 +41,7 @@ export async function GET() {
     { url: `${siteUrl}/poradniki`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
     { url: `${siteUrl}/dobierz-tlumaczenie`, lastModified: today, changeFrequency: "monthly", priority: "0.75" },
     { url: `${siteUrl}/faq`, lastModified: today, changeFrequency: "monthly", priority: "0.7" },
+    { url: `${siteUrl}/lokalnie`, lastModified: today, changeFrequency: "weekly", priority: "0.75" },
     { url: `${siteUrl}/llms.txt`, lastModified: today, changeFrequency: "monthly", priority: "0.4" },
     { url: `${siteUrl}/ai-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },
     { url: `${siteUrl}/search-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },
@@ -64,6 +66,13 @@ export async function GET() {
     };
   });
 
+  const localSeoArticles: SitemapEntry[] = getAllLocalSeoArticles().map((article) => ({
+    url: `${siteUrl}/lokalnie/${article.slug}`,
+    lastModified: article.date || today,
+    changeFrequency: "monthly",
+    priority: "0.65"
+  }));
+
   const topicHubs: SitemapEntry[] = getAllTopicClusters().map((cluster) => ({
     url: `${siteUrl}/tematy/${cluster.slug}`,
     lastModified: today,
@@ -83,6 +92,7 @@ export async function GET() {
     ...landingPages,
     ...blogArticles,
     ...topicHubs,
+    ...localSeoArticles,
     ...expertGuides
   ];
 

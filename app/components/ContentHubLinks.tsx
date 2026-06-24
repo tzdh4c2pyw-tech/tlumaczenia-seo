@@ -35,6 +35,13 @@ const primaryHubs = [
       "Najczęstsze pytania o dokumenty, akta, dowody cyfrowe, wycenę i przygotowanie materiałów do tłumaczenia.",
     href: "/faq",
     label: "Przejdź do FAQ"
+  },
+  {
+    title: "Lokalne artykuły SEO",
+    description:
+      "Treści lokalne dla Krakowa, miast pod Krakowem oraz Małopolski: dokumenty z Ukrainy, sądy, urzędy i dowody cyfrowe.",
+    href: "/lokalnie",
+    label: "Przejdź do artykułów lokalnych"
   }
 ];
 

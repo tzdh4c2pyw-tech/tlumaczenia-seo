@@ -53,11 +53,13 @@ const landingSource = readIfExists("lib/landing-pages.ts");
 const blogSource = readIfExists("lib/blog.ts");
 const topicSource = readIfExists("lib/topic-clusters.ts");
 const expertGuidesSource = readIfExists("lib/expert-guides.ts");
+const localSeoSource = readIfExists("lib/local-seo-articles.ts");
 
 const landingSlugs = extractSlugs(landingSource);
 const blogSlugs = extractSlugs(blogSource);
 const topicSlugs = extractSlugs(topicSource);
 const expertGuideSlugs = extractSlugs(expertGuidesSource);
+const localSeoArticleSlugs = extractSlugs(localSeoSource);
 
 const knownRoutes = new Set([
   "/",
@@ -72,7 +74,8 @@ const knownRoutes = new Set([
   "/tematy",
   "/poradniki",
   "/dobierz-tlumaczenie",
-  "/faq"
+  "/faq",
+  "/lokalnie"
 ]);
 
 for (const slug of landingSlugs) {
@@ -89,6 +92,10 @@ for (const slug of topicSlugs) {
 
 for (const slug of expertGuideSlugs) {
   knownRoutes.add(`/poradniki/${slug}`);
+}
+
+for (const slug of localSeoArticleSlugs) {
+  knownRoutes.add(`/lokalnie/${slug}`);
 }
 
 walk("app");

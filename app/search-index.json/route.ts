@@ -2,6 +2,7 @@ import { getAllArticles } from "@/lib/blog";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
+import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
@@ -201,6 +202,33 @@ export async function GET() {
     };
   });
 
+  const localSeoArticles = getAllLocalSeoArticles().map((article) => ({
+    type: "localSeoArticle",
+    title: article.title,
+    url: `${siteUrl}/lokalnie/${article.slug}`,
+    path: `/lokalnie/${article.slug}`,
+    description: article.description,
+    city: article.city,
+    region: article.region,
+    category: article.category,
+    date: article.date,
+    keywords: article.keywords,
+    relatedPaths: article.relatedLinks.map((link) => link.href),
+    content: normalizeText([
+      article.title,
+      article.description,
+      article.intro,
+      article.city,
+      article.region,
+      article.category,
+      article.keywords,
+      article.sections.map((section) =>
+        normalizeText([section.heading, section.paragraphs])
+      ),
+      article.faqs.map((faq) => `${faq.question} ${faq.answer}`)
+    ])
+  }));
+
   const expertGuides = getAllExpertGuides().map((guide) => ({
     type: "expertGuide",
     title: guide.title,
@@ -229,6 +257,7 @@ export async function GET() {
     ...landingPages,
     ...blogArticles,
     ...topicClusters,
+    ...localSeoArticles,
     ...expertGuides
   ];
 
@@ -244,7 +273,8 @@ export async function GET() {
         landingPage: landingPages.length,
         blogArticle: blogArticles.length,
         topicCluster: topicClusters.length,
-        expertGuide: expertGuides.length
+        expertGuide: expertGuides.length,
+        localSeoArticle: localSeoArticles.length
       },
       items
     },

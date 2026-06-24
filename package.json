@@ -25,7 +25,8 @@
     "check:expert-conversion": "node scripts/check-expert-conversion-sections.mjs",
     "check:search-index": "node scripts/check-search-index.mjs",
     "check:decision-guide": "node scripts/check-decision-guide.mjs",
-    "check:faq-hub": "node scripts/check-faq-hub.mjs"
+    "check:faq-hub": "node scripts/check-faq-hub.mjs",
+    "check:local-seo": "node scripts/check-local-seo-articles.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
