@@ -31,7 +31,8 @@
     "check:krakow-seo": "node scripts/check-krakow-seo.mjs",
     "check:visual-polish": "node scripts/check-visual-polish.mjs",
     "check:local-visual-pages": "node scripts/check-local-visual-pages.mjs",
-    "check:regional-navigation": "node scripts/check-regional-navigation.mjs"
+    "check:regional-navigation": "node scripts/check-regional-navigation.mjs",
+    "check:global-text-polish": "node scripts/check-global-text-polish.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

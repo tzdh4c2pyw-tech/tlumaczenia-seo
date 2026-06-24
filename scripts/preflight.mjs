@@ -26,6 +26,7 @@ const steps = [
   ["npm", ["run", "check:visual-polish"]],
   ["npm", ["run", "check:local-visual-pages"]],
   ["npm", ["run", "check:regional-navigation"]],
+  ["npm", ["run", "check:global-text-polish"]],
 ];
 
 for (const [cmd, args] of steps) {
