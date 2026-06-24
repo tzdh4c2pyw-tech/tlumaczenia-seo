@@ -1,20 +1,14 @@
 import { existsSync, readFileSync } from "node:fs";
 
-const requiredFiles = [
-  "app/components/LocalPageShell.tsx",
-  "app/lokalnie/page.tsx",
-  "app/lokalnie/[slug]/page.tsx",
-  "app/malopolskie/page.tsx",
-  "app/malopolskie/[slug]/page.tsx",
-  "package.json",
-  "scripts/preflight.mjs"
-];
-
-const files = Object.fromEntries(
-  requiredFiles
-    .filter((file) => existsSync(file))
-    .map((file) => [file, readFileSync(file, "utf8")])
-);
+const files = {
+  "app/components/LocalPageShell.tsx": readFileSync("app/components/LocalPageShell.tsx", "utf8"),
+  "app/lokalnie/page.tsx": readFileSync("app/lokalnie/page.tsx", "utf8"),
+  "app/lokalnie/[slug]/page.tsx": readFileSync("app/lokalnie/[slug]/page.tsx", "utf8"),
+  "app/malopolskie/page.tsx": readFileSync("app/malopolskie/page.tsx", "utf8"),
+  "app/malopolskie/[slug]/page.tsx": readFileSync("app/malopolskie/[slug]/page.tsx", "utf8"),
+  "package.json": readFileSync("package.json", "utf8"),
+  "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
+};
 
 if (existsSync("app/krakow/page.tsx")) {
   files["app/krakow/page.tsx"] = readFileSync("app/krakow/page.tsx", "utf8");
@@ -25,6 +19,7 @@ if (existsSync("app/krakow/[slug]/page.tsx")) {
 }
 
 const required = [
+  ["app/components/LocalPageShell.tsx", "inline-style"],
   ["app/components/LocalPageShell.tsx", "LocalPageShell"],
   ["app/components/LocalPageShell.tsx", "LocalCardGrid"],
   ["app/components/LocalPageShell.tsx", "LocalArticleShell"],
@@ -49,12 +44,6 @@ if (files["app/krakow/[slug]/page.tsx"]) {
 
 const errors = [];
 
-for (const file of requiredFiles) {
-  if (!existsSync(file)) {
-    errors.push(`${file}: missing file`);
-  }
-}
-
 for (const [file, snippet] of required) {
   if (!files[file]?.includes(snippet)) {
     errors.push(`${file}: missing ${snippet}`);
@@ -69,4 +58,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: local SEO pages use polished visual shell.");
+console.log("OK: local SEO pages use polished forced visual shell.");

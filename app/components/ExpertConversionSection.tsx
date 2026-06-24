@@ -1,107 +1,195 @@
 import Link from "next/link";
 
-type ExpertConversionSectionProps = {
-  variant?: string;
-};
+// inline-style: sekcja konwersyjna niezależna od klas utility.
 
-const processSteps = [
-  "Przekazujesz dokumenty lub opis sprawy.",
-  "Zakres materiału jest oceniany pod kątem czytelności i objętości.",
-  "Otrzymujesz informację o możliwej wycenie, terminie i sposobie odbioru.",
-  "Tłumaczenie jest przygotowywane z zachowaniem układu, terminologii i kontekstu."
-];
+const sectionStyle = {
+  width: "100%",
+  padding: "72px 24px",
+  background:
+    "radial-gradient(circle at top right, rgba(245,158,11,0.10), transparent 34%), linear-gradient(180deg, rgba(15,23,42,0.08), rgba(2,6,23,0.36))"
+} as const;
 
-const useCases = [
-  {
-    title: "Dokument do sądu, Policji lub Prokuratury",
-    text:
-      "Przygotuj czytelny skan, PDF albo komplet zdjęć dokumentów. Jeżeli sprawa ma charakter pilny, wskaż termin oraz instytucję, do której ma trafić tłumaczenie."
-  },
-  {
-    title: "Akta, protokoły i materiały procesowe",
-    text:
-      "Przy większych pakietach dokumentów warto zachować kolejność stron, sygnatury, nazwy plików i załączniki. Ułatwia to spójne tłumaczenie całego materiału."
-  },
-  {
-    title: "Wiadomości, zrzuty ekranu i dowody cyfrowe",
-    text:
-      "Nie usuwaj dat, godzin, nazw użytkowników ani oznaczeń systemowych. Te elementy mogą mieć znaczenie dla kontekstu i późniejszej oceny materiału."
-  }
-];
+const containerStyle = {
+  maxWidth: "1180px",
+  margin: "0 auto",
+  border: "1px solid rgba(255,255,255,0.12)",
+  borderRadius: "32px",
+  background:
+    "linear-gradient(135deg, rgba(88,28,45,0.74), rgba(15,23,42,0.88) 58%, rgba(2,6,23,0.92))",
+  boxShadow: "0 30px 90px rgba(0,0,0,0.42)",
+  overflow: "hidden"
+} as const;
 
-export default function ExpertConversionSection({}: ExpertConversionSectionProps = {}) {
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns: "minmax(320px, 1.05fr) minmax(320px, 1fr)"
+} as const;
+
+const leftStyle = {
+  padding: "38px"
+} as const;
+
+const rightStyle = {
+  padding: "38px",
+  borderLeft: "1px solid rgba(255,255,255,0.10)",
+  background: "rgba(2,6,23,0.34)"
+} as const;
+
+const eyebrowStyle = {
+  margin: 0,
+  color: "#fcd34d",
+  fontSize: "11px",
+  fontWeight: 900,
+  letterSpacing: "0.25em",
+  textTransform: "uppercase"
+} as const;
+
+const headingStyle = {
+  margin: "18px 0 0",
+  color: "#fff",
+  fontSize: "clamp(30px, 4vw, 48px)",
+  lineHeight: "0.98",
+  fontWeight: 900,
+  letterSpacing: "-0.045em"
+} as const;
+
+const textStyle = {
+  margin: "22px 0 0",
+  color: "#e2e8f0",
+  fontSize: "16px",
+  lineHeight: "1.78"
+} as const;
+
+const actionStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "12px",
+  marginTop: "28px"
+} as const;
+
+const primaryStyle = {
+  display: "inline-flex",
+  minHeight: "46px",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "999px",
+  background: "#fcd34d",
+  color: "#0f172a",
+  padding: "0 22px",
+  fontSize: "14px",
+  fontWeight: 900,
+  textDecoration: "none"
+} as const;
+
+const secondaryStyle = {
+  display: "inline-flex",
+  minHeight: "46px",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "999px",
+  border: "1px solid rgba(255,255,255,0.18)",
+  background: "rgba(255,255,255,0.07)",
+  color: "#fff",
+  padding: "0 22px",
+  fontSize: "14px",
+  fontWeight: 900,
+  textDecoration: "none"
+} as const;
+
+const listStyle = {
+  margin: "22px 0 0",
+  padding: 0,
+  listStyle: "none",
+  display: "grid",
+  gap: "12px"
+} as const;
+
+const itemStyle = {
+  display: "grid",
+  gridTemplateColumns: "32px 1fr",
+  gap: "12px",
+  padding: "14px",
+  border: "1px solid rgba(255,255,255,0.10)",
+  borderRadius: "18px",
+  background: "rgba(255,255,255,0.045)"
+} as const;
+
+const numberStyle = {
+  display: "inline-flex",
+  width: "32px",
+  height: "32px",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "999px",
+  background: "rgba(251,191,36,0.16)",
+  color: "#fde68a",
+  fontSize: "13px",
+  fontWeight: 900
+} as const;
+
+const itemTextStyle = {
+  margin: 0,
+  color: "#cbd5e1",
+  fontSize: "14px",
+  lineHeight: "1.55"
+} as const;
+
+export default function ExpertConversionSection() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16">
-      <div className="overflow-hidden rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-[#321421] via-slate-950 to-[#071824] shadow-2xl shadow-black/35 ring-1 ring-white/5">
-        <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="p-6 md:p-10">
-            <p className="inline-flex rounded-full bg-amber-300/15 px-4 py-2 text-[0.68rem] font-black uppercase tracking-[0.25em] text-amber-200">
-              Wstępna ocena materiału
-            </p>
-
-            <h2 className="mt-6 max-w-2xl text-3xl font-black tracking-tight text-white md:text-5xl">
+    <section style={sectionStyle} data-component="expert-conversion-section">
+      <div style={containerStyle}>
+        <div style={gridStyle}>
+          <div style={leftStyle}>
+            <p style={eyebrowStyle}>Wycena i kontakt</p>
+            <h2 style={headingStyle}>
               Potrzebujesz tłumaczenia dokumentów, akt albo materiałów cyfrowych?
             </h2>
-
-            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-              Prześlij opis sprawy albo dokumenty do wstępnej oceny. W przypadku
-              materiałów dla sądu, Policji, Prokuratury lub kancelarii prawnej
+            <p style={textStyle}>
+              Prześlij opis sprawy albo dokumenty do wstępnej oceny. Przy
+              materiałach dla sądu, Policji, Prokuratury lub kancelarii prawnej
               najważniejsze są: czytelność plików, pełny kontekst, termin oraz
               informacja, do jakiego celu tłumaczenie ma zostać użyte.
             </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="/kontakt"
-                className="rounded-full bg-amber-300 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-amber-200"
-              >
+            <div style={actionStyle}>
+              <Link href="/kontakt" style={primaryStyle}>
                 Wyślij tekst do wyceny
               </Link>
-              <Link
-                href="/poradniki"
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:border-amber-300/70 hover:text-amber-100"
-              >
+              <Link href="/poradniki" style={secondaryStyle}>
                 Zobacz poradniki
               </Link>
-              <Link
-                href="/tematy"
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:border-amber-300/70 hover:text-amber-100"
-              >
-                Zobacz tematy
+              <Link href="/tematy" style={secondaryStyle}>
+                Zobacz tematy eksperckie
               </Link>
             </div>
           </div>
 
-          <aside className="border-t border-white/10 bg-white/[0.04] p-6 md:p-10 lg:border-l lg:border-t-0">
-            <h3 className="text-2xl font-black text-white">Jak przygotować zapytanie</h3>
-            <ol className="mt-6 space-y-3">
-              {processSteps.map((step, index) => (
-                <li
-                  key={step}
-                  className="grid grid-cols-[2.25rem_1fr] gap-3 rounded-2xl border border-white/10 bg-slate-950/55 p-4"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-300 text-sm font-black text-slate-950">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm leading-6 text-slate-200">{step}</span>
+          <div style={rightStyle}>
+            <h3
+              style={{
+                margin: 0,
+                color: "#fff",
+                fontSize: "26px",
+                lineHeight: "1",
+                fontWeight: 900,
+                letterSpacing: "-0.035em"
+              }}
+            >
+              Jak przygotować zapytanie
+            </h3>
+            <ol style={listStyle}>
+              {[
+                "Przekaż dokumenty lub opisz sprawę: język, rodzaj dokumentu, cel tłumaczenia i oczekiwany termin.",
+                "Załącz materiał w formie czytelnego skanu, PDF albo kompletu zdjęć. Przy aktach zachowaj kolejność stron.",
+                "Przy dowodach cyfrowych nie usuwaj dat, godzin, nazw użytkowników ani oznaczeń systemowych.",
+                "W przypadku organów i kancelarii wskaż instytucję, sygnaturę albo etap postępowania, jeżeli ma to znaczenie."
+              ].map((text, index) => (
+                <li key={text} style={itemStyle}>
+                  <span style={numberStyle}>{index + 1}</span>
+                  <p style={itemTextStyle}>{text}</p>
                 </li>
               ))}
             </ol>
-          </aside>
-        </div>
-
-        <div className="grid gap-4 border-t border-white/10 p-6 md:grid-cols-3 md:p-10">
-          {useCases.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-3xl border border-white/10 bg-slate-950/55 p-5"
-            >
-              <h3 className="text-lg font-black leading-tight text-white">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
-            </article>
-          ))}
+          </div>
         </div>
       </div>
     </section>
