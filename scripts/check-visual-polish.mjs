@@ -14,13 +14,16 @@ const files = {
 };
 
 const required = [
-  ["app/components/ContentHubLinks.tsx", "rounded-[2rem]"],
-  ["app/components/ContentHubLinks.tsx", "grid gap-4 md:grid-cols-2"],
-  ["app/components/ContentHubLinks.tsx", "Małopolskie SEO"],
-  ["app/components/ContentHubLinks.tsx", "Lokalne artykuły SEO"],
-  ["app/components/ExpertConversionSection.tsx", "rounded-[2rem]"],
+  ["app/components/ContentHubLinks.tsx", "data-component=\"content-hub-links\""],
+  ["app/components/ContentHubLinks.tsx", "inline-style"],
+  ["app/components/ContentHubLinks.tsx", "/krakow"],
+  ["app/components/ContentHubLinks.tsx", "/malopolskie"],
+  ["app/components/ContentHubLinks.tsx", "/lokalnie"],
+  ["app/components/ContentHubLinks.tsx", "/tematy/tlumaczenia-poswiadczone"],
+  ["app/components/ContentHubLinks.tsx", "/tematy/dokumenty-z-ukrainy"],
+  ["app/components/ContentHubLinks.tsx", "/tematy/sady-policja-prokuratura"],
+  ["app/components/ContentHubLinks.tsx", "/poradniki/tlumaczenie-dowodow-cyfrowych-w-sprawach-karnych"],
   ["app/components/ExpertConversionSection.tsx", "Jak przygotować zapytanie"],
-  ["app/components/ExpertConversionSection.tsx", "grid gap-4 border-t"],
   ["package.json", "check:visual-polish"],
   ["scripts/preflight.mjs", "check:visual-polish"]
 ];
