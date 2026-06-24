@@ -36,6 +36,12 @@ export async function GET() {
 
   const corePages: SitemapEntry[] = [
     { url: siteUrl, lastModified: today, changeFrequency: "weekly", priority: "1.0" },
+        { url: `${siteUrl}/blog/tlumaczenia-w-sprawach-karnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-w-sprawach-cywilnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-dla-policji-prokuratury-i-sadu`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-dowodow-cyfrowych-w-sprawach-karnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-ustne-konferencje-i-spotkania`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-dokumentow-z-ukrainy-w-postepowaniach`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
     { url: `${siteUrl}/blog`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
     { url: `${siteUrl}/mapa-strony`, lastModified: today, changeFrequency: "monthly", priority: "0.5" },
     { url: `${siteUrl}/kontakt`, lastModified: today, changeFrequency: "monthly", priority: "0.7" },

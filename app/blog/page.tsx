@@ -5,6 +5,7 @@ import { mailtoHref } from "@/lib/mailto";
 import ContentHubLinks from "../components/ContentHubLinks";
 import ExpertConversionSections from "../components/ExpertConversionSections";
 import RegionalSeoNavigation from "../components/RegionalSeoNavigation";
+import LegalExpertBlogSection from "@/app/components/LegalExpertBlogSection";
 
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
@@ -333,6 +334,7 @@ export default function BlogPage() {
       <ContentHubLinks />
 
       <ExpertConversionSections />
-</main>
+      <LegalExpertBlogSection />
+    </main>
   );
 }
