@@ -32,7 +32,9 @@
     "check:visual-polish": "node scripts/check-visual-polish.mjs",
     "check:local-visual-pages": "node scripts/check-local-visual-pages.mjs",
     "check:regional-navigation": "node scripts/check-regional-navigation.mjs",
-    "check:global-text-polish": "node scripts/check-global-text-polish.mjs"
+    "check:global-text-polish": "node scripts/check-global-text-polish.mjs",
+    "audit:rendered-pages": "node scripts/audit-rendered-pages.mjs",
+    "check:rendered-pages-audit": "node scripts/check-rendered-pages-audit.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
