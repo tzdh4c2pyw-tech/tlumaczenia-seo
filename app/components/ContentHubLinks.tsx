@@ -42,6 +42,13 @@ const primaryHubs = [
       "Treści lokalne dla Krakowa, miast pod Krakowem oraz Małopolski: dokumenty z Ukrainy, sądy, urzędy i dowody cyfrowe.",
     href: "/lokalnie",
     label: "Przejdź do artykułów lokalnych"
+  },
+  {
+    title: "Małopolskie SEO",
+    description:
+      "Lokalne strony dla Krakowa i miast Małopolski pod frazy: tłumacz przysięgły ukraiński, dokumenty z Ukrainy, sąd i urząd.",
+    href: "/malopolskie",
+    label: "Przejdź do Małopolskie SEO"
   }
 ];
 

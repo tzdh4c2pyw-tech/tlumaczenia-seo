@@ -26,7 +26,8 @@
     "check:search-index": "node scripts/check-search-index.mjs",
     "check:decision-guide": "node scripts/check-decision-guide.mjs",
     "check:faq-hub": "node scripts/check-faq-hub.mjs",
-    "check:local-seo": "node scripts/check-local-seo-articles.mjs"
+    "check:local-seo": "node scripts/check-local-seo-articles.mjs",
+    "check:malopolskie-seo": "node scripts/check-malopolskie-seo.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

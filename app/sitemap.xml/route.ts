@@ -3,6 +3,7 @@ import { getAllExpertGuides } from "@/lib/expert-guides";
 import { getAllLandingPages } from "@/lib/landing-pages";
 import { getAllTopicClusters } from "@/lib/topic-clusters";
 import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
+import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
@@ -66,6 +67,13 @@ export async function GET() {
     };
   });
 
+  const malopolskieSeoPages: SitemapEntry[] = getAllMalopolskieSeoPages().map((page) => ({
+    url: `${siteUrl}/malopolskie/${page.slug}`,
+    lastModified: page.date || today,
+    changeFrequency: "monthly",
+    priority: "0.65"
+  }));
+
   const localSeoArticles: SitemapEntry[] = getAllLocalSeoArticles().map((article) => ({
     url: `${siteUrl}/lokalnie/${article.slug}`,
     lastModified: article.date || today,
@@ -93,6 +101,7 @@ export async function GET() {
     ...blogArticles,
     ...topicHubs,
     ...localSeoArticles,
+    ...malopolskieSeoPages,
     ...expertGuides
   ];
 
