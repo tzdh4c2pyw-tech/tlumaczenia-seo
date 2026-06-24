@@ -2,75 +2,59 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { mailtoHref } from "@/lib/mailto";
-import "./floating-cta.css";
 
-export default function FloatingCta() {
-  const [isVisible, setIsVisible] = useState(false);
+const STORAGE_KEY = "floating-cta-closed";
+
+export function FloatingCta() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
-    const wasClosed = window.localStorage.getItem("floating-cta-closed");
+    setIsMounted(true);
+  }, []);
 
-    if (wasClosed === "true") {
-      setIsClosed(true);
+  useEffect(() => {
+    if (!isMounted) {
       return;
     }
 
-    const timer = window.setTimeout(() => {
-      setIsVisible(true);
-    }, 1200);
+    const wasClosed = window.localStorage.getItem(STORAGE_KEY);
 
-    return () => window.clearTimeout(timer);
-  }, []);
+    if (wasClosed === "true") {
+      window.requestAnimationFrame(() => {
+        setIsClosed(true);
+      });
+    }
+  }, [isMounted]);
 
   function closeCta() {
+    window.localStorage.setItem(STORAGE_KEY, "true");
     setIsClosed(true);
-    setIsVisible(false);
-    window.localStorage.setItem("floating-cta-closed", "true");
   }
 
-  if (isClosed) {
+  if (!isMounted || isClosed) {
     return null;
   }
 
   return (
-    <aside
-      className={isVisible ? "floating-cta visible" : "floating-cta"}
-      aria-label="Szybka wycena tłumaczenia"
-    >
+    <aside className="floating-cta" aria-label="Szybki kontakt">
       <button
-        className="floating-cta-close"
         type="button"
+        className="floating-cta-close"
+        aria-label="Zamknij panel kontaktowy"
         onClick={closeCta}
-        aria-label="Zamknij okienko"
       >
         ×
       </button>
 
-      <div className="floating-cta-kicker">Wstępna ocena materiału</div>
-
-      <h2>Wyślij tekst do wyceny.</h2>
-
-      <p>
-        Dokument, fragment akt, pismo procesowe, korespondencję albo materiał
-        cyfrowy można przekazać do wstępnej analizy.
+      <p className="floating-cta-title">Potrzebujesz tłumaczenia?</p>
+      <p className="floating-cta-text">
+        Napisz krótko, czego dotyczy dokument. Odpowiem z informacją o możliwości realizacji.
       </p>
 
-      <div className="floating-cta-note">
-        Zapraszam sądy, Policję, prokuratury, organy ścigania, kancelarie i
-        instytucje do przekazywania materiałów wymagających oceny językowej.
-      </div>
-
-      <div className="floating-cta-actions">
-        <a className="floating-cta-primary" href={mailtoHref}>
-          Wyślij tekst do wyceny
-        </a>
-
-        <Link className="floating-cta-secondary" href="/tlumaczenia-dla-policji">
-          Dla organów
-        </Link>
-      </div>
+      <Link className="floating-cta-link" href="/kontakt">
+        Wyślij zapytanie
+      </Link>
     </aside>
   );
 }
