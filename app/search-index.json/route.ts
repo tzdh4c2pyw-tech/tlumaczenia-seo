@@ -98,6 +98,17 @@ export async function GET() {
     },
     {
       type: "core",
+      title: "Dobierz tłumaczenie",
+      url: `${siteUrl}/dobierz-tlumaczenie`,
+      path: "/dobierz-tlumaczenie",
+      description:
+        "Szybka ścieżka wyboru tłumaczenia poświadczonego lub specjalistycznego.",
+      keywords: ["dobierz tłumaczenie", "wycena tłumaczenia", "tłumaczenia poświadczone"],
+      content:
+        "Strona pomaga dobrać właściwy rodzaj tłumaczenia dla dokumentów, akt, dowodów cyfrowych, sądu, Policji, Prokuratury, komunikatorów, BLIK i kryptowalut."
+    },
+    {
+      type: "core",
       title: "Poradniki eksperckie",
       url: `${siteUrl}/poradniki`,
       path: "/poradniki",

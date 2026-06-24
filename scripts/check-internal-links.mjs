@@ -70,7 +70,8 @@ const knownRoutes = new Set([
   "/ai-index.json",
   "/feed.xml",
   "/tematy",
-  "/poradniki"
+  "/poradniki",
+  "/dobierz-tlumaczenie"
 ]);
 
 for (const slug of landingSlugs) {

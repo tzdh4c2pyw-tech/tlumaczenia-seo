@@ -38,6 +38,7 @@ export async function GET() {
     { url: `${siteUrl}/pdf-na-tekst`, lastModified: today, changeFrequency: "monthly", priority: "0.6" },
     { url: `${siteUrl}/tematy`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
     { url: `${siteUrl}/poradniki`, lastModified: today, changeFrequency: "weekly", priority: "0.8" },
+    { url: `${siteUrl}/dobierz-tlumaczenie`, lastModified: today, changeFrequency: "monthly", priority: "0.75" },
     { url: `${siteUrl}/llms.txt`, lastModified: today, changeFrequency: "monthly", priority: "0.4" },
     { url: `${siteUrl}/ai-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },
     { url: `${siteUrl}/search-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },

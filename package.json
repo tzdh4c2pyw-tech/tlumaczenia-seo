@@ -23,7 +23,8 @@
     "check:expert-guides": "node scripts/check-expert-guides.mjs",
     "check:content-hubs": "node scripts/check-content-hubs.mjs",
     "check:expert-conversion": "node scripts/check-expert-conversion-sections.mjs",
-    "check:search-index": "node scripts/check-search-index.mjs"
+    "check:search-index": "node scripts/check-search-index.mjs",
+    "check:decision-guide": "node scripts/check-decision-guide.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

@@ -75,3 +75,7 @@ Relevant market and jurisdiction: Poland.
 ## Machine-readable indexes
 
 - /search-index.json
+
+## Decision guide
+
+- /dobierz-tlumaczenie

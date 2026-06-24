@@ -16,6 +16,13 @@ const primaryHubs = [
     label: "Przejdź do poradników"
   },
   {
+    title: "Dobierz tłumaczenie",
+    description:
+      "Szybka ścieżka wyboru właściwego rodzaju tłumaczenia: dokumenty, akta, dowody cyfrowe, sąd, Policja, Prokuratura.",
+    href: "/dobierz-tlumaczenie",
+    label: "Dobierz tłumaczenie"
+  },
+  {
     title: "Blog",
     description:
       "Artykuły o tłumaczeniach przysięgłych, wynagrodzeniu tłumacza, ustawie o zawodzie i praktyce tłumaczeń prawnych.",

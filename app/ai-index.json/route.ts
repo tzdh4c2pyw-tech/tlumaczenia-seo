@@ -95,6 +95,7 @@ export async function GET() {
       blog: `${siteUrl}/blog`,
       topics: `${siteUrl}/tematy`,
       guides: `${siteUrl}/poradniki`,
+      decisionGuide: `${siteUrl}/dobierz-tlumaczenie`,
       llms: `${siteUrl}/llms.txt`,
       feed: `${siteUrl}/feed.xml`,
       sitemap: `${siteUrl}/sitemap.xml`,
