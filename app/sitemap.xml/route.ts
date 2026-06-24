@@ -41,6 +41,13 @@ export async function GET() {
     changeFrequency: "monthly",
     priority: "0.4"
   },
+
+  {
+    url: `${siteUrl}/ai-index.json`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly",
+    priority: "0.4"
+  },
     {
       url: siteUrl,
       lastModified: now,

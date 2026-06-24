@@ -53,3 +53,7 @@ Vadym Rekel
 
 Primary language: Polish.
 Relevant market and jurisdiction: Poland.
+
+
+## Machine-readable resources
+- AI content index: /ai-index.json

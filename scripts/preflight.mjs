@@ -11,6 +11,7 @@ const steps = [
   ["npm", ["run", "check:landing-routes"]],
   ["npm", ["run", "check:internal-links"]],
   ["npm", ["run", "check:llms"]],
+  ["npm", ["run", "check:ai-index"]],
 ];
 
 for (const [cmd, args] of steps) {
