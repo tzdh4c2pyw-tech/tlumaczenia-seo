@@ -24,7 +24,7 @@ export type BlogArticle = {
   relatedSlugs: string[];
 };
 
-export const blogArticles: BlogArticle[] = [
+const originalBlogArticles: BlogArticle[] = [
   {
     slug: "tlumacz-przysiegly-jezyka-ukrainskiego-kiedy-potrzebny",
     title: "Kiedy potrzebny jest tłumacz przysięgły języka ukraińskiego?",
@@ -268,7 +268,7 @@ export const blogArticles: BlogArticle[] = [
         heading: "Etap 2: analiza terminologii",
         paragraphs: [
           "Dokumenty prawne i urzędowe wymagają spójnej terminologii. Tłumacz analizuje nazwy instytucji, funkcje procesowe, określenia stron, numery akt, przepisy, daty i oznaczenia.",
-          "Przy języku ukraińskim, rosyjskim i angielskim istotne są różnice systemowe między instytucjami, których nie należy mechanicznie upraszczać."
+          "Przy języku ukraińskim i polskim istotne są różnice systemowe między instytucjami, których nie należy mechanicznie upraszczać."
         ]
       },
       {
@@ -505,8 +505,8 @@ export const blogArticles: BlogArticle[] = [
     slug: "tlumaczenia-dla-sadu-policji-prokuratury-jezyk-ukrainski",
     title: "Tłumaczenia dla sądu, Policji i prokuratury",
     description:
-      "Opis materiałów procesowych, akt sprawy, protokołów, korespondencji i dokumentów dowodowych w języku ukraińskim, rosyjskim i angielskim.",
-    language: "ukraiński / rosyjski / angielski",
+      "Opis materiałów procesowych, akt sprawy, protokołów, korespondencji i dokumentów dowodowych w języku ukraińskim i polskim.",
+    language: "polski / ukraiński",
     category: "organy i instytucje",
     readTime: "7 min",
     publishedAt: "2026-06-20",
@@ -567,10 +567,10 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "tlumaczenia-w-sprawach-karnych-ukrainski-rosyjski-angielski",
-    title: "Tłumaczenia w sprawach karnych",
+    title: "Protokoły i dokumenty w sprawie karnej — przekład polsko-ukraiński",
     description:
       "Protokoły, akty oskarżenia, wyjaśnienia, zeznania, dokumenty dowodowe, komunikatory i materiał cyfrowy.",
-    language: "ukraiński / rosyjski / angielski",
+    language: "polski / ukraiński",
     category: "sprawy karne",
     readTime: "7 min",
     publishedAt: "2026-06-20",
@@ -634,7 +634,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Materiał cyfrowy: komunikatory, BLIK, krypto i forensic",
     description:
       "Omówienie tłumaczeń materiału cyfrowego w sprawach sądowych, karnych i dotyczących cyberoszustw.",
-    language: "ukraiński / rosyjski / angielski",
+    language: "polski / ukraiński",
     category: "cyber i forensic",
     readTime: "8 min",
     publishedAt: "2026-06-20",
@@ -696,7 +696,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "tlumacz-przysiegly-jezyka-rosyjskiego-dokumenty-i-sprawy",
-    title: "Tłumacz przysięgły języka rosyjskiego — dokumenty i sprawy",
+    title: "Dokumenty rosyjskie — zakres poświadczenia — dokumenty i sprawy",
     description:
       "Kiedy potrzebne jest tłumaczenie poświadczone z rosyjskiego i jakie dokumenty rosyjskojęzyczne trafiają do tłumaczenia.",
     language: "rosyjski",
@@ -705,7 +705,7 @@ export const blogArticles: BlogArticle[] = [
     publishedAt: "2026-06-20",
     updatedAt: "2026-06-20",
     keywords: [
-      "tłumacz przysięgły rosyjski",
+      "tłumaczenia zwykłe rosyjski",
       "tłumaczenia rosyjski",
       "dokumenty rosyjskojęzyczne",
       "tłumacz rosyjski Kraków"
@@ -760,7 +760,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "tlumaczenia-prawnicze-angielski-umowy-opinie-dokumenty",
-    title: "Tłumaczenia prawnicze z języka angielskiego",
+    title: "Dokumenty angielskie w sprawie — wymagania przekładu",
     description:
       "Umowy, opinie, dokumenty korporacyjne, dokumentacja biznesowa, prawo, technologia i dokumenty platform.",
     language: "angielski",
@@ -823,6 +823,13 @@ export const blogArticles: BlogArticle[] = [
     ]
   }
 ];
+
+export const blogArticles: BlogArticle[] = originalBlogArticles.map(article => {
+  if (article.language === "angielski" || article.language === "rosyjski") return {...article,
+    intro: (article.language === "angielski" ? "Materiał informacyjny: kancelaria nie deklaruje usługi wymagania dla dokumentów angielskichgo. " : "W kancelarii tłumaczenia rosyjskie są zwykłe, po uzgodnieniu. ") + "Wpis TP/27/17 obejmuje wyłącznie język ukraiński. " + article.intro,
+    updatedAt:"2026-10-18"};
+  return article;
+});
 
 export function getAllArticles() {
   return [...blogArticles].sort((a, b) => {

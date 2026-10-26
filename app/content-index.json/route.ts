@@ -6,7 +6,7 @@ import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
 import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 
-const siteUrl = "https://tlumaczenia-seo.vercel.app";
+const siteUrl = "https://seo.vadymrekel.pro";
 
 type ArticleForIndex = {
   title: string;
@@ -46,7 +46,7 @@ type TopicClusterForIndex = {
 };
 
 export async function GET() {
-  const today = new Date().toISOString();
+  const today = "2026-10-18T00:00:00Z";
   const landingPages = getAllLandingPages();
   const articles = getAllArticles();
   const topicClusters = getAllTopicClusters();
@@ -62,18 +62,18 @@ export async function GET() {
     baseUrl: siteUrl,
     generatedAt: today,
     purpose:
-      "Structured content index for expert pages about sworn, legal, Ukrainian, Russian, English and digital-evidence translation services.",
+      "Index of Ukrainian–Polish sworn translation, procedural guides and digital-material preparation. Russian services are ordinary only; English articles are educational.",
     contentScope: {
       services: [
-        "tłumaczenia poświadczone",
+        "tłumaczenia poświadczone polsko-ukraińskie",
         "tłumaczenia prawnicze",
         "tłumaczenia sądowe",
         "tłumaczenia dokumentów z Ukrainy",
         "tłumaczenia dowodów cyfrowych",
         "tłumaczenia materiałów karnych",
         "tłumaczenia ukraiński polski",
-        "tłumaczenia rosyjski polski",
-        "tłumaczenia angielski polski"
+        "tłumaczenia zwykłe rosyjski polski",
+        "dokumenty angielskie — wiedza informacyjna"
       ],
       audience: [
         "sądy",

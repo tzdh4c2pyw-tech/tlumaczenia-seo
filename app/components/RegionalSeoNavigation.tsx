@@ -9,7 +9,7 @@ const regionalLinks = [
     href: "/krakow",
     badge: "Miasto",
     description:
-      "Strony lokalne dla Krakowa: ukraiński, rosyjski, angielski, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty."
+      "Strony lokalne dla Krakowa: polski i ukraiński, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty."
   },
   {
     title: "Małopolska",

@@ -6,7 +6,7 @@ import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
 import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 
-const siteUrl = "https://tlumaczenia-seo.vercel.app";
+const siteUrl = "https://seo.vadymrekel.pro";
 
 export const dynamic = "force-static";
 
@@ -59,7 +59,7 @@ function normalizeText(parts: Array<string | string[] | undefined>) {
 }
 
 export async function GET() {
-  const today = new Date().toISOString();
+  const today = "2026-10-18T00:00:00Z";
 
   const corePages = [
     {

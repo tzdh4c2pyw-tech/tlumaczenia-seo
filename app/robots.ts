@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://tlumaczenia-seo.vercel.app";
+const siteUrl = "https://seo.vadymrekel.pro";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/private/", "/draft/"]
+        disallow: ["/api/", "/private/", "/draft/"]
       }
     ],
     sitemap: `${siteUrl}/sitemap.xml`,

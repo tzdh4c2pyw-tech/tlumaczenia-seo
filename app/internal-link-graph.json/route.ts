@@ -145,7 +145,7 @@ const siteAreas = [
 
 export async function GET() {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://tlumaczenia-seo.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://seo.vadymrekel.pro";
 
   const graph = siteAreas.map((area) => ({
     ...area,

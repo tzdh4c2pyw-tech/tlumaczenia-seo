@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 const route = readFileSync("app/content-index.json/route.ts", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const resources = readFileSync("public/resources.txt", "utf8");
+const resources = readFileSync("content/resources.txt", "utf8");
 
 const checks = [
   ["app/content-index.json/route.ts", route, "getAllArticles"],
@@ -15,7 +15,7 @@ const checks = [
   ["app/content-index.json/route.ts", route, "certified translations"],
   ["app/content-index.json/route.ts", route, "digital evidence"],
   ["app/sitemap.xml/route.ts", sitemap, "/content-index.json"],
-  ["public/resources.txt", resources, "/content-index.json"]
+  ["content/resources.txt", resources, "/content-index.json"]
 ];
 
 const errors = [];

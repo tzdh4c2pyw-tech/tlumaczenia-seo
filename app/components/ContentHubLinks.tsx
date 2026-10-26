@@ -77,7 +77,7 @@ const hubLinks: HubLink[] = [
   {
     title: "Kraków i okolice",
     description:
-      "Strony lokalne dla Krakowa: ukraiński, rosyjski, angielski, sąd, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
+      "Strony lokalne dla Krakowa: polski i ukraiński, sąd, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
     href: "/krakow",
     eyebrow: "Miasto"
   },
@@ -217,10 +217,9 @@ export default function ContentHubLinks() {
               Powiązane ścieżki: usługi, tematy, poradniki i sprawy lokalne.
             </h2>
             <p style={textStyle}>
-              Uporządkowane linkowanie wewnętrzne do najważniejszych warstw
-              serwisu: usług, tematów eksperckich, poradników, bloga oraz stron
-              lokalnych dla Krakowa i Małopolski. Ułatwia to odnalezienie
-              informacji odpowiednich do konkretnej sprawy.
+              Wybierz temat, który odpowiada Twojemu dokumentowi lub czynności.
+              Znajdziesz tu przygotowanie materiału, wymagania poświadczenia
+              i zasady kontaktu z kancelarią w Krakowie.
             </p>
           </div>
 

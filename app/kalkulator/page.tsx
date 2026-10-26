@@ -1,0 +1,4 @@
+import type { Metadata } from 'next';
+import TranslationCalculator from '../components/TranslationCalculator';
+export const metadata:Metadata={title:'Bezpłatny kalkulator tłumaczenia — strony i taryfa organów',description:'Lokalny kalkulator 1125 znaków, symulacja ceny umownej i podstawowe stawki tłumacza ukraińskiego dla organów. Obliczenia odbywają się na urządzeniu.',alternates:{canonical:'/kalkulator'}};
+export default function CalculatorPage(){return <main className="proc"><div className="proc-wrap"><p className="proc-label">Narzędzie działające na Twoim urządzeniu</p><div className="proc-prose"><h1>Oszacuj objętość i podstawę wyceny.</h1><p className="proc-lead">Obliczenia wykonuje Twoja przeglądarka. Ceny prywatne są umowne. Taryfa organów dotyczy odrębnego trybu zlecenia.</p></div><TranslationCalculator/></div></main>}

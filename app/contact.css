@@ -1,0 +1,44 @@
+.vp-email-contact{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.5rem;max-width:100%;vertical-align:middle}
+.vp-email-reveal,.vp-email-copy{font:inherit;cursor:pointer;color:inherit}
+.vp-email-reveal:not(.vp-button){background:transparent;border:1px solid currentColor;border-radius:4px;padding:.55rem .8rem;min-height:44px;font-size:.9rem;text-align:left}
+.vp-email-copy{background:transparent;border:0;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:.3rem .4rem;font-size:.85rem}
+.vp-email-panel{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.4rem;max-width:100%}
+.vp-email-panel[hidden]{display:none!important}
+.vp-email-address{overflow-wrap:anywhere;word-break:break-word}
+.vp-email-status,.vp-email-nojs{display:block;flex-basis:100%;font-size:.8rem;line-height:1.55}
+.vp-email-status:empty{display:none}
+.vp-email-reveal:focus-visible,.vp-email-copy:focus-visible,.vp-email-address:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+.vp-email-reveal:disabled{cursor:not-allowed;opacity:.6}
+.vp-contact-composer{min-width:0}
+.vp-contact-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:2.5rem;scroll-margin-top:120px}
+.vp-contact-composer form{margin:0}
+.vp-contact-fields{padding:1.6rem 0;margin:0 0 1rem;border:0;border-top:1px solid #d7d5ca;min-width:0}
+.vp-contact-fields legend{font-weight:700;font-size:1rem;padding:0 .7rem 0 0;color:#173c33}
+.vp-contact-fields legend span,.vp-contact-composer label>span,.vp-contact-optional summary>span{font-weight:400;font-size:.8rem;color:#58665f}
+.vp-contact-composer label{display:block;margin:0 0 1.15rem;font-weight:600;font-size:.93rem;line-height:1.5}
+.vp-contact-composer input,.vp-contact-composer select,.vp-contact-composer textarea{display:block;width:100%;box-sizing:border-box;margin:.4rem 0 0;padding:.8rem .9rem;border:1px solid #adb8b0;background:#fffdf8;color:#172a23;border-radius:5px;font:inherit;font-weight:400;font-size:1rem;line-height:1.5;min-height:48px}
+.vp-contact-composer textarea{resize:vertical;min-height:110px}
+.vp-contact-composer select{padding-right:1.8rem}
+.vp-contact-composer input:focus-visible,.vp-contact-composer select:focus-visible,.vp-contact-composer textarea:focus-visible,.vp-contact-composer summary:focus-visible{outline:3px solid #7b9b87;outline-offset:3px}
+.vp-contact-composer input::placeholder,.vp-contact-composer textarea::placeholder{color:#64736b;opacity:1}
+.vp-contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.1rem}
+.vp-contact-help,.vp-contact-local-note{font-size:.84rem;line-height:1.7;color:#526259}
+.vp-contact-help{margin:.5rem 0 1.2rem}
+.vp-contact-local-note{border-top:1px solid #d7d5ca;padding-top:1.25rem;margin-top:1.5rem}
+.vp-contact-optional{margin:.4rem 0 1rem}
+.vp-contact-optional summary{cursor:pointer;padding:.5rem 0 1rem;font-weight:600}
+.vp-contact-optional .vp-contact-grid{padding-top:.5rem}
+.vp-contact-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.2rem 0}
+.vp-contact-result{border:1px solid #b6c5b9;border-radius:10px;background:#f2f5ee;padding:1.7rem;margin-top:2rem;overflow-wrap:anywhere}
+.vp-contact-result h3{font-size:1.65rem;margin:.4rem 0 1rem}
+.vp-contact-result h3:focus{outline:0}
+.vp-contact-result .vp-contact-draft-label{margin-top:1.4rem}
+.vp-contact-result textarea{background:#fffdf8;font-size:.92rem;min-height:300px}
+.vp-contact-note{font-size:.91rem;line-height:1.75;color:#304c3e}
+.vp-contact-status{font-size:.9rem;line-height:1.65;color:#234b38;margin:1rem 0}
+.vp-contact-status:empty{display:none}
+.vp-contact-composer button:disabled,.vp-contact-composer a[aria-disabled=true]{opacity:.55;cursor:not-allowed}
+.vp-contact-aside{align-self:start}
+.vp-contact-aside li{margin-bottom:.8rem}
+@media(max-width:640px){.vp-contact-grid{grid-template-columns:1fr}.vp-contact-result{padding:1.15rem}.vp-contact-actions{flex-direction:column;align-items:stretch}.vp-contact-actions .vp-button{text-align:center;justify-content:center;white-space:normal}.vp-contact-composer .vp-button{max-width:100%;white-space:normal}.vp-contact-fields{padding-top:1.2rem}}
+@media(max-width:850px){.vp-contact-layout{grid-template-columns:1fr;gap:2rem}}

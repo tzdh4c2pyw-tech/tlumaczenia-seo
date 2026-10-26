@@ -80,29 +80,7 @@ export default async function LandingPage({ params }: PageProps) {
         }}
       />
 
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">Tłumaczenia specjalistyczne</span>
-              <span className="brand-subtitle">
-                ukraiński · rosyjski · angielski · prawo · forensic
-              </span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/blog">Baza wiedzy</Link>
-            <Link href="/#prawo">Prawo</Link>
-            <Link href="/#cyfrowe">Forensic</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="article-hero">
         <div className="article-hero-main">
@@ -129,7 +107,7 @@ export default async function LandingPage({ params }: PageProps) {
             </div>
             <div>
               <strong>Języki</strong>
-              <span>ukraiński, rosyjski, angielski</span>
+              <span>polski i ukraiński</span>
             </div>
             <div>
               <strong>Wycena</strong>
@@ -231,35 +209,7 @@ export default async function LandingPage({ params }: PageProps) {
         </aside>
       </section>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div>
-            <span className="footer-title">{page.title}</span>
-            <span className="footer-line">
-              Tłumaczenia specjalistyczne: dokumenty, prawo, organy i materiał
-              cyfrowy.
-            </span>
-          </div>
-
-          <div>
-            <span className="footer-title">Nawigacja</span>
-            <Link className="footer-link" href="/">
-              Strona główna
-            </Link>
-            <br />
-            <Link className="footer-link" href="/blog">
-              Baza wiedzy
-            </Link>
-          </div>
-
-          <div>
-            <span className="footer-title">Wycena</span>
-            <a className="footer-link" href={mailtoHref}>
-              Otwórz wiadomość e-mail
-            </a>
-          </div>
-        </div>
-      </footer>
+      
     </main>
   );
 }

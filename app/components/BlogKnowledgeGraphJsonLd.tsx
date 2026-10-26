@@ -2,7 +2,7 @@ import { blogExpertIndexItems } from "@/app/components/BlogExpertIndex";
 
 export default function BlogKnowledgeGraphJsonLd() {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://tlumaczenia-seo.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://seo.vadymrekel.pro";
 
   const itemList = {
     "@context": "https://schema.org",

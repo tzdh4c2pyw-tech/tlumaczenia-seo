@@ -145,29 +145,7 @@ export default function PdfToTextPage() {
         }}
       />
 
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">PDF na TXT</span>
-              <span className="brand-subtitle">
-                dokumenty · tekst · tłumaczenie
-              </span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/blog">Baza wiedzy</Link>
-            <Link href="/material-cyfrowy">Materiał cyfrowy</Link>
-            <Link href="/tlumaczenia-prawnicze">Prawo</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="contact-hero">
         <div className="contact-hero-main">
@@ -407,38 +385,7 @@ export default function PdfToTextPage() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div>
-            <span className="footer-title">PDF na TXT</span>
-            <span className="footer-line">
-              Narzędzie pomocnicze do przygotowania materiału do tłumaczenia.
-            </span>
-          </div>
-
-          <div>
-            <span className="footer-title">Nawigacja</span>
-            <Link className="footer-link" href="/">
-              Strona główna
-            </Link>
-            <br />
-            <Link className="footer-link" href="/blog">
-              Baza wiedzy
-            </Link>
-            <br />
-            <Link className="footer-link" href="/material-cyfrowy">
-              Materiał cyfrowy
-            </Link>
-          </div>
-
-          <div>
-            <span className="footer-title">Wycena</span>
-            <a className="footer-link" href={mailtoHref}>
-              Wyślij tekst do wyceny
-            </a>
-          </div>
-        </div>
-      </footer>
+      
     </main>
   );
 }

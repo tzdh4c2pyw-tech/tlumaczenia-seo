@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tłumaczenia ustne, konferencje i spotkania",
+  title: "Przygotowanie tłumaczenia ustnego — glosariusz i agenda",
   description: "Jak przygotować spotkanie, konferencję, rozmowę formalną, glosariusz, materiały i terminologię do tłumaczenia ustnego.",
   alternates: {
     canonical: "/blog/tlumaczenia-ustne-i-konferencje"
@@ -26,7 +26,7 @@ export default function BlogDepartmentPage() {
           </p>
 
           <h1 className="mt-5 max-w-4xl text-6xl font-black tracking-tight text-white">
-            Tłumaczenia ustne, konferencje i spotkania
+            Przygotowanie tłumaczenia ustnego — glosariusz i agenda
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">

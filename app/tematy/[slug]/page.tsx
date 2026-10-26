@@ -79,7 +79,7 @@ export default async function TopicClusterPage({ params }: PageProps) {
       "@type": "Article",
       headline: article.title,
       description: article.description,
-      url: `https://tlumaczenia-seo.vercel.app/blog/${article.slug}`
+      url: `https://seo.vadymrekel.pro/blog/${article.slug}`
     }))
   };
 
@@ -111,27 +111,7 @@ export default async function TopicClusterPage({ params }: PageProps) {
         }}
       />
 
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">Tematy eksperckie</span>
-              <span className="brand-subtitle">blog · usługi · FAQ</span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/tematy">Tematy</Link>
-            <Link href="/blog">Baza wiedzy</Link>
-            <Link href="/pdf-na-tekst">PDF na TXT</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="article-hero">
         <div className="article-hero-main">

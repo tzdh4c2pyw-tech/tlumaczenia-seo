@@ -1,7 +1,7 @@
 import { getAllArticles } from "@/lib/blog";
 import { getAllExpertGuides } from "@/lib/expert-guides";
 
-const siteUrl = "https://tlumaczenia-seo.vercel.app";
+const siteUrl = "https://seo.vadymrekel.pro";
 
 type ArticleForFeed = {
   title: string;

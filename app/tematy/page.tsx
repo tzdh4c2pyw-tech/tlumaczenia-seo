@@ -36,7 +36,7 @@ export default function TopicClustersPage() {
       "@type": "WebPage",
       name: cluster.title,
       description: cluster.description,
-      url: `https://tlumaczenia-seo.vercel.app/tematy/${cluster.slug}`
+      url: `https://seo.vadymrekel.pro/tematy/${cluster.slug}`
     }))
   };
 
@@ -49,26 +49,7 @@ export default function TopicClustersPage() {
         }}
       />
 
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">Tematy eksperckie</span>
-              <span className="brand-subtitle">Dokumenty · prawo · praktyka</span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/blog">Baza wiedzy</Link>
-            <Link href="/pdf-na-tekst">PDF na TXT</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="hero">
         <div className="hero-main">
@@ -95,9 +76,8 @@ export default function TopicClustersPage() {
           <div className="side-card">
             <h2>Dlaczego taki podział spraw?</h2>
             <p>
-              Działy porządkują sprawy i dokumenty: grupują artykuły, usługi i
-              pytania użytkowników w logiczne działy. To pomaga użytkownikom i wyszukiwarkom
-              szybciej zrozumieć specjalizację strony.
+              Wybierz rodzaj dokumentu lub czynności, aby znaleźć potrzebne
+              informacje o przygotowaniu materiału, zakresie tłumaczenia i kontakcie.
             </p>
           </div>
         </aside>
@@ -113,7 +93,7 @@ export default function TopicClustersPage() {
           </div>
           <p>
             Każdy dział łączy poradniki, opisy spraw i najczęstsze
-            pytania. Dzięki temu strona ma mocniejszą architekturę informacji.
+            pytania. Pomaga znaleźć odpowiedź przed zleceniem tłumaczenia.
           </p>
         </div>
 

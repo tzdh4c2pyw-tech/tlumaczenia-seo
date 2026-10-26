@@ -6,7 +6,7 @@ const articlePage = readFileSync("app/poradniki/[slug]/page.tsx", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
 const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
 const feed = readFileSync("app/feed.xml/route.ts", "utf8");
-const resources = readFileSync("public/resources.txt", "utf8");
+const resources = readFileSync("content/resources.txt", "utf8");
 const packageJson = readFileSync("package.json", "utf8");
 const preflight = readFileSync("scripts/preflight.mjs", "utf8");
 
@@ -27,7 +27,7 @@ const required = [
   ["app/sitemap.xml/route.ts", sitemap, "/poradniki"],
   ["app/content-index.json/route.ts", contentIndex, "expertGuides"],
   ["app/feed.xml/route.ts", feed, "getAllExpertGuides"],
-  ["public/resources.txt", resources, "/poradniki"],
+  ["content/resources.txt", resources, "/poradniki"],
   ["package.json", packageJson, "check:expert-guides"],
   ["scripts/preflight.mjs", preflight, "check:expert-guides"]
 ];

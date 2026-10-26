@@ -12,7 +12,7 @@ const files = {
     : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
   "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
-  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
+  "content/resources.txt": readFileSync("content/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -45,7 +45,7 @@ const required = [
   ["app/sitemap.xml/route.ts", "/lokalnie"],
   ["app/sitemap.xml/route.ts", "getAllLocalSeoArticles"],
   ["app/content-index.json/route.ts", "localArticles"],
-  ["public/resources.txt", "/lokalnie"],
+  ["content/resources.txt", "/lokalnie"],
   ["scripts/check-internal-links.mjs", "/lokalnie"],
   ["package.json", "check:local-seo"],
   ["scripts/preflight.mjs", "check:local-seo"]

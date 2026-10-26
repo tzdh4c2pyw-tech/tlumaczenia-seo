@@ -82,7 +82,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://tlumaczenia-seo.vercel.app/blog/${article.slug}`
+      "@id": `https://seo.vadymrekel.pro/blog/${article.slug}`
     }
   };
 
@@ -115,30 +115,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
         }}
       />
 
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">Baza wiedzy</span>
-              <span className="brand-subtitle">
-                {article.language} · {article.category}
-              </span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/blog">Baza wiedzy</Link>
-            <Link href="/pdf-na-tekst">PDF na TXT</Link>
-            <Link href="/#prawo">Prawo</Link>
-            <Link href="/#cyfrowe">Materiał cyfrowy</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="article-hero">
         <div className="article-hero-main">
@@ -331,38 +308,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
         </aside>
       </section>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div>
-            <span className="footer-title">{article.title}</span>
-            <span className="footer-line">
-              Baza wiedzy o tłumaczeniach specjalistycznych.
-            </span>
-          </div>
-
-          <div>
-            <span className="footer-title">Nawigacja</span>
-            <Link className="footer-link" href="/blog">
-              Wróć do bazy wiedzy
-            </Link>
-            <br />
-            <Link className="footer-link" href="/">
-              Strona główna
-            </Link>
-            <br />
-            <Link className="footer-link" href="/pdf-na-tekst">
-              PDF na TXT
-            </Link>
-          </div>
-
-          <div>
-            <span className="footer-title">Wycena</span>
-            <a className="footer-link" href={mailtoHref}>
-              Wyślij materiał do wyceny
-            </a>
-          </div>
-        </div>
-      </footer>
+      
     
       <ExpertConversionSections />
 </main>

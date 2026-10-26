@@ -137,11 +137,11 @@ const pageSeeds = [
   },
   {
     slug: "tlumacz-przysiegly-rosyjski-krakow",
-    title: "Tłumacz przysięgły rosyjski Kraków",
+    title: "Rosyjski w Krakowie — tłumaczenia zwykłe",
     service: "tłumaczenia rosyjskie",
     focus: "dokumenty rosyjskie, pisma urzędowe, materiały sądowe, dokumenty firmowe i korespondencję",
     keywords: [
-      "tłumacz przysięgły rosyjski Kraków",
+      "tłumaczenia zwykłe rosyjski Kraków",
       "tłumaczenia rosyjskie Kraków",
       "tłumaczenie dokumentów rosyjskich Kraków"
     ],
@@ -153,16 +153,16 @@ const pageSeeds = [
   },
   {
     slug: "tlumacz-przysiegly-angielski-krakow",
-    title: "Tłumacz przysięgły angielski Kraków",
-    service: "tłumaczenia angielskie",
+    title: "Dokumenty angielskie — wymagania w Krakowie",
+    service: "wymagania dla dokumentów angielskich",
     focus: "dokumenty angielskie, umowy, zaświadczenia, dokumenty firmowe, materiały urzędowe i sądowe",
     keywords: [
-      "tłumacz przysięgły angielski Kraków",
-      "tłumaczenia angielskie Kraków",
+      "dokumenty angielskie Kraków",
+      "wymagania dla dokumentów angielskich Kraków",
       "tłumaczenie dokumentów angielskich Kraków"
     ],
     relatedLinks: [
-      { label: "Tłumaczenia angielskie", href: "/angielski" },
+      { label: "Dokumenty angielskie — poradnik", href: "/angielski" },
       { label: "Tłumaczenia poświadczone", href: "/tematy/tlumaczenia-poswiadczone" },
       { label: "Kontakt", href: "/kontakt" }
     ]
@@ -217,7 +217,7 @@ const pageSeeds = [
   }
 ];
 
-export const krakowSeoPages: KrakowSeoPage[] = pageSeeds.map((seed) => ({
+const originalKrakowSeoPages: KrakowSeoPage[] = pageSeeds.map((seed) => ({
   title: seed.title,
   slug: seed.slug,
   service: seed.service,
@@ -267,6 +267,12 @@ export const krakowSeoPages: KrakowSeoPage[] = pageSeeds.map((seed) => ({
   ],
   relatedLinks: seed.relatedLinks
 }));
+
+export const krakowSeoPages: KrakowSeoPage[] = originalKrakowSeoPages.map(page => {
+  if (page.slug.includes("rosyjski")) return {...page, intro:"Tłumaczenia rosyjskie w kancelarii są zwykłe, po uzgodnieniu. Uprawnienia przysięgłe Vadym Rekel (TP/27/17) dotyczą wyłącznie języka ukraińskiego. Przekład poświadczony rosyjskiego wymaga tłumacza z uprawnieniami w tym języku.", sections:[{heading:"Rodzaj przekładu a wymagania odbiorcy",paragraphs:["Przed zleceniem ustal, czy odbiorca dopuszcza tłumaczenie zwykłe. Kraj wydania dokumentu nie przesądza o jego języku. Zachowaj cały dokument, pieczęcie, podpisy i załączniki."]}],faqs:[]};
+  if (page.slug.includes("angielski")) return {...page, intro:"Poradnik informacyjny o dokumentach angielskich; nie oferta przekładu tego języka. Kancelaria poświadcza tłumaczenia języka ukraińskiego. Przy wymogu przekładu poświadczonego angielskiego należy wybrać osobę z odpowiednim wpisem na listę.",sections:[{heading:"Przygotuj dokumenty do właściwego zlecenia",paragraphs:["Podziel zestaw według języka, ustal wymagania odbiorcy i zachowaj załączniki. Jeżeli materiały zawierają część ukraińską, jej zakres można uzgodnić z kancelarią Vadym Rekel."]}],faqs:[]};
+  return page;
+});
 
 export function getAllKrakowSeoPages() {
   return krakowSeoPages;

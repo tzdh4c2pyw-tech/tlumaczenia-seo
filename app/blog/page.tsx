@@ -16,9 +16,9 @@ import InternalKnowledgeLinks from "@/app/components/InternalKnowledgeLinks";
 const mainOfficeUrl = "https://www.tlumaczrosyjskiegoiukrainskiego.pl/";
 
 export const metadata: Metadata = {
-  title: "Baza wiedzy | Tłumaczenia ukraiński, rosyjski, angielski",
+  title: "Baza wiedzy | Tłumaczenia polski i ukraiński",
   description:
-    "Baza wiedzy o tłumaczeniach poświadczonych i specjalistycznych: język ukraiński, rosyjski, angielski, dokumenty z Ukrainy, sądy, Policja, prokuratura, prawo, cyber, BLIK, krypto, forensic i PDF.",
+    "Baza wiedzy o tłumaczeniach poświadczonych i specjalistycznych: język polski i ukraiński, dokumenty z Ukrainy, sądy, Policja, prokuratura, prawo, cyber, BLIK, krypto, forensic i PDF.",
   alternates: {
     canonical: "/blog"
   }
@@ -75,31 +75,7 @@ export default function BlogPage() {
   return (
     <main>
       <BlogKnowledgeGraphJsonLd />
-      <div className="topbar">
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Strona główna">
-            <span className="brand-mark">VR</span>
-            <span>
-              <span className="brand-title">Baza wiedzy</span>
-              <span className="brand-subtitle">
-                tłumaczenia · prawo · sądy · cyber
-              </span>
-            </span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Strona główna</Link>
-            <Link href="/#jezyki">Języki</Link>
-            <Link href="/#organy">Dla organów</Link>
-            <Link href="/#prawo">Prawo</Link>
-            <Link href="/#cyfrowe">Materiał cyfrowy</Link>
-            <Link href="/pdf-na-tekst">PDF na TXT</Link>
-            <a className="nav-cta" href={mailtoHref}>
-              Wyślij do wyceny
-            </a>
-          </div>
-        </nav>
-      </div>
+      
 
       <section className="hero">
         <div className="hero-main">
@@ -299,44 +275,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div>
-            <span className="footer-title">Baza wiedzy</span>
-            <span className="footer-line">
-              Poradniki o tłumaczeniach specjalistycznych: ukraiński, rosyjski,
-              angielski, prawo, dokumenty, sądy i materiał cyfrowy.
-            </span>
-          </div>
-
-          <div>
-            <span className="footer-title">Nawigacja</span>
-            <Link className="footer-link" href="/">
-              Strona główna
-            </Link>
-            <br />
-            <Link className="footer-link" href="/pdf-na-tekst">
-              PDF na TXT
-            </Link>
-            <br />
-            <a
-              className="footer-link"
-              href={mainOfficeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Główna strona kancelarii
-            </a>
-          </div>
-
-          <div>
-            <span className="footer-title">Wycena</span>
-            <a className="footer-link" href={mailtoHref}>
-              Wyślij tekst do wyceny
-            </a>
-          </div>
-        </div>
-      </footer>
+      
     
       <ContentHubLinks />
 

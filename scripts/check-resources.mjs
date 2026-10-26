@@ -1,16 +1,16 @@
 import { readFileSync } from "node:fs";
 
-const resources = readFileSync("public/resources.txt", "utf8");
+const resources = readFileSync("content/resources.txt", "utf8");
 const route = readFileSync("app/resources.txt/route.ts", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
 
 const checks = [
-  ["public/resources.txt", resources, "# Tłumaczenia specjalistyczne Vadym Rekel"],
-  ["public/resources.txt", resources, "Ukrainian translations"],
-  ["public/resources.txt", resources, "Russian translations"],
-  ["public/resources.txt", resources, "English translations"],
-  ["public/resources.txt", resources, "digital evidence"],
-  ["public/resources.txt", resources, "Primary language: Polish"],
+  ["content/resources.txt", resources, "# Tłumaczenia specjalistyczne Vadym Rekel"],
+  ["content/resources.txt", resources, "Ukrainian translations"],
+  ["content/resources.txt", resources, "Russian translations"],
+  ["content/resources.txt", resources, "English translations"],
+  ["content/resources.txt", resources, "digital evidence"],
+  ["content/resources.txt", resources, "Primary language: Polish"],
   ["app/resources.txt/route.ts", route, "Content-Type"],
   ["app/resources.txt/route.ts", route, "text/plain"],
   ["app/sitemap.xml/route.ts", sitemap, "/resources.txt"]

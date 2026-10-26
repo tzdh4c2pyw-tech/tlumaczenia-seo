@@ -3,14 +3,14 @@ import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 import { LocalCard, LocalCardGrid, LocalPageShell } from "../components/LocalPageShell";
 
 export const metadata: Metadata = {
-  title: "Tłumacz przysięgły Kraków | Ukraiński, rosyjski, angielski, sąd",
+  title: "Tłumacz przysięgły ukraińskiego Kraków | Dokumenty i czynności",
   description:
-    "Lokalne strony SEO dla Krakowa: tłumacz przysięgły ukraiński, rosyjski, angielski, dokumenty z Ukrainy, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
+    "Informacje dla Krakowa: tłumacz przysięgły języka ukraińskiego, dokumenty z Ukrainy, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
   alternates: {
     canonical: "/krakow"
   },
   openGraph: {
-    title: "Tłumacz przysięgły Kraków | Lokalne SEO",
+    title: "Tłumacz przysięgły ukraińskiego | Kancelaria w Krakowie",
     description:
       "Przewodnik po tłumaczeniach w Krakowie: dokumenty poświadczone, pisma sądowe, sprawy urzędowe i materiały cyfrowe.",
     type: "website",
@@ -24,8 +24,8 @@ export default function KrakowSeoHubPage() {
   return (
     <LocalPageShell
       eyebrow="Kraków i okolice"
-      title="Tłumacz przysięgły Kraków — ukraiński, rosyjski, angielski, sąd i dowody cyfrowe"
-      description="Praktyczne opracowania dla Krakowa: dokumenty z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury, akta sprawy, komunikatory, BLIK, kryptowaluty oraz język ukraiński, rosyjski i angielski."
+      title="Tłumacz przysięgły ukraińskiego w Krakowie — dokumenty i czynności"
+      description="Praktyczne opracowania dla Krakowa: dokumenty z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury, akta sprawy, komunikatory, BLIK, kryptowaluty oraz przekład polsko-ukraiński."
       secondaryHref="/malopolskie"
       secondaryLabel="Małopolska"
     >

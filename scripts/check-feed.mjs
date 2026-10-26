@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 const route = readFileSync("app/feed.xml/route.ts", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const resources = readFileSync("public/resources.txt", "utf8");
+const resources = readFileSync("content/resources.txt", "utf8");
 const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
 
 const checks = [
@@ -13,7 +13,7 @@ const checks = [
   ["app/feed.xml/route.ts", route, "<item>"],
   ["app/feed.xml/route.ts", route, "application/rss+xml"],
   ["app/sitemap.xml/route.ts", sitemap, "/feed.xml"],
-  ["public/resources.txt", resources, "/feed.xml"],
+  ["content/resources.txt", resources, "/feed.xml"],
   ["app/content-index.json/route.ts", contentIndex, "/feed.xml"]
 ];
 

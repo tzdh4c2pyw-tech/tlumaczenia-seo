@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: {canonical:"/faq"},
   title: "FAQ | Tłumaczenia poświadczone, sądowe i cyfrowe",
   description:
     "Najczęstsze pytania o tłumaczenia poświadczone dokumentów z Ukrainy, tłumaczenia dla sądu, Policji i Prokuratury oraz materiałów cyfrowych."

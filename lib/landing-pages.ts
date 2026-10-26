@@ -38,7 +38,7 @@ const commonLegalSections: LandingPageSection[] = [
   }
 ];
 
-export const landingPages: LandingPage[] = [
+const originalLandingPages: LandingPage[] = [
   {
     slug: "ukrainski",
     type: "język",
@@ -73,7 +73,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: "rosyjski",
     type: "język",
-    title: "Tłumaczenia rosyjski | Tłumacz przysięgły języka rosyjskiego",
+    title: "Tłumaczenia rosyjski | Dokumenty rosyjskie — zakres poświadczenia",
     description:
       "Tłumaczenia języka rosyjskiego: dokumenty rosyjskojęzyczne, sprawy sądowe, prawnicze, urzędowe, prywatne i materiał dowodowy.",
     h1: "Tłumaczenia z języka rosyjskiego.",
@@ -81,7 +81,7 @@ export const landingPages: LandingPage[] = [
       "Tłumaczenia dokumentów rosyjskojęzycznych, materiałów sądowych, pism urzędowych, dokumentów prywatnych, korespondencji i materiału cyfrowego.",
     badge: "język rosyjski",
     keywords: [
-      "tłumacz przysięgły rosyjski",
+      "tłumaczenia zwykłe rosyjski",
       "tłumaczenia rosyjski",
       "tłumacz rosyjski Kraków",
       "dokumenty rosyjskie tłumaczenie"
@@ -112,7 +112,7 @@ export const landingPages: LandingPage[] = [
       "Tłumaczenia prawnicze, sądowe, biznesowe, akademickie, techniczne i cyfrowe z języka angielskiego.",
     badge: "język angielski",
     keywords: [
-      "tłumacz przysięgły angielski",
+      "dokumenty angielskie",
       "tłumaczenia prawnicze angielski",
       "tłumaczenie umowy angielski",
       "tłumacz angielski Kraków"
@@ -135,12 +135,12 @@ export const landingPages: LandingPage[] = [
   {
     slug: "tlumaczenia-prawnicze",
     type: "specjalizacja",
-    title: "Tłumaczenia prawnicze | Ukraiński, rosyjski, angielski",
+    title: "Tłumaczenia prawnicze | Polski i ukraiński",
     description:
-      "Tłumaczenia prawnicze z języka ukraińskiego, rosyjskiego i angielskiego: umowy, pisma procesowe, wyroki, pełnomocnictwa, opinie i akta.",
+      "Tłumaczenia prawnicze z języka ukraińskiego na polski i z polskiego na ukraiński: umowy, pisma procesowe, wyroki, pełnomocnictwa, opinie i akta.",
     h1: "Tłumaczenia prawnicze.",
     lead:
-      "Specjalistyczne tłumaczenia dokumentów prawnych, procesowych, sądowych i urzędowych w języku ukraińskim, rosyjskim i angielskim.",
+      "Specjalistyczne tłumaczenia dokumentów prawnych, procesowych, sądowych i urzędowych w języku ukraińskim i polskim.",
     badge: "prawo",
     keywords: [
       "tłumaczenia prawnicze",
@@ -167,7 +167,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: "sprawy-karne",
     type: "specjalizacja",
-    title: "Tłumaczenia w sprawach karnych | Ukraiński, rosyjski, angielski",
+    title: "Tłumaczenia w sprawach karnych | Polski i ukraiński",
     description:
       "Tłumaczenia w sprawach karnych: protokoły, akty oskarżenia, zeznania, wyjaśnienia, korespondencja, komunikatory i materiał dowodowy.",
     h1: "Tłumaczenia w sprawach karnych.",
@@ -295,7 +295,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: "tlumaczenia-dla-sadu",
     type: "usługa",
-    title: "Tłumaczenia dla sądu | Ukraiński, rosyjski, angielski",
+    title: "Tłumaczenia dla sądu | Polski i ukraiński",
     description:
       "Tłumaczenia dokumentów dla sądów: akta, załączniki, wyroki, postanowienia, pisma procesowe, dowody i materiał cyfrowy.",
     h1: "Tłumaczenia dla sądu.",
@@ -329,7 +329,7 @@ export const landingPages: LandingPage[] = [
     type: "usługa",
     title: "Tłumaczenia dla Policji | Protokoły, pouczenia, materiał cyfrowy",
     description:
-      "Tłumaczenia dla Policji: protokoły, pouczenia, notatki urzędowe, komunikatory, zrzuty ekranu i dokumenty w języku ukraińskim, rosyjskim i angielskim.",
+      "Tłumaczenia dla Policji: protokoły, pouczenia, notatki urzędowe, komunikatory, zrzuty ekranu i dokumenty w języku ukraińskim i polskim.",
     h1: "Tłumaczenia dla Policji.",
     lead:
       "Tłumaczenia materiałów dla czynności policyjnych: protokołów, pouczeń, notatek, dokumentów, komunikatorów i dowodów cyfrowych.",
@@ -503,6 +503,24 @@ const cityNames = [
   ["tlumacz-ukrainski-zielona-gora", "Zielona Góra"],
   ["tlumacz-ukrainski-gorzow-wielkopolski", "Gorzów Wielkopolski"]
 ];
+
+export const landingPages: LandingPage[] = originalLandingPages.map(page => {
+  if (page.slug === "rosyjski" || page.slug === "dokumenty-rosyjskojezyczne") return {...page,
+    title: "Dokumenty rosyjskie — tłumaczenia zwykłe i granica poświadczenia",
+    description: "Tłumaczenia zwykłe rosyjskiego po uzgodnieniu. Wpis Vadym Rekel TP/27/17 obejmuje wyłącznie język ukraiński. Jak ustalić właściwy rodzaj tłumaczenia dokumentu.",
+    lead: "Tłumaczenia rosyjskie wykonuję jako zwykłe, po uzgodnieniu zakresu. Moje uprawnienia przysięgłe dotyczą języka ukraińskiego. Jeżeli odbiorca wymaga poświadczenia z rosyjskiego, potrzebny jest tłumacz posiadający uprawnienia w tym języku.",
+    sections: [{heading:"Rozróżnij język dokumentu i kraj wydania",text:"Dokument wydany w Ukrainie może być sporządzony po ukraińsku lub rosyjsku. Sam kraj pochodzenia nie określa języka ani uprawnień potrzebnych do jego poświadczenia."},...page.sections],
+    ctaTitle: "Ustal rodzaj tłumaczenia", ctaText: "Podaj język i wymagania odbiorcy. Wpis TP/27/17 nie obejmuje języka rosyjskiego."};
+  if (page.slug === "angielski" || page.slug === "dokumenty-angielskie") return {...page,
+    title: page.slug === "angielski" ? "Dokumenty angielskie — wymagania formalne i kontekst techniczny" : "Zestaw wielojęzyczny — jak oddzielić dokumenty angielskie",
+    description: "Poradnik o dokumentach angielskich w aktach i materiałach technicznych. Uprawnienia przysięgłe Vadym Rekel dotyczą języka ukraińskiego.",
+    h1: page.slug === "angielski" ? "Dokument angielski w zestawie materiałów." : "Zestaw dokumentów w kilku językach.",
+    lead: "Język angielski może występować w raportach technicznych i dokumentacji międzynarodowej. Ta strona wyjaśnia wymagania i zakres materiału; nie stanowi oferty przekładu angielskiego. Moje uprawnienia przysięgłe obejmują język ukraiński.",
+    keywords: ["dokumenty angielskie wymagania", "dokumenty wielojęzyczne"],
+    sections: [...(page.slug === "dokumenty-angielskie" ? [{heading:"Lista kontrolna zestawu",text:"Przygotuj spis dokumentów: tytuł, język, liczba stron, załączniki i odbiorca. Zaznacz, które części są ukraińskie, a które angielskie. Nie łącz w jednym zamówieniu form poświadczenia, których odbiorca nie potwierdził."}] : []), {heading:"Kto może poświadczyć przekład?",text:"Jeżeli sąd lub inny odbiorca wymaga poświadczenia dokumentu angielskiego, należy wybrać tłumacza przysięgłego języka angielskiego. Znajomość języka i certyfikat językowy nie zastępują tego uprawnienia."},{heading:"Zestaw wielojęzyczny",text:"Przed zleceniem rozdziel dokumenty według języka, określ wymagania odbiorcy i wskaż fragmenty wymagające przekładu. Kancelaria Vadym Rekel poświadcza tłumaczenia polsko-ukraińskie."}],
+    ctaTitle:"Potrzebujesz przekładu polsko-ukraińskiego?",ctaText:"Skontaktuj się w sprawie części ukraińskiej zestawu i uzgodnij zakres."};
+  return page;
+});
 
 export const cityLandingPages: LandingPage[] = cityNames.map(([slug, city]) => ({
   slug,

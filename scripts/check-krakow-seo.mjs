@@ -12,7 +12,7 @@ const files = {
     : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
   "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
-  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
+  "content/resources.txt": readFileSync("content/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -42,7 +42,7 @@ const required = [
   ["app/sitemap.xml/route.ts", "/krakow"],
   ["app/sitemap.xml/route.ts", "getAllKrakowSeoPages"],
   ["app/content-index.json/route.ts", "krakowSeoPages"],
-  ["public/resources.txt", "/krakow"],
+  ["content/resources.txt", "/krakow"],
   ["scripts/check-internal-links.mjs", "/krakow"],
   ["package.json", "check:krakow-seo"],
   ["scripts/preflight.mjs", "check:krakow-seo"]

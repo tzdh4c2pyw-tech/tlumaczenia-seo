@@ -370,7 +370,7 @@ export const expertGuides: ExpertGuide[] = [
     ],
     relatedLinks: [
       { label: "Cyberbezpieczeństwo", href: "/poradniki" },
-      { label: "Tłumaczenia angielskie", href: "/angielski" },
+      { label: "Dokumenty angielskie — poradnik", href: "/angielski" },
       { label: "Dowody cyfrowe", href: "/tematy" }
     ]
   },

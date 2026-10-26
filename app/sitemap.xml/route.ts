@@ -6,7 +6,7 @@ import { getAllLocalSeoArticles } from "@/lib/local-seo-articles";
 import { getAllMalopolskieSeoPages } from "@/lib/malopolskie-seo-pages";
 import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 
-const siteUrl = "https://tlumaczenia-seo.vercel.app";
+const siteUrl = "https://seo.vadymrekel.pro";
 
 type SitemapEntry = {
   url: string;
@@ -32,9 +32,10 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
-  const today = new Date().toISOString();
+  const today = "2026-10-18";
 
   const corePages: SitemapEntry[] = [
+    ...["kalkulator", "podstawy-prawne-i-literatura", "przyklady-pracy", "krakow", "malopolskie"].map(slug => ({url:`${siteUrl}/${slug}`,lastModified:today,changeFrequency:"monthly" as const,priority:"0.7"})),
     { url: siteUrl, lastModified: today, changeFrequency: "weekly", priority: "1.0" },
         { url: `${siteUrl}/blog/tlumaczenia-w-sprawach-karnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
     { url: `${siteUrl}/blog/tlumaczenia-w-sprawach-cywilnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
@@ -58,11 +59,6 @@ export async function GET() {
     { url: `${siteUrl}/dobierz-tlumaczenie`, lastModified: today, changeFrequency: "monthly", priority: "0.75" },
     { url: `${siteUrl}/faq`, lastModified: today, changeFrequency: "monthly", priority: "0.7" },
     { url: `${siteUrl}/lokalnie`, lastModified: today, changeFrequency: "weekly", priority: "0.75" },
-    { url: `${siteUrl}/resources.txt`, lastModified: today, changeFrequency: "monthly", priority: "0.4" },
-    { url: `${siteUrl}/content-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },
-        { url: `${siteUrl}/internal-link-graph.json`, lastModified: today, changeFrequency: "weekly", priority: "0.42" },
-    { url: `${siteUrl}/search-index.json`, lastModified: today, changeFrequency: "weekly", priority: "0.4" },
-    { url: `${siteUrl}/feed.xml`, lastModified: today, changeFrequency: "weekly", priority: "0.4" }
   ];
 
   const landingPages: SitemapEntry[] = getAllLandingPages().map((page) => ({

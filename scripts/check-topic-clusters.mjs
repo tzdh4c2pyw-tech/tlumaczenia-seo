@@ -4,7 +4,7 @@ const data = readFileSync("lib/topic-clusters.ts", "utf8");
 const indexPage = readFileSync("app/tematy/page.tsx", "utf8");
 const detailPage = readFileSync("app/tematy/[slug]/page.tsx", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const resources = readFileSync("public/resources.txt", "utf8");
+const resources = readFileSync("content/resources.txt", "utf8");
 const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
 
 const checks = [
@@ -25,7 +25,7 @@ const checks = [
   ["app/tematy/[slug]/page.tsx", detailPage, "notFound()"],
   ["app/sitemap.xml/route.ts", sitemap, "getAllTopicClusters"],
   ["app/sitemap.xml/route.ts", sitemap, "/tematy"],
-  ["public/resources.txt", resources, "/tematy"],
+  ["content/resources.txt", resources, "/tematy"],
   ["app/content-index.json/route.ts", contentIndex, "topicClusters"]
 ];
 
