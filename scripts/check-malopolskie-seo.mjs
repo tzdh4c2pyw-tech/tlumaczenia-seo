@@ -11,8 +11,8 @@ const files = {
     ? readFileSync("app/malopolskie/[slug]/page.tsx", "utf8")
     : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
-  "app/ai-index.json/route.ts": readFileSync("app/ai-index.json/route.ts", "utf8"),
-  "public/llms.txt": readFileSync("public/llms.txt", "utf8"),
+  "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
+  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -43,8 +43,8 @@ const required = [
   ["app/malopolskie/[slug]/page.tsx", "FAQPage"],
   ["app/sitemap.xml/route.ts", "/malopolskie"],
   ["app/sitemap.xml/route.ts", "getAllMalopolskieSeoPages"],
-  ["app/ai-index.json/route.ts", "malopolskieSeoPages"],
-  ["public/llms.txt", "/malopolskie"],
+  ["app/content-index.json/route.ts", "malopolskieSeoPages"],
+  ["public/resources.txt", "/malopolskie"],
   ["scripts/check-internal-links.mjs", "/malopolskie"],
   ["package.json", "check:malopolskie-seo"],
   ["scripts/preflight.mjs", "check:malopolskie-seo"]
@@ -78,4 +78,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`OK: Malopolskie SEO pages exist (${cityCount}), have routes, schema, sitemap, llms.txt, AI index and internal links.`);
+console.log(`OK: Malopolskie SEO pages exist (${cityCount}), have routes, schema, sitemap, resources.txt, content index and internal links.`);

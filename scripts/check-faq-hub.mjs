@@ -5,8 +5,8 @@ const routePath = "app/faq/page.tsx";
 const files = {
   [routePath]: existsSync(routePath) ? readFileSync(routePath, "utf8") : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
-  "app/ai-index.json/route.ts": readFileSync("app/ai-index.json/route.ts", "utf8"),
-  "public/llms.txt": readFileSync("public/llms.txt", "utf8"),
+  "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
+  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -27,8 +27,8 @@ const required = [
   [routePath, "/dobierz-tlumaczenie"],
   [routePath, "/poradniki"],
   ["app/sitemap.xml/route.ts", "/faq"],
-  ["app/ai-index.json/route.ts", "/faq"],
-  ["public/llms.txt", "/faq"],
+  ["app/content-index.json/route.ts", "/faq"],
+  ["public/resources.txt", "/faq"],
   ["scripts/check-internal-links.mjs", "/faq"],
   ["package.json", "check:faq-hub"],
   ["scripts/preflight.mjs", "check:faq-hub"]
@@ -58,4 +58,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: FAQ hub exists and is linked from sitemap, llms.txt, AI index and internal links.");
+console.log("OK: FAQ hub exists and is linked from sitemap, resources.txt, content index and internal links.");

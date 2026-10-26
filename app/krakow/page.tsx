@@ -3,7 +3,7 @@ import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 import { LocalCard, LocalCardGrid, LocalPageShell } from "../components/LocalPageShell";
 
 export const metadata: Metadata = {
-  title: "Tłumacz przysięgły Kraków | Ukraiński, rosyjski, angielski, sąd, AI",
+  title: "Tłumacz przysięgły Kraków | Ukraiński, rosyjski, angielski, sąd",
   description:
     "Lokalne strony SEO dla Krakowa: tłumacz przysięgły ukraiński, rosyjski, angielski, dokumenty z Ukrainy, sąd, Policja, Prokuratura, dowody cyfrowe, BLIK i kryptowaluty.",
   alternates: {

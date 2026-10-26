@@ -5,8 +5,8 @@ const routePath = "app/dobierz-tlumaczenie/page.tsx";
 const files = {
   [routePath]: existsSync(routePath) ? readFileSync(routePath, "utf8") : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
-  "app/ai-index.json/route.ts": readFileSync("app/ai-index.json/route.ts", "utf8"),
-  "public/llms.txt": readFileSync("public/llms.txt", "utf8"),
+  "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
+  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -24,8 +24,8 @@ const required = [
   [routePath, "/tematy/tlumaczenia-poswiadczone"],
   [routePath, "/poradniki/tlumaczenie-dowodow-cyfrowych-w-sprawach-karnych"],
   ["app/sitemap.xml/route.ts", "/dobierz-tlumaczenie"],
-  ["app/ai-index.json/route.ts", "/dobierz-tlumaczenie"],
-  ["public/llms.txt", "/dobierz-tlumaczenie"],
+  ["app/content-index.json/route.ts", "/dobierz-tlumaczenie"],
+  ["public/resources.txt", "/dobierz-tlumaczenie"],
   ["scripts/check-internal-links.mjs", "/dobierz-tlumaczenie"],
   ["package.json", "check:decision-guide"],
   ["scripts/preflight.mjs", "check:decision-guide"]
@@ -51,4 +51,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: decision guide exists and is linked from sitemap, llms.txt, AI index and internal links.");
+console.log("OK: decision guide exists and is linked from sitemap, resources.txt, content index and internal links.");

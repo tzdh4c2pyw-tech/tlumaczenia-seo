@@ -96,8 +96,8 @@ export default function TopicClustersPage() {
             <h2>Dlaczego taki podział spraw?</h2>
             <p>
               Działy porządkują sprawy i dokumenty: grupują artykuły, usługi i
-              pytania użytkowników w logiczne działy. To pomaga wyszukiwarkom,
-              modelom AI i użytkownikom szybciej zrozumieć specjalizację strony.
+              pytania użytkowników w logiczne działy. To pomaga użytkownikom i wyszukiwarkom
+              szybciej zrozumieć specjalizację strony.
             </p>
           </div>
         </aside>

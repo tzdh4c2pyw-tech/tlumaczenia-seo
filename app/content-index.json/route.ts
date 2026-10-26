@@ -8,7 +8,7 @@ import { getAllKrakowSeoPages } from "@/lib/krakow-seo-pages";
 
 const siteUrl = "https://tlumaczenia-seo.vercel.app";
 
-type ArticleForAi = {
+type ArticleForIndex = {
   title: string;
   slug: string;
   description: string;
@@ -22,7 +22,7 @@ type ArticleForAi = {
   keywords?: string[];
 };
 
-type LandingPageForAi = {
+type LandingPageForIndex = {
   title: string;
   slug: string;
   description: string;
@@ -33,7 +33,7 @@ type LandingPageForAi = {
   type?: string;
 };
 
-type TopicClusterForAi = {
+type TopicClusterForIndex = {
   slug: string;
   title?: string;
   name?: string;
@@ -62,7 +62,7 @@ export async function GET() {
     baseUrl: siteUrl,
     generatedAt: today,
     purpose:
-      "Structured AI-readable index for expert pages about sworn, legal, Ukrainian, Russian, English and digital-evidence translation services.",
+      "Structured content index for expert pages about sworn, legal, Ukrainian, Russian, English and digital-evidence translation services.",
     contentScope: {
       services: [
         "tłumaczenia poświadczone",
@@ -83,7 +83,7 @@ export async function GET() {
         "osoby prywatne",
         "firmy",
         "instytucje",
-        "AI assistants and search systems"
+        "search systems"
       ],
       expertise: [
         "prawo",
@@ -103,10 +103,10 @@ export async function GET() {
       guides: `${siteUrl}/poradniki`,
       decisionGuide: `${siteUrl}/dobierz-tlumaczenie`,
       faq: `${siteUrl}/faq`,
-      llms: `${siteUrl}/llms.txt`,
+      resources: `${siteUrl}/resources.txt`,
       feed: `${siteUrl}/feed.xml`,
       sitemap: `${siteUrl}/sitemap.xml`,
-      aiIndex: `${siteUrl}/ai-index.json`,
+      contentIndex: `${siteUrl}/content-index.json`,
       searchIndex: `${siteUrl}/search-index.json`
     },
     mainTopics: [
@@ -126,7 +126,7 @@ export async function GET() {
       "forensic materials"
     ],
     landingPages: landingPages.map((page) => {
-      const item = page as LandingPageForAi;
+      const item = page as LandingPageForIndex;
 
       return {
         title: item.title,
@@ -141,7 +141,7 @@ export async function GET() {
       };
     }),
     blogArticles: articles.map((article) => {
-      const item = article as ArticleForAi;
+      const item = article as ArticleForIndex;
       const date = item.date ?? item.publishedAt ?? item.updatedAt ?? today;
 
       return {
@@ -157,7 +157,7 @@ export async function GET() {
       };
     }),
     topicClusters: topicClusters.map((cluster) => {
-      const item = cluster as TopicClusterForAi;
+      const item = cluster as TopicClusterForIndex;
 
       return {
         title: item.title ?? item.name ?? item.slug,

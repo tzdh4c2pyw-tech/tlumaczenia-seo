@@ -8,8 +8,8 @@ const requiredSnippets = [
   "GET()",
   "/blog",
   "/pdf-na-tekst",
-  "/llms.txt",
-  "/ai-index.json",
+  "/resources.txt",
+  "/content-index.json",
   "/feed.xml",
   "application/xml",
   "urlset",
@@ -70,4 +70,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: sitemap source includes core pages, landing pages, blog articles, AI endpoints, feed and topic hubs.");
+console.log("OK: sitemap source includes core pages, landing pages, blog articles, content endpoints, feed and topic hubs.");

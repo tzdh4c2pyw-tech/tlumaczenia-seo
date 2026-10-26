@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export async function GET() {
-  const content = await readFile(join(process.cwd(), "public", "llms.txt"), "utf8");
+  const content = await readFile(join(process.cwd(), "public", "resources.txt"), "utf8");
 
   return new Response(content, {
     headers: {
@@ -22,7 +22,7 @@ export async function GET() {
 // Kontakt: /kontakt
 // Search index: /search-index.json
 // RSS feed: /feed.xml
-// LLMS: /llms.txt
-// AI index: /ai-index.json
+// Resources: /resources.txt
+// content index: /content-index.json
 // Sitemap: /sitemap.xml
 // Internal link graph: /internal-link-graph.json

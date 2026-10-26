@@ -219,8 +219,8 @@ export default function ContentHubLinks() {
             <p style={textStyle}>
               Uporządkowane linkowanie wewnętrzne do najważniejszych warstw
               serwisu: usług, tematów eksperckich, poradników, bloga oraz stron
-              lokalnych dla Krakowa i Małopolski. Sekcja jest czytelna dla
-              użytkownika, wyszukiwarki i systemów AI.
+              lokalnych dla Krakowa i Małopolski. Ułatwia to odnalezienie
+              informacji odpowiednich do konkretnej sprawy.
             </p>
           </div>
 

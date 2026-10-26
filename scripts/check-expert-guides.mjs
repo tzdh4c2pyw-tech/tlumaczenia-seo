@@ -4,9 +4,9 @@ const data = readFileSync("lib/expert-guides.ts", "utf8");
 const indexPage = readFileSync("app/poradniki/page.tsx", "utf8");
 const articlePage = readFileSync("app/poradniki/[slug]/page.tsx", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const aiIndex = readFileSync("app/ai-index.json/route.ts", "utf8");
+const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
 const feed = readFileSync("app/feed.xml/route.ts", "utf8");
-const llms = readFileSync("public/llms.txt", "utf8");
+const resources = readFileSync("public/resources.txt", "utf8");
 const packageJson = readFileSync("package.json", "utf8");
 const preflight = readFileSync("scripts/preflight.mjs", "utf8");
 
@@ -25,9 +25,9 @@ const required = [
   ["app/poradniki/[slug]/page.tsx", articlePage, '"@type": "BreadcrumbList"'],
   ["app/sitemap.xml/route.ts", sitemap, "getAllExpertGuides"],
   ["app/sitemap.xml/route.ts", sitemap, "/poradniki"],
-  ["app/ai-index.json/route.ts", aiIndex, "expertGuides"],
+  ["app/content-index.json/route.ts", contentIndex, "expertGuides"],
   ["app/feed.xml/route.ts", feed, "getAllExpertGuides"],
-  ["public/llms.txt", llms, "/poradniki"],
+  ["public/resources.txt", resources, "/poradniki"],
   ["package.json", packageJson, "check:expert-guides"],
   ["scripts/preflight.mjs", preflight, "check:expert-guides"]
 ];
@@ -52,4 +52,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: expert guides exist, have routes, schema, sitemap, llms.txt, feed and AI index coverage.");
+console.log("OK: expert guides exist, have routes, schema, sitemap, resources.txt, feed and content index coverage.");

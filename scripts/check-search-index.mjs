@@ -10,8 +10,8 @@ if (!existsSync(routePath)) {
 
 const route = readFileSync(routePath, "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const aiIndex = readFileSync("app/ai-index.json/route.ts", "utf8");
-const llms = readFileSync("public/llms.txt", "utf8");
+const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
+const resources = readFileSync("public/resources.txt", "utf8");
 const packageJson = readFileSync("package.json", "utf8");
 const preflight = readFileSync("scripts/preflight.mjs", "utf8");
 
@@ -26,8 +26,8 @@ const required = [
   [routePath, route, "expertGuide"],
   [routePath, route, "search index"],
   ["app/sitemap.xml/route.ts", sitemap, "/search-index.json"],
-  ["app/ai-index.json/route.ts", aiIndex, "/search-index.json"],
-  ["public/llms.txt", llms, "/search-index.json"],
+  ["app/content-index.json/route.ts", contentIndex, "/search-index.json"],
+  ["public/resources.txt", resources, "/search-index.json"],
   ["package.json", packageJson, "check:search-index"],
   ["scripts/preflight.mjs", preflight, "check:search-index"]
 ];
@@ -48,4 +48,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: search index route exists and is linked from sitemap, llms.txt and AI index.");
+console.log("OK: search index route exists and is linked from sitemap, resources.txt and content index.");

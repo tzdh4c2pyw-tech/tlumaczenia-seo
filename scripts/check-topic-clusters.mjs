@@ -4,8 +4,8 @@ const data = readFileSync("lib/topic-clusters.ts", "utf8");
 const indexPage = readFileSync("app/tematy/page.tsx", "utf8");
 const detailPage = readFileSync("app/tematy/[slug]/page.tsx", "utf8");
 const sitemap = readFileSync("app/sitemap.xml/route.ts", "utf8");
-const llms = readFileSync("public/llms.txt", "utf8");
-const aiIndex = readFileSync("app/ai-index.json/route.ts", "utf8");
+const resources = readFileSync("public/resources.txt", "utf8");
+const contentIndex = readFileSync("app/content-index.json/route.ts", "utf8");
 
 const checks = [
   ["lib/topic-clusters.ts", data, "export type TopicCluster"],
@@ -25,8 +25,8 @@ const checks = [
   ["app/tematy/[slug]/page.tsx", detailPage, "notFound()"],
   ["app/sitemap.xml/route.ts", sitemap, "getAllTopicClusters"],
   ["app/sitemap.xml/route.ts", sitemap, "/tematy"],
-  ["public/llms.txt", llms, "/tematy"],
-  ["app/ai-index.json/route.ts", aiIndex, "topicClusters"]
+  ["public/resources.txt", resources, "/tematy"],
+  ["app/content-index.json/route.ts", contentIndex, "topicClusters"]
 ];
 
 const errors = [];
@@ -45,4 +45,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("OK: topic clusters exist, have routes, schema, sitemap, llms.txt and AI index coverage.");
+console.log("OK: topic clusters exist, have routes, schema, sitemap, resources.txt and content index coverage.");

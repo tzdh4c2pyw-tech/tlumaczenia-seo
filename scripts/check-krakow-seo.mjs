@@ -11,8 +11,8 @@ const files = {
     ? readFileSync("app/krakow/[slug]/page.tsx", "utf8")
     : "",
   "app/sitemap.xml/route.ts": readFileSync("app/sitemap.xml/route.ts", "utf8"),
-  "app/ai-index.json/route.ts": readFileSync("app/ai-index.json/route.ts", "utf8"),
-  "public/llms.txt": readFileSync("public/llms.txt", "utf8"),
+  "app/content-index.json/route.ts": readFileSync("app/content-index.json/route.ts", "utf8"),
+  "public/resources.txt": readFileSync("public/resources.txt", "utf8"),
   "scripts/check-internal-links.mjs": readFileSync("scripts/check-internal-links.mjs", "utf8"),
   "package.json": readFileSync("package.json", "utf8"),
   "scripts/preflight.mjs": readFileSync("scripts/preflight.mjs", "utf8")
@@ -41,8 +41,8 @@ const required = [
   ["app/krakow/[slug]/page.tsx", "FAQPage"],
   ["app/sitemap.xml/route.ts", "/krakow"],
   ["app/sitemap.xml/route.ts", "getAllKrakowSeoPages"],
-  ["app/ai-index.json/route.ts", "krakowSeoPages"],
-  ["public/llms.txt", "/krakow"],
+  ["app/content-index.json/route.ts", "krakowSeoPages"],
+  ["public/resources.txt", "/krakow"],
   ["scripts/check-internal-links.mjs", "/krakow"],
   ["package.json", "check:krakow-seo"],
   ["scripts/preflight.mjs", "check:krakow-seo"]
@@ -76,4 +76,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`OK: Krakow SEO pages exist (${slugCount}), have routes, schema, sitemap, llms.txt, AI index and internal links.`);
+console.log(`OK: Krakow SEO pages exist (${slugCount}), have routes, schema, sitemap, resources.txt, content index and internal links.`);

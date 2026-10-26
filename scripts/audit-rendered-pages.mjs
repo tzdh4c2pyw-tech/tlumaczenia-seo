@@ -10,9 +10,9 @@ const hardLimit = Number(process.env.AUDIT_HARD_LIMIT || 0);
 const maxParagraphChars = Number(process.env.AUDIT_MAX_PARAGRAPH_CHARS || 900);
 
 const technicalNoH1Routes = new Set([
-  "/ai-index.json",
+  "/content-index.json",
   "/feed.xml",
-  "/llms.txt",
+  "/resources.txt",
   "/robots.txt",
   "/search-index.json",
   "/sitemap.xml"
@@ -169,7 +169,7 @@ async function main() {
         });
       }
 
-      if (text.length < 250 && !["/robots.txt", "/llms.txt", "/sitemap.xml", "/feed.xml", "/ai-index.json", "/search-index.json"].includes(path)) {
+      if (text.length < 250 && !["/robots.txt", "/resources.txt", "/sitemap.xml", "/feed.xml", "/content-index.json", "/search-index.json"].includes(path)) {
         pageProblems.push({
           type: "thin-rendered-text",
           message: `Rendered text length only ${text.length} chars`
