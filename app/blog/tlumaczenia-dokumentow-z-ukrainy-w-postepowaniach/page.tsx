@@ -64,6 +64,11 @@ export default function ArticlePage() {
               tłumaczenia w Polsce.
             </p>
           </section>
+          <section className="rounded-3xl border border-white/10 bg-white/[0.045] p-6">
+            <h2 className="text-3xl font-black text-white">Dokument ukraiński już w aktach: jak wskazać zakres przekładu?</h2>
+            <p className="mt-4 leading-8 text-slate-300">W zapytaniu rozróżnij numer karty akt, numer strony PDF i numerację widoczną na dokumencie. Przy skanach kilku dokumentów w jednym pliku sporządź krótki spis: nazwa dokumentu, język i zakres stron. Zaznacz, czy pieczęcie, dopiski i załączniki należą do zlecenia; dodatkowe materiały dołączone tylko dla kontekstu oznacz osobno.</p>
+            <p className="mt-4 leading-8 text-slate-300">Przeczytaj o <Link href="/blog/tlumaczenia-dla-policji-prokuratury-i-sadu" className="underline">tłumaczeniach dla organów prowadzących postępowanie</Link> lub <Link href="/kontakt" className="underline">uzgodnij zakres zlecenia</Link>.</p>
+          </section>
         </div>
       </article>
     </main>

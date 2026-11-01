@@ -42,7 +42,7 @@ export async function GET() {
     { url: `${siteUrl}/blog/tlumaczenia-dla-policji-prokuratury-i-sadu`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
     { url: `${siteUrl}/blog/tlumaczenia-dowodow-cyfrowych-w-sprawach-karnych`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
     { url: `${siteUrl}/blog/tlumaczenia-ustne-konferencje-i-spotkania`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
-    { url: `${siteUrl}/blog/tlumaczenia-dokumentow-z-ukrainy-w-postepowaniach`, lastModified: today, changeFrequency: "monthly", priority: "0.72" },
+    { url: `${siteUrl}/blog/tlumaczenia-dokumentow-z-ukrainy-w-postepowaniach`, lastModified: "2026-11-01", changeFrequency: "monthly", priority: "0.72" },
         { url: `${siteUrl}/blog/prawo-karne-przestepstwa-i-akta`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
     { url: `${siteUrl}/blog/sprawy-cywilne-i-dokumenty`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
     { url: `${siteUrl}/blog/policja-prokuratura-sad`, lastModified: today, changeFrequency: "monthly", priority: "0.74" },
@@ -73,7 +73,7 @@ export async function GET() {
 
     return {
       url: `${siteUrl}/blog/${item.slug}`,
-      lastModified: item.date ?? item.publishedAt ?? item.updatedAt ?? today,
+      lastModified: item.updatedAt ?? item.date ?? item.publishedAt ?? today,
       changeFrequency: "monthly",
       priority: "0.7"
     };

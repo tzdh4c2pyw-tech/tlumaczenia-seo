@@ -129,6 +129,15 @@ for (const slug of krakowSeoSlugs) {
 walk("app");
 walk("lib");
 
+// Static App Router pages are authoritative; the hand-maintained list below
+// also covers generated dynamic routes and non-page endpoints.
+for (const file of filesToScan) {
+  if (!/^app\/.*\/page\.(tsx|ts|jsx|js)$/.test(file) && !/^app\/page\.(tsx|ts|jsx|js)$/.test(file)) continue;
+  const parts = file.replace(/^app\//, "").replace(/\/?page\.(tsx|ts|jsx|js)$/, "").split("/").filter(Boolean);
+  if (parts.some((part) => part.startsWith("["))) continue;
+  knownRoutes.add("/" + parts.filter((part) => !part.startsWith("(")).join("/"));
+}
+
 const errors = [];
 
 function shouldIgnoreLink(link) {
